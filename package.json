@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:gh-pages": "ng build --base-href /Arivom-Technologies/",
+    "deploy": "pnpm run build:gh-pages && cp dist/arivom-web/browser/index.html dist/arivom-web/browser/404.html && touch dist/arivom-web/browser/.nojekyll && gh-pages -d dist/arivom-web/browser -b gh-pages --dotfiles -m \"deploy: update GitHub Pages build\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -37,6 +38,7 @@
     "@angular/cli": "^21.0.5",
     "@angular/compiler-cli": "^21.0.0",
     "@tailwindcss/postcss": "^4.3.3",
+    "gh-pages": "^6.3.0",
     "jsdom": "^27.1.0",
     "lucide-angular": "^1.0.0",
     "postcss": "^8.5.28",
