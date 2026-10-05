@@ -3,6 +3,7 @@
 Official website for **[Arivom Technologies](https://arivomtechnologies.com/)** — Enterprise Software Engineering & Consulting.
 
 - **Website**: [https://arivomtechnologies.com/](https://arivomtechnologies.com/)
+- **GitHub Pages**: [https://arivomtechnologies.github.io/Arivom-Technologies/](https://arivomtechnologies.github.io/Arivom-Technologies/)
 - **Contact Email**: `arivomtechnologies@gmail.com`
 
 ---
@@ -36,11 +37,15 @@ corepack pnpm ng serve --port 4280
 ```
 Open [http://localhost:4280/](http://localhost:4280/) in your browser.
 
-### 3. Production Build
+### 3. Production Build & Deployment to GitHub Pages
 ```bash
-corepack pnpm ng build
+# Build for GitHub Pages
+pnpm run build:gh-pages
+
+# Build & Deploy directly to GitHub Pages
+pnpm run deploy
 ```
-Output files will be generated in `dist/arivom-web/`.
+Output files will be generated in `dist/arivom-web/` and deployed to the `gh-pages` branch.
 
 ---
 
