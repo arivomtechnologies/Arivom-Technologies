@@ -2,8 +2,8 @@
 
 Official website for **[Arivom Technologies](https://arivomtechnologies.com/)** — Enterprise Software Engineering & Consulting.
 
-- **Website**: [https://arivomtechnologies.com/](https://arivomtechnologies.com/)
-- **GitHub Pages**: [https://arivomtechnologies.github.io/Arivom-Technologies/](https://arivomtechnologies.github.io/Arivom-Technologies/)
+- **Website**: [https://arivomtechnologies.com/](https://arivomtechnologies.com/) (Live on GitHub Pages with HTTPS)
+- **GitHub Pages Subdomain**: [https://arivomtechnologies.github.io/Arivom-Technologies/](https://arivomtechnologies.github.io/Arivom-Technologies/)
 - **Contact Email**: `arivomtechnologies@gmail.com`
 
 ---
