@@ -56,134 +56,184 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden xl:flex items-center gap-4 2xl:gap-5 text-[13.5px] font-medium text-slate-600">
+      <!-- Desktop Navigation: Streamlined & Combined Clean Groups -->
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-[13.5px] font-semibold text-slate-700">
         
-        <!-- Home -->
+        <!-- 1. Home -->
         <button 
           (click)="navigateTo('home')" 
-          [class]="currentPage() === 'home' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
+          [class]="currentPage() === 'home' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-600'"
+          class="transition-colors whitespace-nowrap py-1 cursor-pointer">
           Home
         </button>
 
-        <!-- About -->
-        <button 
-          (click)="navigateTo('about')" 
-          [class]="currentPage() === 'about' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          About
-        </button>
-
-        <!-- Services ▾ with Dropdown -->
+        <!-- 2. Services ▾ (Services Overview, Starter Websites, Web Apps, Mobile Apps, Enterprise Microservices) -->
         <div class="relative group">
           <button 
             (click)="navigateTo('services')" 
-            [class]="currentPage() === 'services' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-            class="flex items-center gap-1 transition-colors whitespace-nowrap py-1">
+            [class]="currentPage() === 'services' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-600'"
+            class="flex items-center gap-1.5 transition-colors whitespace-nowrap py-1 cursor-pointer">
             <span>Services</span>
             <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-orange-500 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
 
-          <!-- Dropdown Menu -->
-          <div class="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-2">
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center text-xs font-bold">★</span>
+          <!-- Services Dropdown Menu -->
+          <div class="absolute top-full left-0 pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="bg-white rounded-2xl shadow-xl border border-orange-100 p-2 space-y-1">
+              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold shrink-0">⚡</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Services Overview</div>
-                  <div class="text-[10px] text-slate-500">Full lifecycle engineering</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Full-lifecycle engineering</div>
                 </div>
               </button>
-              <button (click)="navigateTo('pricing')" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">🌐</span>
+              <button (click)="navigateTo('pricing')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0">🌐</span>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Business Websites</div>
-                  <div class="text-[10px] text-emerald-700 font-medium font-mono">₹10,000 – ₹15,000</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span>Business Websites</span>
+                    <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">₹10K–15K</span>
+                  </div>
+                  <div class="text-[10px] text-emerald-700 font-medium font-mono">1–2 Weeks Delivery</div>
                 </div>
               </button>
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-xs font-bold">&lt;/&gt;</span>
+              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold shrink-0">&lt;/&gt;</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Custom Web Applications</div>
-                  <div class="text-[10px] text-slate-500">Angular &amp; Spring Boot</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Angular 19 &amp; Spring Boot 3</div>
                 </div>
               </button>
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center text-xs font-bold">📱</span>
+              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center text-sm font-bold shrink-0">📱</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Mobile Apps (iOS &amp; Android)</div>
-                  <div class="text-[10px] text-slate-500">React Native cross-platform</div>
+                  <div class="text-[10px] text-slate-500 font-normal">React Native 60 FPS Native UI</div>
                 </div>
               </button>
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-xs font-bold">☁️</span>
+              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold shrink-0">☁️</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Enterprise Microservices</div>
-                  <div class="text-[10px] text-slate-500">Spring Cloud &amp; Kubernetes</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Docker, Kubernetes &amp; Cloud</div>
                 </div>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Our Clients -->
-        <button 
-          (click)="navigateTo('clients')" 
-          [class]="currentPage() === 'clients' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          Our Clients
-        </button>
+        <!-- 3. Portfolio & Trust ▾ (Our Clients, Case Studies, Client Reviews) -->
+        <div class="relative group">
+          <button 
+            [class]="(currentPage() === 'clients' || currentPage() === 'case-studies' || currentPage() === 'reviews') ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-600'"
+            class="flex items-center gap-1.5 transition-colors whitespace-nowrap py-1 cursor-pointer">
+            <span>Portfolio &amp; Trust</span>
+            <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-orange-500 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
-        <!-- INR Pricing -->
-        <button 
-          (click)="navigateTo('pricing')" 
-          [class]="currentPage() === 'pricing' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          INR Pricing
-        </button>
+          <!-- Portfolio Dropdown Menu -->
+          <div class="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="bg-white rounded-2xl shadow-xl border border-orange-100 p-2 space-y-1">
+              <button (click)="navigateTo('clients')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xs font-bold shrink-0">🏢</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Our Clients</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Partners &amp; Live Platforms</div>
+                </div>
+              </button>
+              <button (click)="navigateTo('case-studies')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold shrink-0">📊</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Case Studies</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Architecture &amp; Real Metrics</div>
+                </div>
+              </button>
+              <button (click)="navigateTo('reviews')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold shrink-0">★</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Client Reviews</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Testimonials &amp; 5-Star Ratings</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
 
-        <!-- Tech Stack -->
+        <!-- 4. Pricing & Estimator ▾ (INR Pricing Matrix, Budget Estimator) -->
+        <div class="relative group">
+          <button 
+            [class]="(currentPage() === 'pricing' || currentPage() === 'estimator') ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-600'"
+            class="flex items-center gap-1.5 transition-colors whitespace-nowrap py-1 cursor-pointer">
+            <span>Pricing</span>
+            <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-orange-500 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Pricing Dropdown Menu -->
+          <div class="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="bg-white rounded-2xl shadow-xl border border-orange-100 p-2 space-y-1">
+              <button (click)="navigateTo('pricing')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xs font-bold shrink-0">₹</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">INR Pricing Packages</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Websites to Enterprise SLA</div>
+                </div>
+              </button>
+              <button (click)="navigateTo('estimator')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold shrink-0">🧮</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Project Budget Estimator</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Interactive scope calculator</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Tech Stack -->
         <button 
           (click)="navigateTo('tech-stack')" 
-          [class]="currentPage() === 'tech-stack' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
+          [class]="currentPage() === 'tech-stack' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-600'"
+          class="transition-colors whitespace-nowrap py-1 cursor-pointer">
           Tech Stack
         </button>
 
-        <!-- Case Studies -->
-        <button 
-          (click)="navigateTo('case-studies')" 
-          [class]="currentPage() === 'case-studies' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          Case Studies
-        </button>
+        <!-- 6. Company & FAQ ▾ (About Us, Engineering FAQ) -->
+        <div class="relative group">
+          <button 
+            [class]="(currentPage() === 'about' || currentPage() === 'faq') ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-600'"
+            class="flex items-center gap-1.5 transition-colors whitespace-nowrap py-1 cursor-pointer">
+            <span>Company</span>
+            <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-orange-500 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
-        <!-- Client Reviews -->
-        <button 
-          (click)="navigateTo('reviews')" 
-          [class]="currentPage() === 'reviews' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          Reviews
-        </button>
-
-        <!-- Estimator -->
-        <button 
-          (click)="navigateTo('estimator')" 
-          [class]="currentPage() === 'estimator' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          Estimator
-        </button>
-
-        <!-- FAQ -->
-        <button 
-          (click)="navigateTo('faq')" 
-          [class]="currentPage() === 'faq' ? 'text-orange-600 font-bold relative after:absolute after:-bottom-2.5 after:left-0 after:w-full after:h-0.5 after:bg-orange-500 after:rounded-full' : 'hover:text-orange-500'"
-          class="transition-colors whitespace-nowrap py-1">
-          FAQ
-        </button>
+          <!-- Company Dropdown Menu -->
+          <div class="absolute top-full right-0 pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="bg-white rounded-2xl shadow-xl border border-orange-100 p-2 space-y-1">
+              <button (click)="navigateTo('about')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xs font-bold shrink-0">👥</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">About Arivom</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Our team &amp; engineering values</div>
+                </div>
+              </button>
+              <button (click)="navigateTo('faq')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold shrink-0">❓</span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Engineering FAQ</div>
+                  <div class="text-[10px] text-slate-500 font-normal">Pricing, milestones &amp; warranty</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
 
       </nav>
 
@@ -252,25 +302,61 @@
           </div>
         </div>
         
-        <div class="grid grid-cols-2 gap-2 pt-1">
-          <button (click)="navigateTo('home')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Home</button>
-          <button (click)="navigateTo('about')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">About</button>
-          <button (click)="navigateTo('services')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Services</button>
-          <button (click)="navigateTo('clients')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Our Clients</button>
-          <button (click)="navigateTo('pricing')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">INR Pricing</button>
-          <button (click)="navigateTo('tech-stack')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Tech Stack</button>
-          <button (click)="navigateTo('case-studies')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Case Studies</button>
-          <button (click)="navigateTo('reviews')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Client Reviews</button>
-          <button (click)="navigateTo('estimator')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">Estimator</button>
-          <button (click)="navigateTo('faq')" class="text-left text-sm font-semibold p-2 rounded-xl text-slate-700 hover:text-orange-500 hover:bg-slate-50">FAQ</button>
+        <!-- Categorized Mobile Menu Sections -->
+        <div class="space-y-4 pt-1">
+          <!-- Section 1: Main & Services -->
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-orange-600 font-bold px-2 mb-1.5 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Main &amp; Services
+            </div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button (click)="navigateTo('home')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Home</button>
+              <button (click)="navigateTo('services')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Services Overview</button>
+            </div>
+          </div>
+
+          <!-- Section 2: Portfolio & Trust -->
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-orange-600 font-bold px-2 mb-1.5 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Portfolio &amp; Trust
+            </div>
+            <div class="grid grid-cols-3 gap-1.5">
+              <button (click)="navigateTo('clients')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Our Clients</button>
+              <button (click)="navigateTo('case-studies')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Case Studies</button>
+              <button (click)="navigateTo('reviews')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Reviews</button>
+            </div>
+          </div>
+
+          <!-- Section 3: Pricing & Tech -->
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-orange-600 font-bold px-2 mb-1.5 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Pricing &amp; Architecture
+            </div>
+            <div class="grid grid-cols-3 gap-1.5">
+              <button (click)="navigateTo('pricing')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">INR Pricing</button>
+              <button (click)="navigateTo('estimator')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Estimator</button>
+              <button (click)="navigateTo('tech-stack')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Tech Stack</button>
+            </div>
+          </div>
+
+          <!-- Section 4: Company & Help -->
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold px-2 mb-1.5 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Company &amp; Help
+            </div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button (click)="navigateTo('about')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">About Arivom</button>
+              <button (click)="navigateTo('faq')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">FAQ</button>
+            </div>
+          </div>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
-          <button (click)="copyEmail()" type="button" class="w-full py-3 px-4 rounded-full border border-slate-200 bg-slate-50 text-xs font-mono text-slate-700 flex items-center justify-center gap-2">
+          <button (click)="copyEmail()" type="button" class="w-full py-3 px-4 rounded-full border border-slate-200 bg-slate-50 text-xs font-mono text-slate-700 flex items-center justify-center gap-2 cursor-pointer">
             <span>{{ contactEmail }}</span>
             <span class="text-orange-600 font-bold">{{ emailCopied() ? '(Copied!)' : '(Tap to copy)' }}</span>
           </button>
-          <button (click)="openContactModal()" class="w-full py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-center text-sm shadow-md shadow-orange-500/25">
+          <button (click)="openContactModal()" class="w-full py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-center text-sm shadow-md shadow-orange-500/25 cursor-pointer">
             Start Project / Contact Us &rarr;
           </button>
         </div>
@@ -2496,8 +2582,8 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-12 border-b border-slate-800/80">
         
         <div class="lg:col-span-7 space-y-3">
-          <div class="flex items-center gap-2.5">
-            <div class="w-10 h-10 rounded-xl overflow-hidden bg-white/10 border border-white/15 p-1 shadow-xs shrink-0 flex items-center justify-center">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 p-2 shadow-sm shrink-0 flex items-center justify-center">
               <img 
                 src="images/arivom-emblem.png" 
                 alt="Arivom Technologies Emblem" 
@@ -2505,15 +2591,15 @@
             </div>
             <div>
               <div class="flex items-center gap-1.5 leading-tight">
-                <span class="text-base sm:text-lg font-black tracking-tight text-white">ARIVOM</span>
-                <span class="text-base sm:text-lg font-black text-[#FF6A00]">TECHNOLOGIES</span>
+                <span class="text-lg sm:text-xl font-black tracking-tight text-white">ARIVOM</span>
+                <span class="text-lg sm:text-xl font-black text-[#FF6A00]">TECHNOLOGIES</span>
               </div>
-              <div class="flex items-center gap-1.5 mt-0.5 leading-none">
-                <span class="text-[9px] sm:text-[10px] text-orange-400 font-mono tracking-wider uppercase font-bold">
-                  Innovate • Build • Grow
+              <div class="flex items-center gap-2 mt-1 leading-none flex-wrap">
+                <span class="text-[10px] sm:text-[11px] text-[#FF6A00] font-mono tracking-wider uppercase font-bold">
+                  INNOVATE &nbsp;•&nbsp; BUILD &nbsp;•&nbsp; GROW
                 </span>
-                <span class="text-slate-600 text-[10px] hidden sm:inline">|</span>
-                <span class="text-[8.5px] sm:text-[9.5px] text-slate-400 font-mono hidden sm:inline">
+                <span class="text-slate-600 text-xs hidden sm:inline">|</span>
+                <span class="text-[10px] sm:text-[11px] text-slate-400 font-mono hidden sm:inline">
                   Turning Ideas Into Powerful Solutions
                 </span>
               </div>
