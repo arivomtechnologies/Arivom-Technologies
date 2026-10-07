@@ -798,79 +798,79 @@ export class App implements OnInit, OnDestroy {
     return this.technologies.filter(tech => tech.category === filter);
   });
 
-  // Services with INR Pricing
+  // Services with INR Pricing (High-Impact Modern Solutions)
   protected readonly services: ServiceItem[] = [
     {
-      id: 'business-website',
-      title: 'Business Websites',
-      badge: 'Starter Package',
-      tagline: 'For Startups, Local Businesses & Real Estate',
-      priceInr: '₹10,000 – ₹15,000',
-      duration: '1-2 weeks • Fully Responsive',
-      themeColor: 'blue',
-      icon: 'globe',
-      description: 'Fast, responsive, and elegant website for your company or firm, styled with Tailwind CSS and optimized for Google search and lead generation.',
-      features: [
-        'Responsive on mobile, tablet & desktop',
-        'Interactive contact forms with instant email/phone alerts',
-        'SEO-optimized architecture & Google search submission',
-        'Pixel-perfect responsiveness, sub-second speed & clean modern UI'
-      ],
-      deliverables: ['Production-ready website', 'Free hosting guidance', 'Mobile testing report', 'Full code transfer']
-    },
-    {
-      id: 'fullstack-web',
-      title: 'Custom Web Applications',
-      badge: 'Angular + Spring Boot',
-      tagline: 'Scalable • Secure • High Performance',
-      priceInr: '₹60,000 – ₹3,00,000+',
-      duration: 'Agile Delivery • 3–12 Weeks',
+      id: 'ai-saas-products',
+      title: 'AI & Multi-Tenant SaaS Products',
+      badge: 'AI & Cloud SaaS',
+      tagline: 'Intelligent Automations • LLM Integrations • Multi-Tenant',
+      priceInr: '₹80,000 – ₹2,80,000+',
+      duration: 'Agile MVP • 3–8 Weeks',
       themeColor: 'purple',
-      icon: 'code',
-      description: 'End-to-end development of custom web portals, customer SaaS platforms, and enterprise dashboards with clean reactive UI and Spring Boot backend.',
+      icon: 'sparkles',
+      description: 'End-to-end engineered software-as-a-service platforms with generative AI workflows, intelligent copilots, Stripe/Razorpay subscription billing, and isolated multi-tenant data partitioning.',
       features: [
-        'Custom Angular frontend with Tailwind CSS styling',
-        'Spring Boot RESTful & GraphQL backend APIs',
-        'Role-Based Access Control, JWT & OAuth2 security',
-        'Automated CI/CD deployment pipelines'
+        'OpenAI / Anthropic LLM API orchestrations & vector RAG search',
+        'Multi-tenant workspace isolation with role-based permissions (RBAC)',
+        'Automated recurring billing, usage quotas & invoicing webhooks',
+        'Angular reactive control centers with real-time audit event feeds'
       ],
-      deliverables: ['Production-ready codebase', 'Full API documentation', 'Docker configurations', '30-day post-launch warranty']
+      deliverables: ['Production SaaS codebase', 'AI prompt pipelines & guardrails', 'Subscription gateway setup', '30-day launch warranty']
     },
     {
-      id: 'mobile-apps',
-      title: 'Mobile Apps (iOS & Android)',
-      badge: 'React Native iOS & Android',
-      tagline: 'React Native • Cross Platform',
-      priceInr: '₹60,000 – ₹4,00,000+',
-      duration: 'Agile Delivery • 4–16 Weeks',
-      themeColor: 'emerald',
-      icon: 'smartphone',
-      description: 'Native-feel iOS and Android applications built from a single clean codebase, slashing development costs and speeding up time to market.',
-      features: [
-        'Dual-platform deployment to App Store & Google Play',
-        'Fluid animations, biometric login, and push notifications',
-        'Offline-first synchronization with local SQLite/WatermelonDB',
-        'Native device integrations (Camera, GPS, Bluetooth)'
-      ],
-      deliverables: ['Signed iOS & Android binaries', 'Source repository access', 'Store submission assistance', 'UI/UX asset bundle']
-    },
-    {
-      id: 'enterprise-cloud',
-      title: 'Enterprise Solutions',
-      badge: 'Microservices & Cloud',
-      tagline: 'Microservices • Cloud • DevOps',
-      priceInr: '₹1,50,000 – ₹6,00,000+',
-      duration: 'Custom Roadmap • 8–24 Weeks',
+      id: 'cloud-devops-migration',
+      title: 'Cloud Migration & Kubernetes DevOps',
+      badge: 'DevOps & Migration',
+      tagline: 'Zero Downtime • Docker • Auto-Scaling Infrastructure',
+      priceInr: '₹75,000 – ₹3,50,000+',
+      duration: 'Sprint Delivery • 2–6 Weeks',
       themeColor: 'amber',
       icon: 'cpu',
-      description: 'Design and implementation of distributed, cloud-native microservices architectures capable of processing millions of requests reliably.',
+      description: 'Modernize legacy codebases into containerized microservices. Zero-downtime database cutovers, automated GitHub Actions CI/CD pipelines, and cost-optimized AWS/DigitalOcean clusters.',
       features: [
-        'Spring Cloud API Gateway, Eureka/Consul service discovery',
-        'Resilience4j circuit breakers, rate limits & fallback handlers',
-        'Asynchronous event queues with Kafka / RabbitMQ',
-        'Docker containerization & Helm/Kubernetes readiness'
+        'Monolith-to-microservice decomposition & domain boundaries',
+        'Docker containerization & production Kubernetes (EKS/K8s) clusters',
+        'Zero-downtime live database migration with automated rollback safety',
+        'Prometheus, Grafana & centralized logging with proactive health alerts'
       ],
-      deliverables: ['Decoupled service micro-repositories', 'Swagger/OpenAPI docs', 'Centralized logging setup', 'Architecture blueprints']
+      deliverables: ['Infrastructure as Code (IaC)', 'Zero-downtime deployment runs', 'Security hardening report', '24/7 cluster monitoring config']
+    },
+    {
+      id: 'enterprise-erp-crm',
+      title: 'Custom Enterprise ERP & Operations Suites',
+      badge: 'Enterprise Systems',
+      tagline: 'Workflow Automation • Supply Chain • Real-Time Dashboards',
+      priceInr: '₹1,20,000 – ₹5,00,000+',
+      duration: 'Milestone Roadmap • 6–16 Weeks',
+      themeColor: 'blue',
+      icon: 'layers',
+      description: 'Tailored enterprise software automating operational bottlenecks: warehouse inventories, vendor procurement, field dispatch tracking, and financial compliance with sub-second report generation.',
+      features: [
+        'Spring Boot 3 backend engine with high-throughput ACID transactions',
+        'Fine-grained audit logs, approval workflows & digital signatures',
+        'Exportable executive analytics (Excel, PDF, CSV) & scheduled digests',
+        'Offline-capable field operator apps with background data synchronization'
+      ],
+      deliverables: ['Custom enterprise suite', 'Complete source repository ownership', 'REST/GraphQL documentation', 'Staff training walkthrough']
+    },
+    {
+      id: 'ecommerce-omnichannel',
+      title: 'Omnichannel E-Commerce & Retail Systems',
+      badge: 'High-Volume Commerce',
+      tagline: 'Sub-Second Checkout • Inventory Sync • Payment Gateways',
+      priceInr: '₹60,000 – ₹2,20,000+',
+      duration: 'Turnkey Launch • 3–6 Weeks',
+      themeColor: 'emerald',
+      icon: 'shopping-bag',
+      description: 'High-speed headless commerce portals engineered for extreme peak traffic. Instant UPI/card checkouts, automated WhatsApp order notifications, and unified multi-location stock synchronization.',
+      features: [
+        'Ultra-fast product discovery with faceted search & Redis caching',
+        'Seamless Razorpay, Stripe, UPI & Cashfree payment integrations',
+        'Automated abandoned-cart recovery & real-time WhatsApp tracking alerts',
+        'Multi-warehouse stock reservation with zero overselling anomalies'
+      ],
+      deliverables: ['Headless commerce portal', 'Payment gateway webhooks verification', 'Catalog management dashboard', 'SEO product indexing']
     },
     {
       id: 'database-engineering',
