@@ -24,6 +24,7 @@ export interface ServiceItem {
   badge: string;
   priceInr: string;
   icon: string;
+  imageUrl?: string;
   tagline?: string;
   duration?: string;
   themeColor?: string;
@@ -798,12 +799,13 @@ export class App implements OnInit, OnDestroy {
     return this.technologies.filter(tech => tech.category === filter);
   });
 
-  // Services with INR Pricing (High-Impact Modern Solutions)
+  // Services with INR Pricing (High-Impact Modern Solutions with Generated Images)
   protected readonly services: ServiceItem[] = [
     {
       id: 'ai-saas-products',
       title: 'AI & Multi-Tenant SaaS Products',
       badge: 'AI & Cloud SaaS',
+      imageUrl: 'images/service-ai-saas.jpg',
       tagline: 'Intelligent Automations • LLM Integrations • Multi-Tenant',
       priceInr: '₹80,000 – ₹2,80,000+',
       duration: 'Agile MVP • 3–8 Weeks',
@@ -822,6 +824,7 @@ export class App implements OnInit, OnDestroy {
       id: 'cloud-devops-migration',
       title: 'Cloud Migration & Kubernetes DevOps',
       badge: 'DevOps & Migration',
+      imageUrl: 'images/service-cloud-devops.jpg',
       tagline: 'Zero Downtime • Docker • Auto-Scaling Infrastructure',
       priceInr: '₹75,000 – ₹3,50,000+',
       duration: 'Sprint Delivery • 2–6 Weeks',
@@ -840,6 +843,7 @@ export class App implements OnInit, OnDestroy {
       id: 'enterprise-erp-crm',
       title: 'Custom Enterprise ERP & Operations Suites',
       badge: 'Enterprise Systems',
+      imageUrl: 'images/service-enterprise-erp.jpg',
       tagline: 'Workflow Automation • Supply Chain • Real-Time Dashboards',
       priceInr: '₹1,20,000 – ₹5,00,000+',
       duration: 'Milestone Roadmap • 6–16 Weeks',
@@ -858,6 +862,7 @@ export class App implements OnInit, OnDestroy {
       id: 'ecommerce-omnichannel',
       title: 'Omnichannel E-Commerce & Retail Systems',
       badge: 'High-Volume Commerce',
+      imageUrl: 'images/service-ecommerce-omni.jpg',
       tagline: 'Sub-Second Checkout • Inventory Sync • Payment Gateways',
       priceInr: '₹60,000 – ₹2,20,000+',
       duration: 'Turnkey Launch • 3–6 Weeks',
