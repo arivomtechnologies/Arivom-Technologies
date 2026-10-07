@@ -122,6 +122,7 @@ export class App implements OnInit, OnDestroy {
 
   // Email Copy State
   protected readonly emailCopied = signal<boolean>(false);
+  protected readonly websiteShared = signal<boolean>(false);
   protected readonly contactEmail = 'arivomtechnologies@gmail.com';
   protected readonly websiteUrl = 'https://arivomtechnologies.com/';
 
@@ -1064,6 +1065,33 @@ export class App implements OnInit, OnDestroy {
       this.emailCopied.set(true);
       setTimeout(() => this.emailCopied.set(false), 3000);
     });
+  }
+
+  shareWebsite(): void {
+    const shareData = {
+      title: 'Arivom Technologies | Enterprise Software & Web Engineering',
+      text: 'Explore Arivom Technologies - High-performance Web, Mobile & Cloud platforms starting from ₹10,000.',
+      url: 'https://arivomtechnologies.com/'
+    };
+
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText('https://arivomtechnologies.com/').then(() => {
+        this.websiteShared.set(true);
+        setTimeout(() => this.websiteShared.set(false), 3000);
+      }).catch(() => {
+        this.websiteShared.set(true);
+        setTimeout(() => this.websiteShared.set(false), 3000);
+      });
+    }
+  }
+
+  shareOnWhatsApp(): void {
+    const text = encodeURIComponent('Check out Arivom Technologies for Enterprise Web, Mobile & Cloud software development (Websites starting at ₹10,000 – ₹15,000): https://arivomtechnologies.com/');
+    if (typeof window !== 'undefined') {
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
   }
 
   applyEstimateToContact(): void {
