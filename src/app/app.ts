@@ -1,4 +1,4 @@
-import { Component, signal, computed, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -88,7 +88,7 @@ export interface FaqItem {
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit {
+export class App implements OnInit, OnDestroy {
   // Navigation State
   protected readonly currentPage = signal<PageName>('home');
   protected readonly servicesDropdownOpen = signal<boolean>(false);
@@ -112,43 +112,83 @@ export class App implements OnInit {
   // Architecture Comparison Mode
   protected readonly architectureMode = signal<'monolith' | 'microservices'>('microservices');
 
-  // Hero Visual Showcase Active Tab
-  protected readonly heroActiveTab = signal<'core-stack' | 'lacastle' | 'mobile' | 'cloud'>('core-stack');
+  // Hero Banner Carousel (3 to 5 movable slides)
+  protected readonly activeHeroSlide = signal<number>(0);
+  protected readonly isSlidePaused = signal<boolean>(false);
+  private heroSlideInterval: any = null;
 
-  protected readonly heroImageData = computed(() => {
-    const tab = this.heroActiveTab();
-    switch (tab) {
-      case 'lacastle':
-        return {
-          url: 'images/lacastle-showcase.jpg',
-          title: 'Live Client Website Showcase',
-          badge: 'Starter Package • ₹10,000 – ₹15,000',
-          desc: 'High-Converting Responsive Business Web Portal'
-        };
-      case 'mobile':
-        return {
-          url: 'images/arivom-mobile-apps.jpg',
-          title: 'React Native iOS & Android Apps',
-          badge: 'Single Codebase • 60fps Native UI',
-          desc: 'High-Performance Cross-Platform Mobile Apps'
-        };
-      case 'cloud':
-        return {
-          url: 'images/arivom-cloud-architecture.jpg',
-          title: 'Enterprise Microservices & Cloud Platform',
-          badge: 'Spring Boot 3 • PostgreSQL • MongoDB',
-          desc: 'API Gateways, Async Queues & Scalable DB Clusters'
-        };
-      case 'core-stack':
-      default:
-        return {
-          url: 'images/arivom-core-stack.jpg',
-          title: 'Arivom Full-Stack Architecture',
-          badge: 'Spring Boot • Angular • React Native',
-          desc: 'Custom Web Apps, Mobile Systems & Microservices'
-        };
+  protected readonly heroSlides = [
+    {
+      id: 'enterprise-suite',
+      image: 'images/enterprise-suite.jpg',
+      badge: 'Enterprise Software',
+      badgeColor: 'bg-orange-500/90 text-white',
+      title: 'Full-Stack Scalable Cloud Platforms',
+      desc: 'Engineered with Spring Boot 3, Angular 19 & Distributed Microservices Clusters',
+      techBadge: 'Spring Boot 3 + Angular',
+      priceTag: '₹60,000 – ₹1,50,000+'
+    },
+    {
+      id: 'lacastle-showcase',
+      image: 'images/lacastle-showcase.jpg',
+      badge: 'High-Converting Web Portals',
+      badgeColor: 'bg-emerald-600/90 text-white',
+      title: 'Business Websites & Brand Portals',
+      desc: 'Sub-second load times, 100% responsive layouts, SEO optimized for lead generation',
+      techBadge: 'Starter Package',
+      priceTag: '₹10,000 – ₹15,000'
+    },
+    {
+      id: 'mobile-portfolio',
+      image: 'images/mobile-portfolio.jpg',
+      badge: 'Mobile Engineering',
+      badgeColor: 'bg-cyan-600/90 text-white',
+      title: 'React Native iOS & Android Apps',
+      desc: 'Single codebase with 60 FPS smooth native performance and offline-first caching',
+      techBadge: 'iOS + Android Native',
+      priceTag: '₹1,20,000 – ₹2,50,000'
+    },
+    {
+      id: 'cloud-architecture',
+      image: 'images/arivom-cloud-architecture.jpg',
+      badge: 'Cloud & Microservices',
+      badgeColor: 'bg-indigo-600/90 text-white',
+      title: 'Resilient Event-Driven Topologies',
+      desc: 'Containerized Docker & K8s deployments with PostgreSQL & Redis caching',
+      techBadge: 'Docker • K8s • PostgreSQL',
+      priceTag: 'Enterprise Scale'
+    },
+    {
+      id: 'fintech-gateway',
+      image: 'images/cs-fintech-gateway.jpg',
+      badge: 'FinTech Solutions',
+      badgeColor: 'bg-amber-600/90 text-white',
+      title: 'High-Throughput Payment Gateways',
+      desc: 'Zero-downtime, PCI-DSS ready security and automated audit trails handling 10k+ TPS',
+      techBadge: 'Bank-Grade Security',
+      priceTag: 'FinTech Grade'
     }
-  });
+  ];
+
+  nextHeroSlide(): void {
+    this.activeHeroSlide.update(idx => (idx + 1) % this.heroSlides.length);
+  }
+
+  prevHeroSlide(): void {
+    this.activeHeroSlide.update(idx => (idx - 1 + this.heroSlides.length) % this.heroSlides.length);
+  }
+
+  goToHeroSlide(index: number): void {
+    this.activeHeroSlide.set(index);
+  }
+
+  pauseHeroSlide(): void {
+    this.isSlidePaused.set(true);
+  }
+
+  resumeHeroSlide(): void {
+    this.isSlidePaused.set(false);
+  }
 
   // Dynamic Contextual Pre-Footer CTA based on current page
   protected readonly pageCta = computed(() => {
@@ -964,9 +1004,6 @@ Please connect with me to discuss our requirements and kickoff.`;
     this.contactModalOpen.set(false);
   }
 
-  setHeroTab(tab: 'core-stack' | 'lacastle' | 'mobile' | 'cloud'): void {
-    this.heroActiveTab.set(tab);
-  }
 
   submitContactForm(): void {
     if (!this.contactForm.name || !this.contactForm.email) {
@@ -1007,6 +1044,18 @@ Website: https://arivomtechnologies.com/
     this.handleHashChange();
     if (typeof window !== 'undefined') {
       window.addEventListener('hashchange', () => this.handleHashChange());
+      // Auto-advance hero banner every 4.5 seconds unless paused
+      this.heroSlideInterval = setInterval(() => {
+        if (!this.isSlidePaused()) {
+          this.nextHeroSlide();
+        }
+      }, 4500);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.heroSlideInterval) {
+      clearInterval(this.heroSlideInterval);
     }
   }
 

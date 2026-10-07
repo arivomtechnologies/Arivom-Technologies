@@ -337,50 +337,121 @@
             </div>
           </div>
 
-          <!-- Right Visual: Device Showcase with Floating Badges -->
-          <div class="lg:col-span-5 relative">
-            <div class="theme-card relative rounded-3xl p-3 shadow-2xl glow-orange">
-              <div class="relative rounded-2xl overflow-hidden bg-slate-900 aspect-4/3 sm:aspect-16/11 shadow-inner">
-                <img 
-                  src="images/arivom-hero-devices.jpg" 
-                  alt="Arivom Technologies Software Engineering on Laptop and Mobile Devices" 
-                  class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
+          <!-- Right Visual: Interactive Auto-Movable Banner Carousel (5 Slides) -->
+          <div 
+            class="lg:col-span-5 relative" 
+            (mouseenter)="pauseHeroSlide()" 
+            (mouseleave)="resumeHeroSlide()">
+            
+            <div class="theme-card relative rounded-3xl p-3 shadow-2xl glow-orange overflow-hidden border border-orange-200/60">
+              
+              <!-- Carousel Image Frame with Smooth Aspect Ratio -->
+              <div class="relative rounded-2xl overflow-hidden bg-slate-950 aspect-4/3 sm:aspect-16/11 shadow-inner select-none group">
+                
+                @for (slide of heroSlides; track slide.id; let idx = $index) {
+                  <div 
+                    class="absolute inset-0 transition-all duration-700 ease-in-out"
+                    [class.opacity-100]="activeHeroSlide() === idx"
+                    [class.opacity-0]="activeHeroSlide() !== idx"
+                    [class.scale-100]="activeHeroSlide() === idx"
+                    [class.scale-105]="activeHeroSlide() !== idx"
+                    [class.pointer-events-none]="activeHeroSlide() !== idx">
+                    <img 
+                      [src]="slide.image" 
+                      [alt]="slide.title" 
+                      class="w-full h-full object-cover" />
+                    <!-- Rich Vignette / Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"></div>
+                    
+                    <!-- Slide Bottom Overlay Content -->
+                    <div class="absolute bottom-0 inset-x-0 p-4 sm:p-5 flex flex-col justify-end text-left">
+                      <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold shadow-xs backdrop-blur-md" [ngClass]="slide.badgeColor">
+                          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                          {{ slide.badge }}
+                        </span>
+                        <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-white/15 backdrop-blur-md text-orange-200 border border-white/20">
+                          {{ slide.priceTag }}
+                        </span>
+                      </div>
+                      <h3 class="text-white font-extrabold text-base sm:text-lg tracking-tight leading-snug drop-shadow-sm line-clamp-1">
+                        {{ slide.title }}
+                      </h3>
+                      <p class="text-slate-300 text-xs sm:text-xs mt-1 line-clamp-2 leading-relaxed font-normal">
+                        {{ slide.desc }}
+                      </p>
+                    </div>
+                  </div>
+                }
+
+                <!-- Top Floating Indicator Bar -->
+                <div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-20">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-950/70 backdrop-blur-md border border-white/15 text-[10px] font-mono font-bold text-orange-300">
+                    {{ activeHeroSlide() + 1 }} / {{ heroSlides.length }}
+                  </span>
+                  @if (isSlidePaused()) {
+                    <span class="px-2 py-0.5 rounded-full bg-orange-500/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider">
+                      Paused
+                    </span>
+                  }
+                </div>
+
+                <!-- Carousel Navigation Arrows (Previous / Next) -->
+                <button 
+                  type="button"
+                  (click)="prevHeroSlide()" 
+                  aria-label="Previous Slide" 
+                  class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-950/60 hover:bg-orange-500 text-white backdrop-blur-md border border-white/20 hover:border-orange-400 flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 z-20 cursor-pointer shadow-lg">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button 
+                  type="button"
+                  (click)="nextHeroSlide()" 
+                  aria-label="Next Slide" 
+                  class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-950/60 hover:bg-orange-500 text-white backdrop-blur-md border border-white/20 hover:border-orange-400 flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 z-20 cursor-pointer shadow-lg">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
               </div>
 
-              <!-- Floating Tech Badges -->
-              <div class="absolute -top-3 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md rounded-full px-3.5 py-1.5 border border-orange-200/80 shadow-lg flex items-center gap-2 z-20">
-                <div class="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 text-[10px] font-bold">🍃</div>
-                <span class="text-xs font-bold text-slate-800 font-mono">Spring Boot 3</span>
-              </div>
+              <!-- Interactive Carousel Dots & Thumbnail Triggers -->
+              <div class="mt-3.5 flex items-center justify-between px-2 gap-2">
+                <div class="flex items-center gap-1.5">
+                  @for (slide of heroSlides; track slide.id; let idx = $index) {
+                    <button 
+                      type="button"
+                      (click)="goToHeroSlide(idx)" 
+                      [attr.aria-label]="'Go to slide ' + (idx + 1)"
+                      class="h-2 rounded-full transition-all duration-300 cursor-pointer"
+                      [class.w-7]="activeHeroSlide() === idx"
+                      [class.bg-gradient-to-r]="activeHeroSlide() === idx"
+                      [class.from-orange-500]="activeHeroSlide() === idx"
+                      [class.to-amber-500]="activeHeroSlide() === idx"
+                      [class.w-2]="activeHeroSlide() !== idx"
+                      [class.bg-slate-300]="activeHeroSlide() !== idx"
+                      [class.hover:bg-orange-300]="activeHeroSlide() !== idx">
+                    </button>
+                  }
+                </div>
 
-              <div class="absolute top-6 -left-3 sm:-left-5 bg-white/95 backdrop-blur-md rounded-full px-3.5 py-1.5 border border-orange-200/80 shadow-lg flex items-center gap-2 z-20">
-                <div class="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-[10px] font-bold">▲</div>
-                <span class="text-xs font-bold text-slate-800 font-mono">Angular</span>
-              </div>
-
-              <div class="absolute top-1/2 -left-3 sm:-left-6 -translate-y-1/2 bg-white/95 backdrop-blur-md rounded-full px-3.5 py-1.5 border border-orange-200/80 shadow-lg flex items-center gap-2 z-20">
-                <div class="w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 text-[10px] font-bold">⚛</div>
-                <span class="text-xs font-bold text-slate-800 font-mono">React Native</span>
-              </div>
-
-              <div class="absolute -bottom-3 left-4 bg-white/95 backdrop-blur-md rounded-full px-3.5 py-1.5 border border-orange-200/80 shadow-lg flex items-center gap-2 z-20">
-                <div class="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center text-slate-700 text-[10px] font-bold">🐘</div>
-                <span class="text-xs font-bold text-slate-800 font-mono">PostgreSQL</span>
-              </div>
-
-              <div class="absolute -bottom-3 right-4 bg-white/95 backdrop-blur-md rounded-full px-3.5 py-1.5 border border-orange-200/80 shadow-lg flex items-center gap-2 z-20">
-                <div class="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 text-[10px] font-bold">🌿</div>
-                <span class="text-xs font-bold text-slate-800 font-mono">MongoDB</span>
+                <!-- Current Slide Focus Category -->
+                <span class="text-[11px] font-mono font-semibold text-slate-600 bg-orange-50/80 px-2.5 py-0.5 rounded-full border border-orange-200/70 truncate max-w-[190px]">
+                  {{ heroSlides[activeHeroSlide()].techBadge }}
+                </span>
               </div>
             </div>
 
-            <div class="mt-4 flex items-center justify-center gap-2">
+            <!-- Floating Tech Tags Around Carousel -->
+            <div class="mt-4 flex items-center justify-center gap-2 flex-wrap">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono bg-orange-50 text-slate-700 border border-orange-200/80">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Microservices &amp; Cloud Ready
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Auto-Sliding Showcase
               </span>
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono bg-slate-100 text-slate-600 border border-slate-200">
-                Docker &amp; K8s
+                Spring Boot • Angular • React Native
               </span>
             </div>
           </div>
