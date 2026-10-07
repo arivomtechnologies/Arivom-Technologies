@@ -1,6 +1,8 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+export type PageName = 'home' | 'about' | 'services' | 'clients' | 'pricing' | 'tech-stack' | 'case-studies' | 'reviews' | 'estimator' | 'faq';
 
 export interface TechItem {
   id: string;
@@ -22,6 +24,9 @@ export interface ServiceItem {
   badge: string;
   priceInr: string;
   icon: string;
+  tagline?: string;
+  duration?: string;
+  themeColor?: string;
   description: string;
   features: string[];
   deliverables: string[];
@@ -83,7 +88,13 @@ export interface FaqItem {
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
+  // Navigation State
+  protected readonly currentPage = signal<PageName>('home');
+  protected readonly servicesDropdownOpen = signal<boolean>(false);
+  protected readonly caseStudyFilter = signal<string>('all');
+  protected readonly contactModalOpen = signal<boolean>(false);
+
   // Mobile Menu State
   protected readonly mobileMenuOpen = signal<boolean>(false);
 
@@ -139,6 +150,124 @@ export class App {
     }
   });
 
+  // Dynamic Contextual Pre-Footer CTA based on current page
+  protected readonly pageCta = computed(() => {
+    const page = this.currentPage();
+    switch (page) {
+      case 'pricing':
+        return {
+          badge: 'ESTIMATES & KICKOFF',
+          title: 'Get Your Custom\nProject Estimate',
+          subtitle: 'Need a custom milestone package? Connect with our senior engineers for an accurate timeline and milestone breakdown in INR.',
+          primaryBtn: 'Calculate Budget &rarr;',
+          action: () => this.navigateTo('estimator'),
+          trust1: 'Fixed INR Milestones',
+          trust2: '100% Code Handover',
+          trust3: 'Zero Hidden Costs'
+        };
+      case 'services':
+        return {
+          badge: "LET'S BUILD TOGETHER",
+          title: "Let's Build Your\nEnterprise Solution",
+          subtitle: 'From ₹10K business portals to high-throughput Spring Boot microservices, we engineer resilient solutions tailored to your business.',
+          primaryBtn: 'Start Your Project &rarr;',
+          action: () => this.openContactModal(),
+          trust1: 'Full-Stack Architecture',
+          trust2: 'Spring Boot 3 & Angular',
+          trust3: '30-Day Launch Warranty'
+        };
+      case 'case-studies':
+        return {
+          badge: 'PROVEN EXPERTISE',
+          title: 'Ready to Start a\nSimilar Success Story?',
+          subtitle: 'Inspired by our work with La Castle Homes and FinTech platforms? Discuss your product requirements with our lead engineers today.',
+          primaryBtn: 'Kickoff Discovery &rarr;',
+          action: () => this.openContactModal(),
+          trust1: '24+ Delivered Systems',
+          trust2: 'Production Ready',
+          trust3: 'Fast Turnaround'
+        };
+      case 'tech-stack':
+        return {
+          badge: 'TECHNICAL CONSULTATION',
+          title: 'Talk to Our Senior\nEngineering Team',
+          subtitle: 'Have specific architectural constraints or considering Monolith vs Microservices? Book a direct discovery call with our tech leads.',
+          primaryBtn: 'Schedule Tech Call &rarr;',
+          action: () => this.openContactModal(),
+          trust1: 'Spring Boot 3 & Java 21',
+          trust2: 'Angular Signals',
+          trust3: 'React Native 60fps'
+        };
+      case 'about':
+        return {
+          badge: 'PARTNER WITH US',
+          title: 'Work With Arivom\nTechnologies Directly',
+          subtitle: 'Experience true engineering craftsmanship with zero agency fluff, direct senior developer access, and transparent milestone contracts.',
+          primaryBtn: 'Discuss Your Goals &rarr;',
+          action: () => this.openContactModal(),
+          trust1: 'No Middlemen',
+          trust2: 'Direct Git Commits',
+          trust3: 'Milestone Transparency'
+        };
+      case 'reviews':
+        return {
+          badge: 'JOIN OUR CLIENTS',
+          title: 'Become Our Next\nClient Success Story',
+          subtitle: 'Join founders, firms, and companies who trust Arivom Technologies for high-performance software and on-time launches.',
+          primaryBtn: 'Start Project Today &rarr;',
+          action: () => this.openContactModal(),
+          trust1: '5.0 Verified Rating',
+          trust2: '92% Client Retention',
+          trust3: 'Direct Communication'
+        };
+      case 'estimator':
+        return {
+          badge: 'LOCK IN TIMELINE',
+          title: 'Lock In Your Scope &\nKickoff Milestones',
+          subtitle: 'Ready to turn your calculated estimate into an active sprint backlog? Our lead engineers are ready to scope your MVP within 12 hours.',
+          primaryBtn: 'Apply Estimate &rarr;',
+          action: () => this.applyEstimateToContact(),
+          trust1: 'Sprint Backlog in 24h',
+          trust2: 'Clear Deliverables',
+          trust3: 'Instant Roadmap'
+        };
+      case 'faq':
+        return {
+          badge: 'HERE TO HELP',
+          title: 'Still Have Technical\nor Pricing Questions?',
+          subtitle: 'Every project is unique. Send us your requirements or questions, and our senior engineers will personally reply in under 12 hours.',
+          primaryBtn: 'Ask an Engineer &rarr;',
+          action: () => this.openContactModal(),
+          trust1: 'Quick Response (< 12h)',
+          trust2: 'Free Initial Review',
+          trust3: 'No Obligations'
+        };
+      case 'clients':
+        return {
+          badge: 'SCALE YOUR PLATFORM',
+          title: 'Bring Your Digital Vision\nto Life with Confidence',
+          subtitle: 'Explore our multi-industry engineering capabilities and partner with senior engineers who treat your product like their own.',
+          primaryBtn: 'Get Free Proposal &rarr;',
+          action: () => this.openContactModal(),
+          trust1: 'Dedicated Engineers',
+          trust2: 'Guaranteed Timelines',
+          trust3: 'Enterprise Quality'
+        };
+      case 'home':
+      default:
+        return {
+          badge: "LET'S WORK TOGETHER",
+          title: 'Turn Your Ideas into\nPowerful Digital Solutions',
+          subtitle: 'Get a free consultation, project estimate and roadmap from our senior engineering team.',
+          primaryBtn: 'Contact Us &rarr;',
+          action: () => this.openContactModal(),
+          trust1: 'Fast Response (< 12h)',
+          trust2: 'Transparent Pricing',
+          trust3: 'Dedicated Devs'
+        };
+    }
+  });
+
   // Estimator Form State
   protected readonly estimatorProjectType = signal<string>('mvp');
   protected readonly estimatorPlatform = signal<string>('web');
@@ -172,7 +301,7 @@ export class App {
       idealFor: 'Startups, Local Businesses, Real Estate & Professional Portfolios',
       features: [
         '5 to 8 Custom Responsive Pages',
-        'Modern Tailwind CSS design & Dark/Light mode',
+        'Modern Tailwind CSS design & clean responsive layout',
         'Mobile, Tablet & Desktop 100% fluid responsiveness',
         'Interactive Contact & Inquiry Form with instant dispatch',
         'SEO Meta tags, Google Analytics & Fast Cloud Hosting setup',
@@ -296,80 +425,111 @@ export class App {
     }
   ];
 
-  // Case Studies with real images
+  // Case Studies matching mockup
   protected readonly caseStudies: CaseStudy[] = [
     {
-      id: 'realestate-case',
-      title: 'Luxury Architecture & Villa Showcase Portal',
-      clientName: 'Modern Architecture Studio',
+      id: 'lacastle',
+      title: 'La Castle Homes',
+      clientName: 'La Castle Homes',
+      clientUrl: 'https://lacastlehomes.com/',
       imageUrl: 'images/lacastle-showcase.jpg',
-      badge: 'Starter Website Package',
-      category: 'Website Development • SEO • Lead Generation',
-      impact: 'Generated 40+ high-value residential inquiries within first month',
+      badge: 'Real Estate Website',
+      category: 'Web Applications',
+      impact: '40+ High-Value Villa Inquiries in First Month',
       budgetInr: '₹10,000 – ₹15,000',
-      description: 'Designed and developed a high-converting digital presence showcasing residential villas, commercial landmarks, and architectural engineering with lightning-fast mobile responsiveness.',
-      stack: ['Tailwind CSS', 'Modern HTML5/JS', 'SEO Optimization', 'Lead Capture Form', 'Cloud Hosting'],
+      description: 'A modern, responsive real estate platform with advanced property search, enquiry management and admin dashboard.',
+      stack: ['React.js / Web', 'Spring Boot APIs', 'PostgreSQL', 'Tailwind CSS'],
       results: [
-        '100% mobile responsiveness across iOS and Android devices',
-        'Sub-second page load times with optimized high-resolution villa galleries',
-        'Direct inquiry dispatch to client phone & email'
+        '100% mobile responsiveness across all devices',
+        'Sub-1.2s page load time with optimized villa photography',
+        'Automated inquiry capture with instant WhatsApp & email dispatch'
       ]
     },
     {
-      id: 'fintech-case',
-      title: 'High-Frequency FinTech Settlement Service',
-      clientName: 'FinEdge Technologies',
+      id: 'fintech-gateway',
+      title: 'Payment Gateway Platform',
+      clientName: 'FinTech Startup',
       clientUrl: 'https://arivomtechnologies.com/',
-      imageUrl: 'images/arivom-cloud-architecture.jpg',
-      badge: 'Enterprise Backend Engine',
-      category: 'Spring Boot 3 • PostgreSQL • Microservices',
-      impact: 'Processed ₹10+ Crore monthly volume with < 35ms p99 latency',
-      budgetInr: '₹3,50,000 – ₹5,00,000',
-      description: 'Engineered a resilient transaction settlement engine using Spring Boot 3 virtual threads, PostgreSQL partitioning, and Kafka asynchronous messaging.',
-      stack: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'Apache Kafka', 'Docker'],
+      imageUrl: 'images/cs-fintech-gateway.jpg',
+      badge: 'FinTech',
+      category: 'FinTech',
+      impact: '₹10+ Crore Monthly Settlements with < 35ms Latency',
+      budgetInr: '₹3,80,000',
+      description: 'Secure and scalable payment processing solution with real-time transaction monitoring, multi-currency support, and fraud prevention.',
+      stack: ['Spring Boot 3', 'Angular', 'PostgreSQL', 'Apache Kafka'],
       results: [
-        '99.99% uptime in production',
-        'Zero double-spend anomalies with ACID locking',
-        'Sub-40ms execution time under peak holiday load'
+        '99.999% transaction settlement uptime',
+        'Zero double-spend anomalies with distributed ACID locking',
+        'PCI-DSS compliant end-to-end transaction security'
       ]
     },
     {
-      id: 'telehealth-case',
-      title: 'Cross-Platform Telehealth & Video Booking App',
-      clientName: 'HealthPulse Care',
+      id: 'smart-farm',
+      title: 'Smart Farm Monitoring',
+      clientName: 'AgriSense IoT',
       clientUrl: 'https://arivomtechnologies.com/',
-      imageUrl: 'images/arivom-mobile-apps.jpg',
-      badge: 'React Native Mobile App',
-      category: 'React Native • iOS & Android • PostgreSQL',
-      impact: '4.8 ★ App Store & Play Store rating with 80k+ active users',
-      budgetInr: '₹1,50,000 – ₹2,40,000',
-      description: 'Developed a dual-platform mobile app with React Native featuring encrypted video consultations, doctor appointments, biometric security, and offline prescriptions.',
-      stack: ['React Native', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'WebRTC'],
+      imageUrl: 'images/cs-smart-farm.jpg',
+      badge: 'IoT',
+      category: 'IoT',
+      impact: '35% Irrigation Cost Reduction Across 2,000+ Acres',
+      budgetInr: '₹2,40,000',
+      description: 'IoT-based solution to monitor soil health, weather and crop conditions in real-time with satellite telemetry and automated alerts.',
+      stack: ['Spring Boot', 'React Native', 'MongoDB', 'MQTT'],
       results: [
-        'Shipped to both iOS and Android stores in 7 weeks',
-        'Unified 92% shared codebase between platforms',
-        'HIPAA-compliant end-to-end encrypted video'
+        'Real-time soil sensor telemetry under 100ms latency',
+        'Offline caching for rural areas with periodic sync',
+        'Automated solenoid valve triggers for drip irrigation'
       ]
     },
     {
-      id: 'fleet-case',
-      title: 'Enterprise Fleet & Logistics Telemetry Suite',
-      clientName: 'LogiTrack Global',
+      id: 'fitness-app',
+      title: 'Fitness & Wellness App',
+      clientName: 'FitFlow Mobile',
       clientUrl: 'https://arivomtechnologies.com/',
-      imageUrl: 'images/arivom-core-stack.jpg',
-      badge: 'Real-Time Web Portal',
-      category: 'Angular • Spring Boot • MongoDB',
-      impact: 'Live tracking of 4,500+ active commercial transport vehicles',
-      budgetInr: '₹1,00,000 – ₹1,80,000',
-      description: 'Built a real-time command center web portal with Angular signals, WebSocket live telemetry, and MongoDB time-series aggregation for fleet analytics.',
-      stack: ['Angular 19', 'Tailwind CSS', 'Spring Boot', 'MongoDB', 'WebSockets'],
+      imageUrl: 'images/cs-fitness-app.jpg',
+      badge: 'Mobile Apps',
+      category: 'Mobile Apps',
+      impact: '4.8 ★ App Store Rating & 120,000+ Active Users',
+      budgetInr: '₹1,90,000',
+      description: 'Cross-platform mobile application with personalized workout and diet plans, live video coaches, and wearable device integration.',
+      stack: ['React Native', 'Firebase', 'Node.js', 'WatermelonDB'],
       results: [
-        '85% reduction in dashboard load times',
-        'Real-time vehicle GPS ping updates every 2 seconds',
-        'Automated geofencing alert engine'
+        'Single codebase targeting Apple iOS & Google Play Store',
+        'Fluid 60fps animations & offline workout routine caching',
+        'Apple Health & Google Fit bi-directional sensor sync'
+      ]
+    },
+    {
+      id: 'legacy-microservices',
+      title: 'Legacy to Microservices',
+      clientName: 'Enterprise Logistics',
+      clientUrl: 'https://arivomtechnologies.com/',
+      imageUrl: 'images/cs-microservices-migration.jpg',
+      badge: 'Architecture Migration',
+      category: 'Architecture Migration',
+      impact: 'Zero-Downtime Migration & 4x Peak Throughput Capacity',
+      budgetInr: '₹5,20,000',
+      description: 'Migrated monolithic application to microservices with improved performance, isolated failure domains, and automated Kubernetes scaling.',
+      stack: ['Spring Boot 3', 'Docker', 'Kubernetes', 'Kafka'],
+      results: [
+        'Zero-downtime blue/green migration for 5M monthly orders',
+        'Decoupled microservice teams for faster independent deployments',
+        'Sub-40ms p99 response times during holiday shopping peaks'
       ]
     }
   ];
+
+  // Filtered Case Studies
+  protected readonly filteredCaseStudies = computed(() => {
+    const filter = this.caseStudyFilter().toLowerCase();
+    if (filter === 'all') {
+      return this.caseStudies;
+    }
+    return this.caseStudies.filter(cs => 
+      cs.category.toLowerCase().includes(filter) || 
+      cs.badge.toLowerCase().includes(filter)
+    );
+  });
 
   // Core Technologies
   protected readonly technologies: TechItem[] = [
@@ -381,7 +541,7 @@ export class App {
       tagline: 'High-throughput enterprise APIs & resilient backend engines',
       icon: 'leaf',
       color: 'from-emerald-500 to-teal-400',
-      badgeBg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       description: 'Leveraging Java 21 LTS and Spring Boot 3 for bulletproof enterprise applications, virtual threads, reactive pipelines, and rock-solid business logic.',
       highlights: [
         'Spring Boot 3, Spring Web, Spring Data JPA & Security',
@@ -400,11 +560,11 @@ export class App {
       tagline: 'Reactive enterprise web portals, dashboards & single-page applications',
       icon: 'sparkles',
       color: 'from-red-500 to-rose-400',
-      badgeBg: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+      badgeBg: 'bg-rose-50 text-rose-700 border-rose-200',
       description: 'Engineering responsive, lightning-fast web applications using Angular Standalone Components, Signals, RxJS reactive patterns, and Tailwind CSS.',
       highlights: [
         'Angular Standalone Architecture & Fine-Grained Signals',
-        'Tailwind CSS for responsive design & polished dark/light themes',
+        'Tailwind CSS for responsive design & clean UI aesthetics',
         'RxJS reactive state streams & robust HTTP interceptors',
         'Role-Based Access Control (RBAC) & Protected Routing',
         'Enterprise Admin Portals with interactive charts & data tables'
@@ -419,7 +579,7 @@ export class App {
       tagline: 'Native cross-platform mobile apps for Apple iOS & Android devices',
       icon: 'smartphone',
       color: 'from-cyan-500 to-blue-400',
-      badgeBg: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+      badgeBg: 'bg-cyan-50 text-cyan-700 border-cyan-200',
       description: 'Single codebase targeting both App Store and Google Play with fluid 60fps native animations, biometric auth, offline caching, and device integrations.',
       highlights: [
         'Cross-platform iOS and Android native performance',
@@ -438,7 +598,7 @@ export class App {
       tagline: 'ACID-compliant relational data modeling, indexing & optimization',
       icon: 'database',
       color: 'from-blue-500 to-indigo-400',
-      badgeBg: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+      badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
       description: 'The world\'s most advanced open-source relational database. Mastered for complex schemas, transactional integrity, JSONB semi-structured storage, and high-performance tuning.',
       highlights: [
         'Relational schema architecture & normal form normalization',
@@ -457,7 +617,7 @@ export class App {
       tagline: 'Flexible document modeling, rapid iteration & scalable aggregation',
       icon: 'server',
       color: 'from-green-500 to-emerald-400',
-      badgeBg: 'bg-green-500/10 text-green-400 border-green-500/20',
+      badgeBg: 'bg-green-50 text-green-700 border-green-200',
       description: 'Modern NoSQL document database designed for rapid schema iteration, unstructured feeds, polymorphic data payloads, and complex aggregation pipelines.',
       highlights: [
         'Document-oriented JSON schema design & versioning',
@@ -476,7 +636,7 @@ export class App {
       tagline: 'Simplified deployment, ultra-fast development & cohesive codebases',
       icon: 'layers',
       color: 'from-amber-500 to-orange-400',
-      badgeBg: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+      badgeBg: 'bg-amber-50 text-amber-800 border-amber-200',
       description: 'Pragmatic, high-velocity engineering for startups and medium products. Clean domain modularity without the operational complexity or latency of distributed networks.',
       highlights: [
         'Domain-Driven Design (DDD) with strictly separated modules',
@@ -495,7 +655,7 @@ export class App {
       tagline: 'Independently scalable, fault-tolerant & cloud-native service clusters',
       icon: 'cpu',
       color: 'from-purple-500 to-violet-400',
-      badgeBg: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
       description: 'Decoupled services built with Spring Cloud, Docker, and Kubernetes for high concurrency, independent deployability, and isolated failure domains.',
       highlights: [
         'Spring Cloud Gateway & distributed service discovery',
@@ -521,9 +681,12 @@ export class App {
   protected readonly services: ServiceItem[] = [
     {
       id: 'business-website',
-      title: 'Business Website & Portfolio',
-      badge: 'Starting Package',
+      title: 'Business Websites',
+      badge: 'Starter Package',
+      tagline: 'For Startups, Local Businesses & Real Estate',
       priceInr: '₹10,000 – ₹15,000',
+      duration: '1-2 weeks • Fully Responsive',
+      themeColor: 'blue',
       icon: 'globe',
       description: 'Fast, responsive, and elegant website for your company or firm, styled with Tailwind CSS and optimized for Google search and lead generation.',
       features: [
@@ -536,10 +699,13 @@ export class App {
     },
     {
       id: 'fullstack-web',
-      title: 'Custom Web Application',
+      title: 'Custom Web Applications',
       badge: 'Angular + Spring Boot',
-      priceInr: '₹60,000 – ₹1,50,000',
-      icon: 'layers',
+      tagline: 'Scalable • Secure • High Performance',
+      priceInr: '₹60,000 – ₹3,00,000+',
+      duration: 'Agile Delivery • 3–12 Weeks',
+      themeColor: 'purple',
+      icon: 'code',
       description: 'End-to-end development of custom web portals, customer SaaS platforms, and enterprise dashboards with clean reactive UI and Spring Boot backend.',
       features: [
         'Custom Angular frontend with Tailwind CSS styling',
@@ -551,9 +717,12 @@ export class App {
     },
     {
       id: 'mobile-apps',
-      title: 'Cross-Platform Mobile Apps',
+      title: 'Mobile Apps (iOS & Android)',
       badge: 'React Native iOS & Android',
-      priceInr: '₹1,20,000 – ₹2,50,000',
+      tagline: 'React Native • Cross Platform',
+      priceInr: '₹60,000 – ₹4,00,000+',
+      duration: 'Agile Delivery • 4–16 Weeks',
+      themeColor: 'emerald',
       icon: 'smartphone',
       description: 'Native-feel iOS and Android applications built from a single clean codebase, slashing development costs and speeding up time to market.',
       features: [
@@ -565,10 +734,13 @@ export class App {
       deliverables: ['Signed iOS & Android binaries', 'Source repository access', 'Store submission assistance', 'UI/UX asset bundle']
     },
     {
-      id: 'microservices-cloud',
-      title: 'Microservices & API Architecture',
-      badge: 'Spring Cloud & Distributed Systems',
-      priceInr: '₹3,00,000 – ₹6,00,000+',
+      id: 'enterprise-cloud',
+      title: 'Enterprise Solutions',
+      badge: 'Microservices & Cloud',
+      tagline: 'Microservices • Cloud • DevOps',
+      priceInr: '₹1,50,000 – ₹6,00,000+',
+      duration: 'Custom Roadmap • 8–24 Weeks',
+      themeColor: 'amber',
       icon: 'cpu',
       description: 'Design and implementation of distributed, cloud-native microservices architectures capable of processing millions of requests reliably.',
       features: [
@@ -771,10 +943,7 @@ export class App {
 
 I would like to discuss kickoff, milestones, and technical requirements.`;
 
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    this.openContactModal();
   }
 
   selectPlan(plan: PricingPlan): void {
@@ -784,10 +953,15 @@ I would like to discuss kickoff, milestones, and technical requirements.`;
 Ideal timeline: ${plan.duration}.
 Please connect with me to discuss our requirements and kickoff.`;
 
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    this.openContactModal();
+  }
+
+  openContactModal(): void {
+    this.contactModalOpen.set(true);
+  }
+
+  closeContactModal(): void {
+    this.contactModalOpen.set(false);
   }
 
   setHeroTab(tab: 'core-stack' | 'lacastle' | 'mobile' | 'cloud'): void {
@@ -824,6 +998,53 @@ Website: https://arivomtechnologies.com/
     this.formSubmitted.set(true);
     setTimeout(() => {
       this.formSubmitted.set(false);
-    }, 6000);
+      this.closeContactModal();
+    }, 4000);
+  }
+
+  // Lifecycle & Hash Sync
+  ngOnInit(): void {
+    this.handleHashChange();
+    if (typeof window !== 'undefined') {
+      window.addEventListener('hashchange', () => this.handleHashChange());
+    }
+  }
+
+  protected handleHashChange(): void {
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    const validPages: PageName[] = ['home', 'about', 'services', 'clients', 'pricing', 'tech-stack', 'case-studies', 'reviews', 'estimator', 'faq'];
+    if (validPages.includes(hash as PageName)) {
+      this.currentPage.set(hash as PageName);
+    }
+  }
+
+  navigateTo(page: PageName, fragment?: string): void {
+    this.currentPage.set(page);
+    this.closeMobileMenu();
+    this.servicesDropdownOpen.set(false);
+    if (typeof window !== 'undefined') {
+      window.location.hash = page;
+      if (fragment) {
+        setTimeout(() => {
+          const el = document.getElementById(fragment);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  }
+
+  toggleServicesDropdown(): void {
+    this.servicesDropdownOpen.update(v => !v);
+  }
+
+  closeServicesDropdown(): void {
+    this.servicesDropdownOpen.set(false);
+  }
+
+  setCaseStudyFilter(filter: string): void {
+    this.caseStudyFilter.set(filter);
   }
 }
