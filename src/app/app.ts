@@ -124,6 +124,9 @@ export class App implements OnInit, OnDestroy {
   protected readonly emailCopied = signal<boolean>(false);
   protected readonly websiteShared = signal<boolean>(false);
   protected readonly contactEmail = 'arivomtechnologies@gmail.com';
+  protected readonly contactPhone = '+91 866 768 4683';
+  protected readonly contactPhoneRaw = '+918667684683';
+  protected readonly whatsAppUrl = 'https://wa.me/918667684683';
   protected readonly websiteUrl = 'https://arivomtechnologies.com/';
 
   // Active Tech Category Filter
@@ -1091,6 +1094,14 @@ export class App implements OnInit, OnDestroy {
     const text = encodeURIComponent('Check out Arivom Technologies for Enterprise Web, Mobile & Cloud software development (Websites starting at ₹10,000 – ₹15,000): https://arivomtechnologies.com/');
     if (typeof window !== 'undefined') {
       window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+  }
+
+  openWhatsAppChat(customMessage?: string): void {
+    const msg = customMessage || 'Hi Arivom Technologies, I would like to discuss a project requirement (pricing, scope and timeline).';
+    const url = `https://wa.me/918667684683?text=${encodeURIComponent(msg)}`;
+    if (typeof window !== 'undefined') {
+      window.open(url, '_blank');
     }
   }
 
