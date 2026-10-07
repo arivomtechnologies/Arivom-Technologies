@@ -501,6 +501,21 @@ export class App implements OnInit, OnDestroy {
       verified: true
     },
     {
+      id: 'phoenix',
+      clientName: 'Production Team',
+      role: 'Operations Director',
+      company: 'Phoenix Print Solution',
+      website: 'https://phoenixprintsolution.com/',
+      projectTitle: 'Precision Textile Printing & Apparel Accessories Portal',
+      rating: 5,
+      reviewText: 'Arivom Technologies built our official web showcase (phoenixprintsolution.com) for our 3D silicone printing and DTF apparel transfers. Fast, responsive, crisp typography, and delivered right on schedule with complete server deployment and domain configuration!',
+      avatarText: 'PP',
+      badge: 'Verified Client • Live Website',
+      deliverable: 'Custom Web Showcase (phoenixprintsolution.com)',
+      budgetInr: '₹15,000 – ₹35,000',
+      verified: true
+    },
+    {
       id: 'finedge',
       clientName: 'Karthik Narayanan',
       role: 'Chief Technology Officer',
@@ -912,9 +927,24 @@ export class App implements OnInit, OnDestroy {
   // FAQ Items
   protected readonly faqs = signal<FaqItem[]>([
     {
-      question: 'Do you really build complete websites starting at ₹10,000 to ₹15,000?',
-      answer: 'Yes! For businesses, consultants, and firms needing a high-speed, modern, and professional web presence, our starting website package is ₹10,000 to ₹15,000. It includes custom design, mobile responsiveness, Tailwind CSS styling, SEO tags, contact forms, and deployment.',
+      question: 'Do you really build complete business websites starting at ₹10,000 to ₹15,000?',
+      answer: 'Yes! For businesses, consultants, clinics, and firms needing a high-speed, modern, and professional web presence, our starting website package is ₹10,000 to ₹15,000. It includes custom design, mobile responsiveness, Tailwind CSS styling, SEO tags, contact forms, domain setup, and cloud hosting deployment in 7–14 days.',
       isOpen: true
+    },
+    {
+      question: 'How do milestone payments work?',
+      answer: 'We follow transparent milestone-based payments with zero hidden fees: typically 30% advance deposit to initiate sprint planning and design, 40% midway milestone upon review of interactive working staging demo, and 30% final balance upon production deployment and full source code handover.',
+      isOpen: false
+    },
+    {
+      question: 'Do we get 100% full ownership of the source code?',
+      answer: 'Yes, 100%. Upon project completion and final milestone release, we transfer complete Git repositories (GitHub/GitLab/Bitbucket), along with Dockerfiles, build configurations, and environment scripts. You own all intellectual property with zero vendor lock-in.',
+      isOpen: false
+    },
+    {
+      question: 'Can you deploy directly to our own servers (AWS, DigitalOcean, Hostinger, Linux)?',
+      answer: 'Absolutely. We handle complete end-to-end production server deployment: Linux OS hardening, Nginx reverse proxy configuration, free Let’s Encrypt SSL certificates, PostgreSQL/MySQL database configuration, automated daily backups, and CI/CD pipelines directly on your preferred cloud provider.',
+      isOpen: false
     },
     {
       question: 'What is the pricing for custom Web and Mobile applications?',
@@ -922,23 +952,8 @@ export class App implements OnInit, OnDestroy {
       isOpen: false
     },
     {
-      question: 'Can you show us a real live client website you built?',
-      answer: 'Absolutely! Check out our featured client showcase above for La Castle Homes (https://lacastlehomes.com/) or explore our live project portfolio.',
-      isOpen: false
-    },
-    {
-      question: 'Why choose Spring Boot and Java for our backend?',
-      answer: 'Java and Spring Boot deliver enterprise-grade stability, rock-solid multithreading, high throughput, and robust security protocols. Whether you are building financial transactions, healthcare platforms, or large-scale SaaS, Spring Boot guarantees predictable performance and immense ecosystem maturity.',
-      isOpen: false
-    },
-    {
-      question: 'Should our system be built as a Monolith or Microservices?',
-      answer: 'We believe in pragmatic software engineering. For fast MVPs, early startups, or teams needing fast iteration, a well-structured Modular Monolith avoids unnecessary network complexity and operational overhead. For systems needing independent deployments, high concurrency, or distributed teams, we architect robust Spring Cloud Microservices with Docker and Kubernetes.',
-      isOpen: false
-    },
-    {
-      question: 'How do you guarantee quality and code handover?',
-      answer: 'Every project includes rigorous unit/integration tests, clean commit histories, automated CI/CD pipelines, Docker container configurations, API documentation (OpenAPI/Swagger), and a complete code walkthrough session before project sign-off. You own 100% of all intellectual property.',
+      question: 'What happens after launch? Do you provide maintenance and warranty?',
+      answer: 'Every project comes with a complimentary 30 to 90-day post-launch warranty covering any bug fixes, security patches, and performance optimizations. We also offer affordable monthly retainers if you need continuous feature additions or dedicated SLA engineering support.',
       isOpen: false
     }
   ]);
