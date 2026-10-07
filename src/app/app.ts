@@ -95,8 +95,29 @@ export class App implements OnInit, OnDestroy {
   protected readonly caseStudyFilter = signal<string>('all');
   protected readonly contactModalOpen = signal<boolean>(false);
 
-  // Mobile Menu State
+  // Mobile Sidebar Tree View State
   protected readonly mobileMenuOpen = signal<boolean>(false);
+  protected readonly mobileTreeServicesOpen = signal<boolean>(true);
+  protected readonly mobileTreePortfolioOpen = signal<boolean>(false);
+  protected readonly mobileTreePricingOpen = signal<boolean>(false);
+  protected readonly mobileTreeCompanyOpen = signal<boolean>(false);
+
+  toggleMobileTreeNode(node: 'services' | 'portfolio' | 'pricing' | 'company'): void {
+    switch (node) {
+      case 'services':
+        this.mobileTreeServicesOpen.update(v => !v);
+        break;
+      case 'portfolio':
+        this.mobileTreePortfolioOpen.update(v => !v);
+        break;
+      case 'pricing':
+        this.mobileTreePricingOpen.update(v => !v);
+        break;
+      case 'company':
+        this.mobileTreeCompanyOpen.update(v => !v);
+        break;
+    }
+  }
 
   // Email Copy State
   protected readonly emailCopied = signal<boolean>(false);

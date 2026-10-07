@@ -79,17 +79,17 @@
             </svg>
           </button>
 
-          <!-- Services Dropdown Menu -->
+          <!-- Services Dropdown Menu (Direct Fragment Anchors) -->
           <div class="absolute top-full left-0 pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             <div class="bg-white rounded-2xl shadow-xl border border-orange-100 p-2 space-y-1">
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+              <button (click)="navigateTo('services', 'services-overview')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
                 <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold shrink-0">⚡</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Services Overview</div>
                   <div class="text-[10px] text-slate-500 font-normal">Full-lifecycle engineering</div>
                 </div>
               </button>
-              <button (click)="navigateTo('pricing')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+              <button (click)="navigateTo('services', 'starter-websites')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
                 <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold shrink-0">🌐</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
@@ -99,21 +99,21 @@
                   <div class="text-[10px] text-emerald-700 font-medium font-mono">1–2 Weeks Delivery</div>
                 </div>
               </button>
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+              <button (click)="navigateTo('services', 'web-apps')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
                 <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold shrink-0">&lt;/&gt;</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Custom Web Applications</div>
                   <div class="text-[10px] text-slate-500 font-normal">Angular 19 &amp; Spring Boot 3</div>
                 </div>
               </button>
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+              <button (click)="navigateTo('services', 'mobile-apps')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
                 <span class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center text-sm font-bold shrink-0">📱</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Mobile Apps (iOS &amp; Android)</div>
                   <div class="text-[10px] text-slate-500 font-normal">React Native 60 FPS Native UI</div>
                 </div>
               </button>
-              <button (click)="navigateTo('services')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
+              <button (click)="navigateTo('services', 'enterprise-microservices')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/60 transition-colors flex items-center gap-3 cursor-pointer">
                 <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold shrink-0">☁️</span>
                 <div>
                   <div class="text-xs font-bold text-slate-900">Enterprise Microservices</div>
@@ -289,78 +289,295 @@
 
     </div>
 
-    <!-- Mobile Drawer -->
+    <!-- ================= MOBILE SIDEBAR DRAWER (TREE VIEW NAVIGATION) ================= -->
     @if (mobileMenuOpen()) {
-      <div class="xl:hidden border-b border-slate-200 bg-white/98 backdrop-blur-2xl px-6 py-6 space-y-3 animate-fade-in shadow-xl">
-        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
-          <div class="w-11 h-11 rounded-2xl overflow-hidden bg-gradient-to-br from-white to-orange-50 border border-orange-200 p-1 shrink-0 flex items-center justify-center shadow-xs">
-            <img src="images/arivom-emblem.png" alt="Arivom Emblem" class="w-full h-full object-contain" />
-          </div>
-          <div>
-            <div class="text-sm font-extrabold text-[#0B1930] leading-none">ARIVOM <span class="text-[#FF6A00]">TECHNOLOGIES</span></div>
-            <div class="text-[10px] font-mono text-orange-600 font-semibold mt-1">Innovate • Build • Grow</div>
-          </div>
-        </div>
-        
-        <!-- Categorized Mobile Menu Sections -->
-        <div class="space-y-4 pt-1">
-          <!-- Section 1: Main & Services -->
-          <div>
-            <div class="text-[10px] font-mono uppercase tracking-wider text-orange-600 font-bold px-2 mb-1.5 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Main &amp; Services
-            </div>
-            <div class="grid grid-cols-2 gap-1.5">
-              <button (click)="navigateTo('home')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Home</button>
-              <button (click)="navigateTo('services')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Services Overview</button>
-            </div>
-          </div>
-
-          <!-- Section 2: Portfolio & Trust -->
-          <div>
-            <div class="text-[10px] font-mono uppercase tracking-wider text-orange-600 font-bold px-2 mb-1.5 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Portfolio &amp; Trust
-            </div>
-            <div class="grid grid-cols-3 gap-1.5">
-              <button (click)="navigateTo('clients')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Our Clients</button>
-              <button (click)="navigateTo('case-studies')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Case Studies</button>
-              <button (click)="navigateTo('reviews')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Reviews</button>
-            </div>
-          </div>
-
-          <!-- Section 3: Pricing & Tech -->
-          <div>
-            <div class="text-[10px] font-mono uppercase tracking-wider text-orange-600 font-bold px-2 mb-1.5 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Pricing &amp; Architecture
-            </div>
-            <div class="grid grid-cols-3 gap-1.5">
-              <button (click)="navigateTo('pricing')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">INR Pricing</button>
-              <button (click)="navigateTo('estimator')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Estimator</button>
-              <button (click)="navigateTo('tech-stack')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">Tech Stack</button>
-            </div>
-          </div>
-
-          <!-- Section 4: Company & Help -->
-          <div>
-            <div class="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold px-2 mb-1.5 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Company &amp; Help
-            </div>
-            <div class="grid grid-cols-2 gap-1.5">
-              <button (click)="navigateTo('about')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">About Arivom</button>
-              <button (click)="navigateTo('faq')" class="text-left text-xs font-semibold p-2.5 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50/50 transition-colors">FAQ</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
-          <button (click)="copyEmail()" type="button" class="w-full py-3 px-4 rounded-full border border-slate-200 bg-slate-50 text-xs font-mono text-slate-700 flex items-center justify-center gap-2 cursor-pointer">
-            <span>{{ contactEmail }}</span>
-            <span class="text-orange-600 font-bold">{{ emailCopied() ? '(Copied!)' : '(Tap to copy)' }}</span>
-          </button>
-          <button (click)="openContactModal()" class="w-full py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-center text-sm shadow-md shadow-orange-500/25 cursor-pointer">
-            Start Project / Contact Us &rarr;
-          </button>
-        </div>
+      <!-- Backdrop Overlay -->
+      <div 
+        (click)="closeMobileMenu()" 
+        class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs transition-opacity lg:hidden">
       </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <aside 
+        class="fixed inset-y-0 right-0 z-50 w-full max-w-[340px] sm:max-w-[380px] bg-white shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-left lg:hidden border-l border-orange-100">
+        
+        <!-- Drawer Header -->
+        <div class="p-4 sm:p-5 border-b border-orange-100 flex items-center justify-between bg-gradient-to-r from-orange-50/70 via-white to-amber-50/40">
+          <div class="flex items-center gap-2.5">
+            <div class="w-10 h-10 rounded-xl overflow-hidden bg-white border border-orange-200/90 p-1 shadow-xs flex items-center justify-center">
+              <img src="images/arivom-emblem.png" alt="Arivom Emblem" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <div class="text-sm font-extrabold text-[#0B1930] leading-none">
+                ARIVOM <span class="text-[#FF6A00]">TECHNOLOGIES</span>
+              </div>
+              <div class="text-[9.5px] font-mono text-orange-600 font-bold mt-1 tracking-wider uppercase">
+                Innovate • Build • Grow
+              </div>
+            </div>
+          </div>
+
+          <!-- Close 'X' Button matching user screenshot -->
+          <button 
+            type="button"
+            (click)="closeMobileMenu()"
+            aria-label="Close Navigation"
+            class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-orange-100 text-slate-600 hover:text-orange-600 border border-slate-200 flex items-center justify-center transition-colors cursor-pointer shadow-2xs">
+            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Scrollable Tree View Body -->
+        <div class="flex-1 overflow-y-auto px-4 py-4 space-y-2 text-sm">
+          
+          <!-- Tree Node 1: Home (Direct Link) -->
+          <button 
+            (click)="navigateTo('home')"
+            [class]="currentPage() === 'home' ? 'bg-orange-50 text-orange-600 font-bold border-orange-200' : 'text-slate-700 hover:bg-slate-50 border-transparent'"
+            class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl border text-left font-semibold transition-all cursor-pointer">
+            <span class="w-6 h-6 rounded-lg bg-orange-100/80 text-orange-600 flex items-center justify-center text-xs">🏠</span>
+            <span>Home</span>
+          </button>
+
+          <!-- Tree Node 2: Services & Specializations (Expandable Tree Node with Fragments) -->
+          <div class="rounded-2xl border border-orange-100 overflow-hidden bg-white/90 shadow-2xs">
+            <button 
+              type="button"
+              (click)="toggleMobileTreeNode('services')"
+              class="w-full flex items-center justify-between px-3.5 py-3 text-left font-bold text-slate-800 bg-orange-50/40 hover:bg-orange-50/80 transition-colors cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xs">⚡</span>
+                <span>Engineering Services</span>
+              </div>
+              <svg 
+                class="w-4 h-4 text-slate-400 transition-transform duration-200" 
+                [class.rotate-180]="mobileTreeServicesOpen()" 
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            @if (mobileTreeServicesOpen()) {
+              <div class="p-2 pl-4 space-y-1 bg-white border-t border-orange-100/70 border-l-2 border-l-orange-400 ml-4 my-1 text-xs">
+                <!-- Fragment 1: Services Overview -->
+                <button 
+                  (click)="navigateTo('services', 'services-overview')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <div>
+                    <div class="font-bold">Services Overview</div>
+                    <div class="text-[10px] text-slate-400">Full Lifecycle Engineering</div>
+                  </div>
+                </button>
+
+                <!-- Fragment 2: Starter Websites (₹10K-15K) -->
+                <button 
+                  (click)="navigateTo('services', 'starter-websites')" 
+                  class="w-full flex items-center justify-between p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <div>
+                      <div class="font-bold">Business Websites</div>
+                      <div class="text-[10px] text-emerald-600 font-mono">1–2 Weeks Delivery</div>
+                    </div>
+                  </div>
+                  <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">₹10K–15K</span>
+                </button>
+
+                <!-- Fragment 3: Custom Web Applications -->
+                <button 
+                  (click)="navigateTo('services', 'web-apps')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <div>
+                    <div class="font-bold">Custom Web Applications</div>
+                    <div class="text-[10px] text-slate-400">Angular 19 &amp; Spring Boot 3</div>
+                  </div>
+                </button>
+
+                <!-- Fragment 4: Mobile Apps -->
+                <button 
+                  (click)="navigateTo('services', 'mobile-apps')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                  <div>
+                    <div class="font-bold">Mobile Apps (iOS &amp; Android)</div>
+                    <div class="text-[10px] text-slate-400">React Native 60 FPS Native UI</div>
+                  </div>
+                </button>
+
+                <!-- Fragment 5: Cloud Microservices -->
+                <button 
+                  (click)="navigateTo('services', 'enterprise-microservices')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                  <div>
+                    <div class="font-bold">Enterprise Microservices</div>
+                    <div class="text-[10px] text-slate-400">Docker, Kubernetes &amp; Cloud</div>
+                  </div>
+                </button>
+
+                <!-- Fragment 6: Development Process -->
+                <button 
+                  (click)="navigateTo('services', 'process')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  <div>
+                    <div class="font-bold">5-Step Delivery Workflow</div>
+                    <div class="text-[10px] text-slate-400">How We Build &amp; Deploy</div>
+                  </div>
+                </button>
+              </div>
+            }
+          </div>
+
+          <!-- Tree Node 3: Portfolio & Trust (Expandable Tree Node) -->
+          <div class="rounded-2xl border border-orange-100 overflow-hidden bg-white/90 shadow-2xs">
+            <button 
+              type="button"
+              (click)="toggleMobileTreeNode('portfolio')"
+              class="w-full flex items-center justify-between px-3.5 py-3 text-left font-bold text-slate-800 bg-orange-50/40 hover:bg-orange-50/80 transition-colors cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs">🏢</span>
+                <span>Portfolio &amp; Trust</span>
+              </div>
+              <svg 
+                class="w-4 h-4 text-slate-400 transition-transform duration-200" 
+                [class.rotate-180]="mobileTreePortfolioOpen()" 
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            @if (mobileTreePortfolioOpen()) {
+              <div class="p-2 pl-4 space-y-1 bg-white border-t border-orange-100/70 border-l-2 border-l-amber-400 ml-4 my-1 text-xs">
+                <button 
+                  (click)="navigateTo('clients')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  <span>Our Clients &amp; Portals</span>
+                </button>
+                <button 
+                  (click)="navigateTo('case-studies')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  <span>Case Studies &amp; Architecture</span>
+                </button>
+                <button 
+                  (click)="navigateTo('reviews')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span>Client Reviews (5★ Trust)</span>
+                </button>
+              </div>
+            }
+          </div>
+
+          <!-- Tree Node 4: Pricing & Calculator (Expandable Tree Node) -->
+          <div class="rounded-2xl border border-orange-100 overflow-hidden bg-white/90 shadow-2xs">
+            <button 
+              type="button"
+              (click)="toggleMobileTreeNode('pricing')"
+              class="w-full flex items-center justify-between px-3.5 py-3 text-left font-bold text-slate-800 bg-orange-50/40 hover:bg-orange-50/80 transition-colors cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">₹</span>
+                <span>Pricing &amp; Tools</span>
+              </div>
+              <svg 
+                class="w-4 h-4 text-slate-400 transition-transform duration-200" 
+                [class.rotate-180]="mobileTreePricingOpen()" 
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            @if (mobileTreePricingOpen()) {
+              <div class="p-2 pl-4 space-y-1 bg-white border-t border-orange-100/70 border-l-2 border-l-emerald-400 ml-4 my-1 text-xs">
+                <button 
+                  (click)="navigateTo('pricing')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span>INR Pricing Packages (₹10K–₹6L+)</span>
+                </button>
+                <button 
+                  (click)="navigateTo('estimator')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  <span>Project Budget Estimator</span>
+                </button>
+              </div>
+            }
+          </div>
+
+          <!-- Tree Node 5: Tech Stack (Direct Link) -->
+          <button 
+            (click)="navigateTo('tech-stack')"
+            [class]="currentPage() === 'tech-stack' ? 'bg-orange-50 text-orange-600 font-bold border-orange-200' : 'text-slate-700 hover:bg-slate-50 border-transparent'"
+            class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl border text-left font-semibold transition-all cursor-pointer">
+            <span class="w-6 h-6 rounded-lg bg-orange-100/80 text-orange-600 flex items-center justify-center text-xs">⚙️</span>
+            <span>Technology Stack</span>
+          </button>
+
+          <!-- Tree Node 6: Company & Support (Expandable Tree Node) -->
+          <div class="rounded-2xl border border-orange-100 overflow-hidden bg-white/90 shadow-2xs">
+            <button 
+              type="button"
+              (click)="toggleMobileTreeNode('company')"
+              class="w-full flex items-center justify-between px-3.5 py-3 text-left font-bold text-slate-800 bg-orange-50/40 hover:bg-orange-50/80 transition-colors cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-xs">👥</span>
+                <span>Company &amp; FAQ</span>
+              </div>
+              <svg 
+                class="w-4 h-4 text-slate-400 transition-transform duration-200" 
+                [class.rotate-180]="mobileTreeCompanyOpen()" 
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            @if (mobileTreeCompanyOpen()) {
+              <div class="p-2 pl-4 space-y-1 bg-white border-t border-orange-100/70 border-l-2 border-l-slate-400 ml-4 my-1 text-xs">
+                <button 
+                  (click)="navigateTo('about')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+                  <span>About Arivom Technologies</span>
+                </button>
+                <button 
+                  (click)="navigateTo('faq')" 
+                  class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  <span>Technical &amp; Pricing FAQ</span>
+                </button>
+              </div>
+            }
+          </div>
+
+        </div>
+
+        <!-- Drawer Footer: Quick Contact & Start Project Action -->
+        <div class="p-4 border-t border-orange-100 bg-gradient-to-b from-white to-orange-50/40 space-y-2.5">
+          <button 
+            (click)="copyEmail()" 
+            type="button" 
+            class="w-full py-2.5 px-3.5 rounded-xl border border-orange-200 bg-white hover:bg-orange-50 text-xs font-mono text-slate-700 flex items-center justify-between transition-all cursor-pointer shadow-2xs">
+            <span class="truncate max-w-[210px] text-left">{{ contactEmail }}</span>
+            <span class="text-orange-600 font-bold shrink-0 ml-1">
+              {{ emailCopied() ? '✓ Copied' : '(Copy)' }}
+            </span>
+          </button>
+          
+          <button 
+            (click)="openContactModal()" 
+            class="btn-shimmer hover-lift-sm active:scale-95 w-full py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-orange-500/25 transition-all text-center flex items-center justify-center gap-2 cursor-pointer">
+            <span>Start Project / Contact Us &rarr;</span>
+          </button>
+        </div>
+
+      </aside>
     }
   </header>
 
@@ -1311,8 +1528,8 @@
     <section class="section-themed py-16 lg:py-20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Top Pill -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200/90 text-slate-700 text-xs font-semibold mb-6 shadow-xs">
+        <!-- Top Pill & Anchor: services-overview -->
+        <div id="services-overview" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200/90 text-slate-700 text-xs font-semibold mb-6 shadow-xs">
           <span>❖</span> Our Services
         </div>
 
@@ -1379,8 +1596,8 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Card 1: Affordable Business Websites -->
-            <div class="theme-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+            <!-- Card 1: Affordable Business Websites (id: starter-websites) -->
+            <div id="starter-websites" class="theme-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between scroll-mt-28">
               <div>
                 <div class="flex items-center gap-4 mb-4">
                   <div class="w-14 h-14 rounded-2xl bg-orange-50/70 border border-orange-200 flex items-center justify-center text-orange-600 text-2xl shrink-0">
@@ -1485,8 +1702,8 @@
           </div>
         </div>
 
-        <!-- Section: How It Works: Simple 5-Step Process (Matching Mockup) -->
-        <div class="mt-20">
+        <!-- Section: How It Works: Simple 5-Step Process (id: process) -->
+        <div id="process" class="mt-20 scroll-mt-28">
           <div class="mb-10 text-left">
             <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200">
               How It Works
@@ -1528,7 +1745,7 @@
           </div>
         </div>
 
-        <!-- Section: Service Specializations & Deep-Dive Capabilities (Rich Content) -->
+        <!-- Section: Service Specializations & Deep-Dive Capabilities (Pillars with Fragment IDs) -->
         <div class="mt-20 pt-16 border-t border-slate-200/80">
           <div class="mb-10 text-left">
             <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200">
@@ -1539,8 +1756,8 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Pillar 1 -->
-            <div class="theme-card p-6 rounded-3xl space-y-3">
+            <!-- Pillar 1: Business Websites (id: starter-websites-pillar) -->
+            <div id="business-websites" class="theme-card p-6 rounded-3xl space-y-3 scroll-mt-28">
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
                 🚀
               </div>
@@ -1556,8 +1773,8 @@
               </div>
             </div>
 
-            <!-- Pillar 2 -->
-            <div class="theme-card p-6 rounded-3xl space-y-3">
+            <!-- Pillar 2: Custom Web Applications (id: web-apps) -->
+            <div id="web-apps" class="theme-card p-6 rounded-3xl space-y-3 scroll-mt-28">
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
                 ⚡
               </div>
@@ -1573,8 +1790,8 @@
               </div>
             </div>
 
-            <!-- Pillar 3 -->
-            <div class="theme-card p-6 rounded-3xl space-y-3">
+            <!-- Pillar 3: Mobile Apps (id: mobile-apps) -->
+            <div id="mobile-apps" class="theme-card p-6 rounded-3xl space-y-3 scroll-mt-28">
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
                 📱
               </div>
@@ -1590,8 +1807,8 @@
               </div>
             </div>
 
-            <!-- Pillar 4 -->
-            <div class="theme-card p-6 rounded-3xl space-y-3">
+            <!-- Pillar 4: Cloud Microservices (id: enterprise-microservices) -->
+            <div id="enterprise-microservices" class="theme-card p-6 rounded-3xl space-y-3 scroll-mt-28">
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
                 ☁️
               </div>
