@@ -119,54 +119,114 @@ export class App implements OnInit, OnDestroy {
 
   protected readonly heroSlides = [
     {
-      id: 'enterprise-suite',
-      image: 'images/enterprise-suite.jpg',
-      badge: 'Enterprise Software',
-      badgeColor: 'bg-orange-500/90 text-white',
-      title: 'Full-Stack Scalable Cloud Platforms',
-      desc: 'Engineered with Spring Boot 3, Angular 19 & Distributed Microservices Clusters',
-      techBadge: 'Spring Boot 3 + Angular',
-      priceTag: '₹60,000 – ₹1,50,000+'
-    },
-    {
-      id: 'lacastle-showcase',
-      image: 'images/lacastle-showcase.jpg',
-      badge: 'High-Converting Web Portals',
+      id: 'starter-web',
+      image: 'images/hero-banner-starter.jpg',
+      badge: 'Starter Package',
       badgeColor: 'bg-emerald-600/90 text-white',
+      badgeBgLight: 'bg-emerald-50 text-emerald-800 border-emerald-200',
       title: 'Business Websites & Brand Portals',
-      desc: 'Sub-second load times, 100% responsive layouts, SEO optimized for lead generation',
-      techBadge: 'Starter Package',
-      priceTag: '₹10,000 – ₹15,000'
+      headline: 'Lightning-Fast Websites for Growing Businesses',
+      desc: 'Sub-second load speeds, 100% fluid responsive design, built-in SEO and contact forms engineered to convert visitors into loyal clients.',
+      techBadge: 'Starter Web • ₹10K–₹15K',
+      priceTag: '₹10,000 – ₹15,000',
+      timeline: '1 – 2 Weeks Delivery',
+      bullets: [
+        '5 to 8 Custom Responsive Pages',
+        'Mobile, Tablet & Desktop Pixel-Perfect Layout',
+        'SEO Meta Tags & Instant Inquiry Forms',
+        'Full Source Ownership & Free 30-Day Support'
+      ],
+      primaryCta: 'Get Starter Website',
+      primaryTarget: 'contact',
+      stats: '100% On-Time'
     },
     {
-      id: 'mobile-portfolio',
-      image: 'images/mobile-portfolio.jpg',
+      id: 'enterprise-web',
+      image: 'images/hero-banner-web.jpg',
+      badge: 'Enterprise Software',
+      badgeColor: 'bg-orange-600/90 text-white',
+      badgeBgLight: 'bg-orange-50 text-orange-800 border-orange-200',
+      title: 'Custom Web Apps & Admin Portals',
+      headline: 'Full-Stack Scalable Cloud Platforms',
+      desc: 'Reactive Angular 19 single-page applications powered by Spring Boot 3 microservices with robust role-based security and realtime analytics.',
+      techBadge: 'Spring Boot 3 + Angular',
+      priceTag: '₹60,000 – ₹1,50,000+',
+      timeline: '3 – 6 Weeks Sprint',
+      bullets: [
+        'Angular Standalone Frontend with Reactive Signals',
+        'Spring Boot 3 REST APIs & Spring Security JWT',
+        'PostgreSQL or MongoDB Database Architecture',
+        'Real-time Analytics Dashboards & Data Exports'
+      ],
+      primaryCta: 'Explore Enterprise Apps',
+      primaryTarget: 'pricing',
+      stats: 'Zero Tech Debt'
+    },
+    {
+      id: 'mobile-engineering',
+      image: 'images/hero-banner-mobile.jpg',
       badge: 'Mobile Engineering',
       badgeColor: 'bg-cyan-600/90 text-white',
-      title: 'React Native iOS & Android Apps',
-      desc: 'Single codebase with 60 FPS smooth native performance and offline-first caching',
-      techBadge: 'iOS + Android Native',
-      priceTag: '₹1,20,000 – ₹2,50,000'
+      badgeBgLight: 'bg-cyan-50 text-cyan-800 border-cyan-200',
+      title: 'Cross-Platform Mobile Apps',
+      headline: 'React Native iOS & Android Native UI',
+      desc: 'Deploy to Apple App Store and Google Play Store from a unified codebase with fluid 60 FPS performance, offline caching, and biometric login.',
+      techBadge: 'React Native 60 FPS',
+      priceTag: '₹1,20,000 – ₹2,50,000',
+      timeline: '5 – 8 Weeks Delivery',
+      bullets: [
+        'Single Codebase for iOS & Android',
+        'Biometric Auth (FaceID / Fingerprint)',
+        'Push Notifications & Offline-First Caching',
+        'Camera, GPS Geolocation & Native Device APIs'
+      ],
+      primaryCta: 'Build Mobile App',
+      primaryTarget: 'contact',
+      stats: '60 FPS Native'
     },
     {
-      id: 'cloud-architecture',
-      image: 'images/arivom-cloud-architecture.jpg',
-      badge: 'Cloud & Microservices',
+      id: 'cloud-devops',
+      image: 'images/hero-banner-cloud.jpg',
+      badge: 'Cloud & Architecture',
       badgeColor: 'bg-indigo-600/90 text-white',
-      title: 'Resilient Event-Driven Topologies',
-      desc: 'Containerized Docker & K8s deployments with PostgreSQL & Redis caching',
+      badgeBgLight: 'bg-indigo-50 text-indigo-800 border-indigo-200',
+      title: 'Distributed Cloud Microservices',
+      headline: 'Resilient Event-Driven Topologies',
+      desc: 'Scalable cloud infrastructure containerized with Docker and Kubernetes, automated CI/CD pipelines, and high-availability database clusters.',
       techBadge: 'Docker • K8s • PostgreSQL',
-      priceTag: 'Enterprise Scale'
+      priceTag: 'Custom Architecture',
+      timeline: 'Continuous Milestones',
+      bullets: [
+        'Microservices Decomposition & API Gateways',
+        'Docker Containerization & Kubernetes Clusters',
+        'PostgreSQL Read-Replicas & Redis Caching',
+        'Prometheus & Grafana Health Monitoring'
+      ],
+      primaryCta: 'Consult Cloud Architects',
+      primaryTarget: 'tech-stack',
+      stats: '99.99% Uptime'
     },
     {
-      id: 'fintech-gateway',
-      image: 'images/cs-fintech-gateway.jpg',
+      id: 'fintech-suite',
+      image: 'images/hero-banner-fintech.jpg',
       badge: 'FinTech Solutions',
       badgeColor: 'bg-amber-600/90 text-white',
-      title: 'High-Throughput Payment Gateways',
-      desc: 'Zero-downtime, PCI-DSS ready security and automated audit trails handling 10k+ TPS',
+      badgeBgLight: 'bg-amber-50 text-amber-800 border-amber-200',
+      title: 'Bank-Grade Payment Gateways',
+      headline: 'High-Throughput Financial Systems',
+      desc: 'PCI-DSS ready transaction processing backends handling 10,000+ TPS with automated audit logs, cryptographic encryption, and zero downtime.',
       techBadge: 'Bank-Grade Security',
-      priceTag: 'FinTech Grade'
+      priceTag: 'High-Volume Scale',
+      timeline: 'Enterprise SLA',
+      bullets: [
+        'PCI-DSS Ready Architectural Security',
+        'Razorpay, Stripe & UPI Gateway Integrations',
+        'Idempotent Transactions & Immutable Ledgers',
+        'Automated Fraud Detection & Instant Webhooks'
+      ],
+      primaryCta: 'Discuss FinTech Scope',
+      primaryTarget: 'contact',
+      stats: '10K+ TPS'
     }
   ];
 
