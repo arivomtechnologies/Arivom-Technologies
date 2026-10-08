@@ -128,6 +128,8 @@ export class App implements OnInit, OnDestroy {
   protected readonly contactPhoneRaw = '+918667684683';
   protected readonly whatsAppUrl = 'https://wa.me/918667684683';
   protected readonly websiteUrl = 'https://arivomtechnologies.com/';
+  protected readonly linkedInUrl = 'https://www.linkedin.com/in/arivom-technologies-483010442/';
+  protected readonly instagramUrl = 'https://www.instagram.com/arivomtechnologies/';
 
   // Active Tech Category Filter
   protected readonly activeTechFilter = signal<string>('all');
