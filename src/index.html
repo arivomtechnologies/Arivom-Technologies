@@ -45,6 +45,9 @@
   <meta name="twitter:image:alt" content="Arivom Technologies Official Logo">
 
   <link rel="canonical" href="https://arivomtechnologies.com/">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#FF6A00">
+  
   <!-- Favicon & Brand Icons (Google Search, Android & Apple Standards) -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -56,22 +59,91 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Structured Data (JSON-LD) for Google Search -->
+  <!-- Structured Data (JSON-LD) for Google Search, Knowledge Graph & AI Overview -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Arivom Technologies",
-    "alternateName": "Arivom Tech",
-    "url": "https://arivomtechnologies.com/",
-    "logo": "https://arivomtechnologies.com/images/arivom-share-square.jpg",
-    "image": "https://arivomtechnologies.com/images/arivom-share-banner.jpg",
-    "description": "Enterprise Software Engineering & Consulting. Specializing in Spring Boot, Angular, React Native, PostgreSQL, MongoDB, Monolithic and Microservices architectures.",
-    "email": "arivomtechnologies@gmail.com",
-    "telephone": "+91 866 768 4683",
-    "sameAs": [
-      "https://www.linkedin.com/in/arivom-technologies-483010442/",
-      "https://www.instagram.com/arivomtechnologies/"
+    "@graph": [
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://arivomtechnologies.com/#organization",
+        "name": "Arivom Technologies",
+        "legalName": "Arivom Technologies",
+        "alternateName": ["Arivom Tech", "ArivomTechnologies"],
+        "url": "https://arivomtechnologies.com/",
+        "logo": "https://arivomtechnologies.com/images/arivom-brand-logo-square.png",
+        "image": "https://arivomtechnologies.com/images/arivom-share-banner.jpg",
+        "description": "Arivom Technologies is an enterprise software and web development company based in Chennai, India. Specializing in high-performance web applications, mobile apps, Spring Boot, Angular, React Native, PostgreSQL, and Microservices.",
+        "disambiguatingDescription": "Arivom Technologies is a software engineering and digital product development studio based in Chennai, Tamil Nadu, India. It specializes in custom web development, mobile applications, and enterprise microservices. It is not affiliated with stock market education, financial training, or unrelated companies.",
+        "email": "arivomtechnologies@gmail.com",
+        "telephone": "+91 866 768 4683",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chennai",
+          "addressRegion": "Tamil Nadu",
+          "addressCountry": "IN"
+        },
+        "priceRange": "₹10,000 – ₹6,00,000+",
+        "knowsAbout": [
+          "Custom Software Development",
+          "Website Development",
+          "Web Application Engineering",
+          "Mobile App Development",
+          "Spring Boot 3",
+          "Angular Framework",
+          "React Native iOS & Android",
+          "PostgreSQL & MongoDB",
+          "Enterprise Microservices Architecture"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/arivom-technologies-483010442/",
+          "https://www.instagram.com/arivomtechnologies/"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software & Web Development Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Starter Business Website",
+              "price": "10000",
+              "priceCurrency": "INR",
+              "description": "High-speed, SEO-optimized business website or portfolio portal in 1–2 weeks."
+            },
+            {
+              "@type": "Offer",
+              "name": "Custom Web Application",
+              "price": "60000",
+              "priceCurrency": "INR",
+              "description": "Dynamic web portal engineered with modern Angular UI and robust Spring Boot backend."
+            },
+            {
+              "@type": "Offer",
+              "name": "Cross-Platform Mobile Application",
+              "price": "120000",
+              "priceCurrency": "INR",
+              "description": "Single codebase targeting iOS and Android with React Native native performance."
+            },
+            {
+              "@type": "Offer",
+              "name": "Enterprise Microservices & Cloud",
+              "price": "300000",
+              "priceCurrency": "INR",
+              "description": "Distributed cloud architectures with Spring Cloud, Docker, Kubernetes, and PostgreSQL."
+            }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://arivomtechnologies.com/#website",
+        "url": "https://arivomtechnologies.com/",
+        "name": "Arivom Technologies",
+        "description": "Official website of Arivom Technologies - Enterprise Software & Web Development Company",
+        "publisher": {
+          "@id": "https://arivomtechnologies.com/#organization"
+        }
+      }
     ]
   }
   </script>
