@@ -1,8 +1,29 @@
-import { Component, signal, computed, OnInit, OnDestroy } from '@angular/core';
+import { Component, signal, computed, effect, OnInit, OnDestroy, afterNextRender } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export type PageName = 'home' | 'about' | 'services' | 'clients' | 'pricing' | 'tech-stack' | 'case-studies' | 'reviews' | 'estimator' | 'faq';
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+export type PageName = 
+  | 'home' 
+  | 'about' 
+  | 'services' 
+  | 'clients' 
+  | 'pricing' 
+  | 'tech-stack' 
+  | 'case-studies' 
+  | 'reviews' 
+  | 'estimator' 
+  | 'faq'
+  | 'service-starter-websites'
+  | 'service-web-apps'
+  | 'service-mobile-apps'
+  | 'service-cloud-microservices'
+  | 'service-ai-saas';
 
 export interface TechItem {
   id: string;
@@ -90,6 +111,20 @@ export interface FaqItem {
   styleUrl: './app.css'
 })
 export class App implements OnInit, OnDestroy {
+  constructor() {
+    effect(() => {
+      const budget = this.estimatedBudgetInr();
+      if (typeof window !== 'undefined' && budget) {
+        setTimeout(() => {
+          const priceEl = document.querySelector('.estimator-result-price');
+          if (priceEl) {
+            gsap.fromTo(priceEl, { scale: 1.12, color: '#FF6A00' }, { scale: 1, color: '#334155', duration: 0.35, ease: 'back.out(2)' });
+          }
+        }, 15);
+      }
+    });
+  }
+
   // Navigation State
   protected readonly currentPage = signal<PageName>('home');
   protected readonly servicesDropdownOpen = signal<boolean>(false);
@@ -260,14 +295,31 @@ export class App implements OnInit, OnDestroy {
 
   nextHeroSlide(): void {
     this.activeHeroSlide.update(idx => (idx + 1) % this.heroSlides.length);
+    this.animateHeroSlideContent();
   }
 
   prevHeroSlide(): void {
     this.activeHeroSlide.update(idx => (idx - 1 + this.heroSlides.length) % this.heroSlides.length);
+    this.animateHeroSlideContent();
   }
 
   goToHeroSlide(index: number): void {
     this.activeHeroSlide.set(index);
+    this.animateHeroSlideContent();
+  }
+
+  protected animateHeroSlideContent(): void {
+    if (typeof window === 'undefined') return;
+    setTimeout(() => {
+      const headline = document.querySelector('.hero-synced-headline');
+      const bullets = document.querySelectorAll('.hero-synced-bullet');
+      if (headline) {
+        gsap.fromTo(headline, { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.45, ease: 'power2.out' });
+      }
+      if (bullets.length > 0) {
+        gsap.fromTo(Array.from(bullets), { opacity: 0, y: 10 }, { opacity: 1, y: 0, stagger: 0.05, duration: 0.35, ease: 'power2.out' });
+      }
+    }, 15);
   }
 
   pauseHeroSlide(): void {
@@ -294,10 +346,15 @@ export class App implements OnInit, OnDestroy {
           trust3: 'Zero Hidden Costs'
         };
       case 'services':
+      case 'service-starter-websites':
+      case 'service-web-apps':
+      case 'service-mobile-apps':
+      case 'service-cloud-microservices':
+      case 'service-ai-saas':
         return {
           badge: "LET'S BUILD TOGETHER",
-          title: "Let's Build Your\nEnterprise Solution",
-          subtitle: 'From ₹10K business portals to high-throughput Spring Boot microservices, we engineer resilient solutions tailored to your business.',
+          title: "Let's Build Your\nDedicated Solution",
+          subtitle: 'From ₹10K business portals to high-throughput Spring Boot microservices, mobile apps and AI SaaS platforms, we engineer resilient solutions tailored to your business.',
           primaryBtn: 'Start Your Project &rarr;',
           action: () => this.openContactModal(),
           trust1: 'Full-Stack Architecture',
@@ -1027,21 +1084,89 @@ export class App implements OnInit, OnDestroy {
   // Action Methods
   toggleMobileMenu(): void {
     this.mobileMenuOpen.update(v => !v);
+    if (this.mobileMenuOpen() && typeof window !== 'undefined') {
+      setTimeout(() => {
+        const drawer = document.querySelector('.mobile-drawer-box');
+        const backdrop = document.querySelector('.mobile-drawer-backdrop');
+        if (backdrop) {
+          gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+        }
+        if (drawer) {
+          gsap.fromTo(drawer, { x: 320, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' });
+        }
+      }, 10);
+    }
   }
 
   closeMobileMenu(): void {
+    if (this.mobileMenuOpen() && typeof window !== 'undefined') {
+      const drawer = document.querySelector('.mobile-drawer-box');
+      const backdrop = document.querySelector('.mobile-drawer-backdrop');
+      if (drawer && backdrop) {
+        gsap.to(drawer, { x: 320, opacity: 0, duration: 0.2, ease: 'power2.in' });
+        gsap.to(backdrop, {
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: () => {
+            this.mobileMenuOpen.set(false);
+          }
+        });
+        return;
+      }
+    }
     this.mobileMenuOpen.set(false);
   }
 
   setTechFilter(filter: string): void {
     this.activeTechFilter.set(filter);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const cards = document.querySelectorAll('.tech-card-item');
+        if (cards.length > 0) {
+          gsap.fromTo(
+            Array.from(cards),
+            { opacity: 0, scale: 0.94, y: 15 },
+            { opacity: 1, scale: 1, y: 0, stagger: 0.04, duration: 0.35, ease: 'power2.out' }
+          );
+        }
+      }, 15);
+    }
   }
 
   openTechDetail(tech: TechItem): void {
     this.selectedTech.set(tech);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const backdrop = document.querySelector('.tech-modal-backdrop');
+        const box = document.querySelector('.tech-modal-box');
+        if (backdrop) {
+          gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+        }
+        if (box) {
+          gsap.fromTo(box, { scale: 0.9, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: 'back.out(1.5)' });
+        }
+      }, 10);
+    }
   }
 
   closeTechDetail(): void {
+    if (typeof window !== 'undefined') {
+      const backdrop = document.querySelector('.tech-modal-backdrop');
+      const box = document.querySelector('.tech-modal-box');
+      if (backdrop && box) {
+        gsap.to(box, { scale: 0.95, opacity: 0, y: 10, duration: 0.2, ease: 'power2.in' });
+        gsap.to(backdrop, {
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: () => {
+            this.selectedTech.set(null);
+          }
+        });
+        return;
+      }
+    }
     this.selectedTech.set(null);
   }
 
@@ -1058,6 +1183,14 @@ export class App implements OnInit, OnDestroy {
         return item;
       });
     });
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const faqAnswers = document.querySelectorAll('.faq-answer-block');
+        faqAnswers.forEach((ans) => {
+          gsap.fromTo(ans, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' });
+        });
+      }, 10);
+    }
   }
 
   copyEmail(): void {
@@ -1140,9 +1273,37 @@ Please connect with me to discuss our requirements and kickoff.`;
 
   openContactModal(): void {
     this.contactModalOpen.set(true);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const backdrop = document.querySelector('.contact-modal-backdrop');
+        const box = document.querySelector('.contact-modal-box');
+        if (backdrop) {
+          gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+        }
+        if (box) {
+          gsap.fromTo(box, { scale: 0.9, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: 'back.out(1.5)' });
+        }
+      }, 10);
+    }
   }
 
   closeContactModal(): void {
+    if (typeof window !== 'undefined') {
+      const backdrop = document.querySelector('.contact-modal-backdrop');
+      const box = document.querySelector('.contact-modal-box');
+      if (backdrop && box) {
+        gsap.to(box, { scale: 0.95, opacity: 0, y: 10, duration: 0.2, ease: 'power2.in' });
+        gsap.to(backdrop, {
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: () => {
+            this.contactModalOpen.set(false);
+          }
+        });
+        return;
+      }
+    }
     this.contactModalOpen.set(false);
   }
 
@@ -1192,6 +1353,9 @@ Website: https://arivomtechnologies.com/
           this.nextHeroSlide();
         }
       }, 4500);
+
+      // Initialize GSAP scroll triggers on load
+      this.initGsapScrollAnimations();
     }
   }
 
@@ -1199,14 +1363,336 @@ Website: https://arivomtechnologies.com/
     if (this.heroSlideInterval) {
       clearInterval(this.heroSlideInterval);
     }
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    }
+  }
+
+  protected initGsapScrollAnimations(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    setTimeout(() => {
+      // 1. Clear previous ScrollTrigger instances to prevent duplicate triggers
+      ScrollTrigger.getAll().forEach(t => t.kill());
+
+      const activePage = document.querySelector('.page-enter-active');
+      if (!activePage) return;
+
+      // 2. HERO ENTRANCE TIMELINE (Smooth, non-blocking upward glide on page entry)
+      const heroHeadings = activePage.querySelectorAll('h1, h1 + p, nav[aria-label="Breadcrumb"]');
+      if (heroHeadings.length > 0) {
+        gsap.fromTo(
+          Array.from(heroHeadings),
+          { opacity: 0, y: 22 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            stagger: 0.08,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity'
+          }
+        );
+      }
+
+      // 3. SHOWCASE SECTIONS ANIMATION (Home Zig-Zag & Feature Spotlights)
+      const showcaseBlocks = activePage.querySelectorAll('.showcase-block');
+      showcaseBlocks.forEach((block) => {
+        const imgLeft = block.querySelector('.showcase-image-left');
+        const imgRight = block.querySelector('.showcase-image-right');
+        const content = block.querySelector('.showcase-content');
+        const tags = block.querySelectorAll('.showcase-tag');
+
+        if (imgLeft) {
+          gsap.fromTo(imgLeft, { opacity: 0, x: -50, scale: 0.95 }, {
+            opacity: 1, x: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: block, start: 'top 85%', toggleActions: 'play none none none', once: true }
+          });
+        }
+        if (imgRight) {
+          gsap.fromTo(imgRight, { opacity: 0, x: 50, scale: 0.95 }, {
+            opacity: 1, x: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: block, start: 'top 85%', toggleActions: 'play none none none', once: true }
+          });
+        }
+        if (content) {
+          const contentChildren = content.children;
+          gsap.fromTo(Array.from(contentChildren), { opacity: 0, y: 28 }, {
+            opacity: 1, y: 0, stagger: 0.09, duration: 0.7, ease: 'power2.out', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: block, start: 'top 85%', toggleActions: 'play none none none', once: true }
+          });
+        }
+        if (tags.length > 0) {
+          gsap.fromTo(Array.from(tags), { opacity: 0, scale: 0.75 }, {
+            opacity: 1, scale: 1, stagger: 0.1, duration: 0.55, ease: 'back.out(2)', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: block, start: 'top 82%', toggleActions: 'play none none none', once: true }
+          });
+        }
+      });
+
+      // 4. STANDALONE SHOWCASE IMAGES (About, Services Dashboard, Dedicated Service Heroes, Clients)
+      const standaloneShowcaseImages = activePage.querySelectorAll('.showcase-image:not(.showcase-image-left):not(.showcase-image-right)');
+      standaloneShowcaseImages.forEach((imgEl) => {
+        gsap.fromTo(imgEl, { opacity: 0, y: 35, scale: 0.96 }, {
+          opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: imgEl, start: 'top 86%', toggleActions: 'play none none none', once: true }
+        });
+        const tags = imgEl.querySelectorAll('.showcase-tag');
+        if (tags.length > 0) {
+          gsap.fromTo(Array.from(tags), { opacity: 0, scale: 0.75 }, {
+            opacity: 1, scale: 1, stagger: 0.1, duration: 0.55, ease: 'back.out(2)', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: imgEl, start: 'top 83%', toggleActions: 'play none none none', once: true }
+          });
+        }
+      });
+
+      // 4b. STANDALONE CARD FLOATING TAGS (Case Studies & Project Cards)
+      const cardTags = activePage.querySelectorAll('.theme-card:not(.showcase-block) .showcase-tag');
+      if (cardTags.length > 0) {
+        cardTags.forEach((tag) => {
+          gsap.fromTo(tag, { opacity: 0, scale: 0.75 }, {
+            opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: tag, start: 'top 88%', toggleActions: 'play none none none', once: true }
+          });
+        });
+      }
+
+      // 5. SECTION HEADINGS REVEAL ON SCROLL (All h2, h3 across all 15 pages)
+      const sectionHeadings = Array.from(activePage.querySelectorAll('h2, h3.text-2xl, h3.text-3xl, h3.text-4xl'))
+        .filter(h => !h.closest('.showcase-content'));
+      sectionHeadings.forEach((heading) => {
+        gsap.fromTo(
+          heading,
+          { opacity: 0, y: 26 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: heading,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+              once: true
+            }
+          }
+        );
+      });
+
+      // 6. CARD GRIDS STAGGERED ENTRANCE ON SCROLL (Cards across all services, tech, pricing, reviews, pillars)
+      const grids = activePage.querySelectorAll('.grid');
+      grids.forEach((grid) => {
+        if (grid.closest('.aspect-4\\/3') || grid.classList.contains('grid-cols-5') || grid.classList.contains('showcase-block')) return;
+
+        const cards = grid.querySelectorAll(':scope > div.theme-card, :scope > div.rounded-3xl, :scope > div.rounded-2xl, :scope > div.tech-card-item, :scope > div.case-study-item');
+        if (cards.length > 0) {
+          gsap.fromTo(
+            Array.from(cards),
+            { opacity: 0, y: 30, scale: 0.97 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.55,
+              stagger: 0.07,
+              ease: 'power2.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: grid,
+                start: 'top 86%',
+                toggleActions: 'play none none none',
+                once: true
+              }
+            }
+          );
+        }
+      });
+
+      // 7. METRICS & COUNTERS PUNCH-IN ON SCROLL
+      const metrics = activePage.querySelectorAll('.font-mono.font-black, .font-mono.font-extrabold');
+      metrics.forEach((metric) => {
+        gsap.fromTo(
+          metric,
+          { scale: 0.75, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            ease: 'back.out(2)',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: metric,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+              once: true
+            }
+          }
+        );
+      });
+
+      // 8. SPOTLIGHT CASE STUDY CARDS & PRE-FOOTER CTA REVEAL
+      const spotlights = activePage.querySelectorAll('.rounded-3xl.p-8, .rounded-3xl.p-12');
+      spotlights.forEach((spotlight) => {
+        gsap.fromTo(
+          spotlight,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: spotlight,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+              once: true
+            }
+          }
+        );
+      });
+
+      // 9. CONTINUOUS FLOATING AMBIENT BADGES
+      const floaters = activePage.querySelectorAll('.gsap-float, .animate-float');
+      floaters.forEach((el, index) => {
+        gsap.to(el, {
+          y: -7,
+          duration: 2.4 + (index % 3) * 0.4,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+          delay: (index % 4) * 0.2
+        });
+      });
+
+      // 10. INTERACTIVE MICRO-HOVER ON PRIMARY BUTTONS
+      const primaryButtons = activePage.querySelectorAll('.btn-shimmer, button.bg-gradient-to-r, a.bg-gradient-to-r');
+      primaryButtons.forEach((btn) => {
+        const el = btn as HTMLElement;
+        el.onmouseenter = () => {
+          gsap.to(el, { scale: 1.03, duration: 0.2, ease: 'power1.out' });
+        };
+        el.onmouseleave = () => {
+          gsap.to(el, { scale: 1.0, duration: 0.22, ease: 'power1.out' });
+        };
+      });
+
+      // 11. FOOTER SCROLL & AMBIENT ANIMATIONS
+      const footer = document.querySelector('footer.footer-global, footer');
+      if (footer) {
+        // A. Ambient breathing glow
+        const glows = footer.querySelectorAll('.footer-ambient-glow');
+        glows.forEach((glow, idx) => {
+          gsap.to(glow, {
+            scale: 1.25,
+            opacity: 0.18,
+            duration: 4.5 + idx * 0.8,
+            yoyo: true,
+            repeat: -1,
+            ease: 'sine.inOut'
+          });
+        });
+
+        // B. Dedicated CTA Card Entrance
+        const ctaCard = footer.querySelector('.footer-cta-card');
+        if (ctaCard) {
+          gsap.fromTo(ctaCard, { opacity: 0, y: 45, scale: 0.96 }, {
+            opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: ctaCard, start: 'top 88%', toggleActions: 'play none none none', once: true }
+          });
+
+          const ctaContent = ctaCard.querySelector('.footer-cta-content');
+          if (ctaContent) {
+            gsap.fromTo(Array.from(ctaContent.children), { opacity: 0, y: 20 }, {
+              opacity: 1, y: 0, stagger: 0.08, duration: 0.6, ease: 'power2.out', clearProps: 'transform,opacity',
+              scrollTrigger: { trigger: ctaCard, start: 'top 88%', toggleActions: 'play none none none', once: true }
+            });
+          }
+
+          const ctaActions = ctaCard.querySelector('.footer-cta-actions');
+          if (ctaActions) {
+            gsap.fromTo(Array.from(ctaActions.children), { opacity: 0, x: 25 }, {
+              opacity: 1, x: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out', clearProps: 'transform,opacity',
+              scrollTrigger: { trigger: ctaCard, start: 'top 88%', toggleActions: 'play none none none', once: true }
+            });
+          }
+        }
+
+        // C. 5-Column Navigation Grid Stagger
+        const navGrid = footer.querySelector('.footer-nav-grid');
+        const navCols = footer.querySelectorAll('.footer-nav-col');
+        if (navCols.length > 0) {
+          gsap.fromTo(Array.from(navCols), { opacity: 0, y: 35 }, {
+            opacity: 1, y: 0, stagger: 0.1, duration: 0.7, ease: 'power2.out', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: navGrid || navCols[0], start: 'top 90%', toggleActions: 'play none none none', once: true }
+          });
+        }
+
+        // D. Brand Logo & Social Buttons Pop-in
+        const brandLogo = footer.querySelector('.footer-brand-logo');
+        if (brandLogo) {
+          gsap.fromTo(brandLogo, { scale: 0.7, opacity: 0 }, {
+            scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(2)', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: brandLogo, start: 'top 92%', toggleActions: 'play none none none', once: true }
+          });
+        }
+
+        const socialBtns = footer.querySelectorAll('.footer-social-btn');
+        if (socialBtns.length > 0) {
+          gsap.fromTo(Array.from(socialBtns), { scale: 0.7, opacity: 0 }, {
+            scale: 1, opacity: 1, stagger: 0.08, duration: 0.45, ease: 'back.out(2)', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: socialBtns[0], start: 'top 92%', toggleActions: 'play none none none', once: true }
+          });
+        }
+
+        // E. Bottom Copyright & Legal Links Bar
+        const bottomBar = footer.querySelector('.footer-bottom-bar');
+        if (bottomBar) {
+          gsap.fromTo(bottomBar, { opacity: 0, y: 20 }, {
+            opacity: 1, y: 0, duration: 0.65, ease: 'power2.out', clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: bottomBar, start: 'top 96%', toggleActions: 'play none none none', once: true }
+          });
+        }
+      }
+
+      ScrollTrigger.refresh();
+    }, 40);
+  }
+
+  private scrollToTop(): void {
+    if (typeof window === 'undefined') return;
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    } catch {
+      window.scrollTo(0, 0);
+    }
+    if (document.documentElement) {
+      document.documentElement.scrollTop = 0;
+    }
+    if (document.body) {
+      document.body.scrollTop = 0;
+    }
   }
 
   protected handleHashChange(): void {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash.replace('#', '').toLowerCase();
-    const validPages: PageName[] = ['home', 'about', 'services', 'clients', 'pricing', 'tech-stack', 'case-studies', 'reviews', 'estimator', 'faq'];
+    const validPages: PageName[] = [
+      'home', 'about', 'services', 'clients', 'pricing', 'tech-stack', 'case-studies', 'reviews', 'estimator', 'faq',
+      'service-starter-websites', 'service-web-apps', 'service-mobile-apps', 'service-cloud-microservices', 'service-ai-saas'
+    ];
     if (validPages.includes(hash as PageName)) {
       this.currentPage.set(hash as PageName);
+      this.scrollToTop();
+      setTimeout(() => {
+        this.scrollToTop();
+        this.initGsapScrollAnimations();
+      }, 20);
     }
   }
 
@@ -1220,9 +1706,17 @@ Website: https://arivomtechnologies.com/
         setTimeout(() => {
           const el = document.getElementById(fragment);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
+          this.initGsapScrollAnimations();
         }, 50);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.scrollToTop();
+        setTimeout(() => {
+          this.scrollToTop();
+          this.initGsapScrollAnimations();
+        }, 20);
+        setTimeout(() => {
+          this.scrollToTop();
+        }, 80);
       }
     }
   }
@@ -1237,5 +1731,17 @@ Website: https://arivomtechnologies.com/
 
   setCaseStudyFilter(filter: string): void {
     this.caseStudyFilter.set(filter);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const cards = document.querySelectorAll('.case-study-item, .theme-card');
+        if (cards.length > 0) {
+          gsap.fromTo(
+            Array.from(cards),
+            { opacity: 0, scale: 0.95, y: 16 },
+            { opacity: 1, scale: 1, y: 0, stagger: 0.05, duration: 0.35, ease: 'power2.out', clearProps: 'transform' }
+          );
+        }
+      }, 15);
+    }
   }
 }
