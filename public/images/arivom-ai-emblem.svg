@@ -1,0 +1,67 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient for AI Launcher -->
+    <linearGradient id="ai-bg-glow" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF6A00" />
+      <stop offset="50%" stop-color="#FF8A00" />
+      <stop offset="100%" stop-color="#FF5100" />
+    </linearGradient>
+
+    <!-- Inner Core Background -->
+    <linearGradient id="ai-inner-bg" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B1930" />
+      <stop offset="100%" stop-color="#060E1A" />
+    </linearGradient>
+
+    <!-- Glowing Pillar Left -->
+    <linearGradient id="ai-pillar-left" x1="25" y1="20" x2="45" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFBA66" />
+      <stop offset="50%" stop-color="#FF7A00" />
+      <stop offset="100%" stop-color="#FF4800" />
+    </linearGradient>
+
+    <!-- Glowing Pillar Right -->
+    <linearGradient id="ai-pillar-right" x1="75" y1="20" x2="55" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD685" />
+      <stop offset="60%" stop-color="#FF9500" />
+      <stop offset="100%" stop-color="#D93D00" />
+    </linearGradient>
+
+    <!-- Bridge Gradient -->
+    <linearGradient id="ai-bridge" x1="32" y1="55" x2="68" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF8A00" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FF7A00" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circular Shield with Border Glow -->
+  <circle cx="50" cy="50" r="48" fill="url(#ai-inner-bg)" stroke="#FF7A00" stroke-width="2.5" />
+  
+  <!-- Subtle Neural Grid Rings -->
+  <circle cx="50" cy="50" r="38" stroke="#FF6A00" stroke-opacity="0.25" stroke-dasharray="3 3" />
+  <circle cx="50" cy="50" r="24" stroke="#38BDF8" stroke-opacity="0.2" stroke-dasharray="2 2" />
+
+  <!-- Ambient Core Glow -->
+  <circle cx="50" cy="48" r="22" fill="#FF6A00" opacity="0.3" filter="blur(6px)" />
+
+  <!-- Geometric A: Left Upward Beam -->
+  <path d="M50 20L28 72C27 74.5 29 77 32 77H39.5C41.2 77 42.7 75.9 43.3 74.3L50 56L50 20Z" fill="url(#ai-pillar-left)" />
+
+  <!-- Geometric A: Right Upward Beam -->
+  <path d="M50 20L72 72C73 74.5 71 77 68 77H60.5C58.8 77 57.3 75.9 56.7 74.3L50 56L50 20Z" fill="url(#ai-pillar-right)" />
+
+  <!-- Geometric Bridge -->
+  <path d="M38 54L50 44L62 54L50 62L38 54Z" fill="url(#ai-bridge)" />
+
+  <!-- Central Intelligence Core Spark -->
+  <circle cx="50" cy="53" r="3" fill="#FFFFFF" />
+  <circle cx="50" cy="53" r="5.5" fill="#FFE082" opacity="0.6" />
+
+  <!-- Neural Sparks / Constellation Points -->
+  <circle cx="28" cy="72" r="2.5" fill="#FFBA66" />
+  <circle cx="72" cy="72" r="2.5" fill="#FFD685" />
+
+  <!-- Apex Intelligence Star -->
+  <path d="M50 12L52.5 17L57.5 19.5L52.5 22L50 27L47.5 22L42.5 19.5L47.5 17L50 12Z" fill="#FFF59D" />
+</svg>

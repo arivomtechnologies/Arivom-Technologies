@@ -1,0 +1,58 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Top-Left Light Facet (Left Leg of A) -->
+    <linearGradient id="at-facet-left" x1="16" y1="82" x2="50" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5500" />
+      <stop offset="60%" stop-color="#FF7A00" />
+      <stop offset="100%" stop-color="#FFA834" />
+    </linearGradient>
+
+    <!-- Right Shadow Facet (Right Leg of A) -->
+    <linearGradient id="at-facet-right" x1="84" y1="82" x2="50" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D13200" />
+      <stop offset="50%" stop-color="#FF5500" />
+      <stop offset="100%" stop-color="#FF9426" />
+    </linearGradient>
+
+    <!-- 3D 'T' Roof Bar (Luminous Horizon) -->
+    <linearGradient id="at-facet-t-roof" x1="22" y1="32" x2="78" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF8A00" />
+      <stop offset="50%" stop-color="#FFDC73" />
+      <stop offset="100%" stop-color="#FFA033" />
+    </linearGradient>
+
+    <!-- 3D 'T' Vertical Pillar Stem -->
+    <linearGradient id="at-facet-t-stem" x1="50" y1="32" x2="50" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB03A" />
+      <stop offset="50%" stop-color="#FF6A00" />
+      <stop offset="100%" stop-color="#E03E00" />
+    </linearGradient>
+
+    <!-- 3D Ambient Drop Shadow -->
+    <filter id="at-3d-shadow" x="0" y="0" width="100" height="100" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <g filter="url(#at-3d-shadow)">
+    <!-- 1. LEFT FACET OF 'A' -->
+    <path d="M50 14L16 82H28.5L50 38L50 14Z" fill="url(#at-facet-left)" />
+
+    <!-- 2. RIGHT FACET OF 'A' -->
+    <path d="M50 14L84 82H71.5L50 38L50 14Z" fill="url(#at-facet-right)" />
+
+    <!-- 3. CENTRAL 3D 'T' STRUCTURE -->
+    <!-- T-Roof: Spanning horizontally through the upper delta -->
+    <path d="M24 38L50 25L76 38L70 47L50 37L30 47L24 38Z" fill="url(#at-facet-t-roof)" />
+
+    <!-- T-Stem: Dropping vertically down the center to the base -->
+    <path d="M44 37H56V78C56 79.5 54.8 80.5 53.5 80.5H46.5C45.2 80.5 44 79.5 44 78V37Z" fill="url(#at-facet-t-stem)" />
+
+    <!-- Precision Nexus Highlight (Core Spark) -->
+    <polygon points="50,30 55,37 50,44 45,37" fill="#FFFFFF" />
+    <circle cx="50" cy="37" r="2" fill="#FFE082" />
+
+    <!-- Apex Tech Node / Diamond -->
+    <polygon points="50,8 52.5,13 50,16 47.5,13" fill="#FFD54F" />
+  </g>
+</svg>

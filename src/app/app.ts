@@ -1,8 +1,10 @@
-import { Component, signal, computed, effect, OnInit, OnDestroy, afterNextRender } from '@angular/core';
+import { Component, signal, computed, effect, OnInit, OnDestroy, afterNextRender, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AiAssistantWidgetComponent } from './components/ai-assistant-widget/ai-assistant-widget.component';
+import { AiAssistantService } from './services/ai-assistant.service';
 
 if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
@@ -106,11 +108,13 @@ export interface FaqItem {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AiAssistantWidgetComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit, OnDestroy {
+  protected readonly aiAssistant = inject(AiAssistantService);
+
   constructor() {
     effect(() => {
       const budget = this.estimatedBudgetInr();
@@ -1305,6 +1309,13 @@ Please connect with me to discuss our requirements and kickoff.`;
       }
     }
     this.contactModalOpen.set(false);
+  }
+
+  openAiAssistant(initialQuery?: string): void {
+    this.aiAssistant.openChat();
+    if (initialQuery) {
+      this.aiAssistant.sendMessage(initialQuery);
+    }
   }
 
 
