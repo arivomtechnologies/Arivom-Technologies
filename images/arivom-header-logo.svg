@@ -1,0 +1,49 @@
+<svg viewBox="0 0 112 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Left Leg: Warm Vermilion to Rich Orange Gradient -->
+    <linearGradient id="a-leg-left" x1="18" y1="86" x2="50" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E24800" />
+      <stop offset="45%" stop-color="#FF5D00" />
+      <stop offset="100%" stop-color="#FF7A00" />
+    </linearGradient>
+
+    <!-- Right Leg: Vibrant Orange Gradient -->
+    <linearGradient id="a-leg-right" x1="50" y1="10" x2="84" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF7A00" />
+      <stop offset="55%" stop-color="#FF6200" />
+      <stop offset="100%" stop-color="#E24800" />
+    </linearGradient>
+
+    <!-- Rising Arc Arrow: Electric Orange to Bright Golden Yellow -->
+    <linearGradient id="a-arrow-grad" x1="18" y1="78" x2="98" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E24800" />
+      <stop offset="30%" stop-color="#FF6A00" />
+      <stop offset="70%" stop-color="#FFA800" />
+      <stop offset="100%" stop-color="#FFC000" />
+    </linearGradient>
+
+    <!-- Soft Depth Shadow on the Arrowhead -->
+    <filter id="arrow-soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0.5" dy="1.8" stdDeviation="1.8" flood-color="#551100" flood-opacity="0.32" />
+    </filter>
+  </defs>
+
+  <!-- Left Leg with Rounded Cap and Foot -->
+  <path 
+    d="M 50 10 C 47.2 10 45.4 11.6 44 14.5 L 16.5 77.5 C 15.2 80.5 17.2 84 20.5 84 L 30 84 C 32.2 84 34 82.6 35 80.5 L 42.8 63 L 50 42 L 50 10 Z" 
+    fill="url(#a-leg-left)" 
+  />
+
+  <!-- Right Leg with Rounded Cap and Foot -->
+  <path 
+    d="M 50 10 C 52.8 10 54.6 11.6 56 14.5 L 83.5 77.5 C 84.8 80.5 82.8 84 79.5 84 L 70 84 C 67.8 84 66 82.6 65 80.5 L 57.2 63 L 50 42 L 50 10 Z" 
+    fill="url(#a-leg-right)" 
+  />
+
+  <!-- Upward Arched Growth Arrow with Arrowhead -->
+  <path 
+    filter="url(#arrow-soft-shadow)"
+    d="M 18 73 C 28 61, 51 47, 78 41.5 L 76.5 34 C 76.5 32.8 77.8 32.2 78.6 32.9 L 98.2 39.2 C 99.2 39.5 99.2 41 98.2 41.3 L 79.8 49.6 C 79 50 78 49.4 78 48.5 L 78.5 44 C 53.5 49, 31.5 63, 19.5 80 C 18.5 79 18 75.5 18 73 Z" 
+    fill="url(#a-arrow-grad)" 
+  />
+</svg>
