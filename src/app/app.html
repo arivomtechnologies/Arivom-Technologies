@@ -14,17 +14,17 @@
               class="w-full h-full object-contain" />
           </div>
           <div class="flex flex-col justify-center leading-none">
-            <span class="text-[17px] sm:text-[19px] font-black tracking-tight text-[#0B1930] font-sans">
+            <span class="text-[19px] sm:text-[21px] font-black tracking-tight text-[#0B1930] font-sans">
               ARIVOM
             </span>
-            <span class="text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.28em] text-slate-500 font-sans mt-0.5 uppercase">
+            <span class="text-[9px] sm:text-[9.5px] font-bold tracking-[0.33em] text-[#62748E] font-sans mt-1 uppercase">
               TECHNOLOGIES
             </span>
           </div>
         </a>
 
         <!-- Vertical Divider -->
-        <div class="hidden xl:block h-6 w-px bg-slate-200 mx-1"></div>
+        <div class="hidden xl:block h-7 w-px bg-slate-200 mx-1.5"></div>
       </div>
 
       <!-- Desktop Navigation (Center) -->
@@ -296,18 +296,23 @@
     <aside 
       class="mobile-drawer-box fixed inset-y-0 right-0 z-[9999] w-full max-w-[340px] sm:max-w-[380px] bg-white shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-left lg:hidden border-l border-orange-100">
         
-        <!-- Drawer Header -->
-        <div class="p-4 sm:p-5 border-b border-orange-100 flex items-center justify-between bg-gradient-to-r from-orange-50/70 via-white to-amber-50/40">
-          <div class="flex items-center gap-2.5">
-            <div class="w-10 h-10 rounded-xl overflow-hidden bg-white border border-orange-200/90 p-1 shadow-xs flex items-center justify-center">
-              <img src="images/arivom-header-logo.svg" alt="Arivom Emblem" class="w-full h-full object-contain" />
+        <!-- Drawer Header matching exact mobile reference -->
+        <div class="p-4 sm:p-5 border-b border-orange-100 flex items-center justify-between bg-gradient-to-r from-orange-50/60 via-white to-amber-50/30">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl overflow-hidden bg-white border border-orange-200/90 p-1.5 shadow-xs flex items-center justify-center shrink-0">
+              <img src="images/arivom-header-logo.svg" alt="Arivom Technologies" class="w-full h-full object-contain" />
             </div>
             <div>
-              <div class="text-sm font-extrabold text-[#0B1930] leading-none">
-                ARIVOM <span class="text-[#FF6A00]">TECHNOLOGIES</span>
+              <div class="text-[15px] font-black leading-none text-[#0B1930] flex items-center gap-1 font-sans">
+                <span>ARIVOM</span>
+                <span class="text-[#FF6A00] font-bold">TECHNOLOGIES</span>
               </div>
-              <div class="text-[9.5px] font-mono text-orange-600 font-bold mt-1 tracking-wider uppercase">
-                Innovate • Build • Grow
+              <div class="text-[9px] font-mono text-[#FF6A00] font-bold mt-1.5 tracking-[0.18em] uppercase flex items-center gap-1.5">
+                <span>INNOVATE</span>
+                <span class="text-orange-400">•</span>
+                <span>BUILD</span>
+                <span class="text-orange-400">•</span>
+                <span>GROW</span>
               </div>
             </div>
           </div>
@@ -317,8 +322,8 @@
             type="button"
             (click)="closeMobileMenu()"
             aria-label="Close Navigation"
-            class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-orange-100 text-slate-600 hover:text-orange-600 border border-slate-200 flex items-center justify-center transition-colors cursor-pointer shadow-2xs">
-            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            class="w-10 h-10 rounded-2xl bg-slate-100/90 hover:bg-orange-100 text-slate-600 hover:text-orange-600 border border-slate-200 flex items-center justify-center transition-colors cursor-pointer shadow-2xs">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -330,10 +335,10 @@
           <!-- Tree Node 1: Home (Direct Link) -->
           <button 
             (click)="navigateTo('home')"
-            [class]="currentPage() === 'home' ? 'bg-orange-50 text-orange-600 font-bold border-orange-200' : 'text-slate-700 hover:bg-slate-50 border-transparent'"
-            class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl border text-left font-semibold transition-all cursor-pointer">
-            <span class="w-6 h-6 rounded-lg bg-orange-100/80 text-orange-600 flex items-center justify-center text-xs">🏠</span>
-            <span>Home</span>
+            [class]="currentPage() === 'home' ? 'bg-[#FFF9F3] text-orange-600 font-bold border-orange-200/90 shadow-2xs' : 'text-slate-700 hover:bg-slate-50 border-transparent'"
+            class="w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl border text-left font-bold transition-all cursor-pointer">
+            <span class="w-7 h-7 rounded-xl bg-orange-100/70 text-orange-600 flex items-center justify-center text-sm shrink-0">🏠</span>
+            <span class="text-[15px]">Home</span>
           </button>
 
           <!-- Tree Node 2: Services & Specializations (Expandable Tree Node with Fragments) -->
@@ -4784,17 +4789,16 @@
         <!-- Column 1: Brand Info & Socials -->
         <div class="footer-nav-col col-span-2 md:col-span-3 lg:col-span-1 space-y-4">
           <div class="flex items-center gap-3">
-            <div class="footer-brand-logo w-10 h-10 rounded-xl overflow-hidden bg-white/5 border border-white/10 p-1.5 shadow-sm shrink-0 flex items-center justify-center">
+            <div class="footer-brand-logo w-10 h-10 rounded-xl overflow-hidden bg-white/5 border border-white/10 p-1 shadow-sm shrink-0 flex items-center justify-center">
               <img src="images/arivom-header-logo.svg" alt="Arivom Technologies" class="w-full h-full object-contain" />
             </div>
-            <div>
-              <div class="flex items-center gap-1.5 leading-none">
-                <span class="text-base font-black tracking-tight text-white font-sans">ARIVOM</span>
-                <span class="text-base font-bold text-[#FF6A00] font-sans">TECHNOLOGIES</span>
-              </div>
-              <div class="text-[9.5px] text-orange-400 font-mono tracking-wider uppercase font-semibold mt-1">
-                Innovate • Build • Grow
-              </div>
+            <div class="flex flex-col justify-center leading-none">
+              <span class="text-[19px] font-black tracking-tight text-white font-sans">
+                ARIVOM
+              </span>
+              <span class="text-[9px] font-bold tracking-[0.33em] text-[#FF6A00] font-sans mt-1 uppercase">
+                TECHNOLOGIES
+              </span>
             </div>
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">

@@ -1,48 +1,49 @@
-<svg viewBox="0 0 110 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 112 96" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Left Leg Gradient -->
-    <linearGradient id="a-leg-left" x1="16" y1="84" x2="50" y2="10" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#E55000" />
-      <stop offset="60%" stop-color="#FF6A00" />
-      <stop offset="100%" stop-color="#FF8A00" />
+    <!-- Left Leg: Warm Vermilion to Rich Orange Gradient -->
+    <linearGradient id="a-leg-left" x1="18" y1="86" x2="50" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E24800" />
+      <stop offset="45%" stop-color="#FF5D00" />
+      <stop offset="100%" stop-color="#FF7A00" />
     </linearGradient>
 
-    <!-- Right Leg Gradient -->
-    <linearGradient id="a-leg-right" x1="50" y1="10" x2="84" y2="84" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FF8A00" />
-      <stop offset="50%" stop-color="#FF6A00" />
-      <stop offset="100%" stop-color="#E55000" />
+    <!-- Right Leg: Vibrant Orange Gradient -->
+    <linearGradient id="a-leg-right" x1="50" y1="10" x2="84" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF7A00" />
+      <stop offset="55%" stop-color="#FF6200" />
+      <stop offset="100%" stop-color="#E24800" />
     </linearGradient>
 
-    <!-- Rising Arc Arrow Gradient -->
-    <linearGradient id="a-arrow-grad" x1="15" y1="80" x2="98" y2="38" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#E55000" />
-      <stop offset="35%" stop-color="#FF6A00" />
-      <stop offset="75%" stop-color="#FF9D00" />
-      <stop offset="100%" stop-color="#FFB300" />
+    <!-- Rising Arc Arrow: Electric Orange to Bright Golden Yellow -->
+    <linearGradient id="a-arrow-grad" x1="18" y1="78" x2="98" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E24800" />
+      <stop offset="30%" stop-color="#FF6A00" />
+      <stop offset="70%" stop-color="#FFA800" />
+      <stop offset="100%" stop-color="#FFC000" />
     </linearGradient>
 
-    <filter id="a-arrow-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0.5" dy="1.5" stdDeviation="1.5" flood-color="#802000" flood-opacity="0.25" />
+    <!-- Soft Depth Shadow on the Arrowhead -->
+    <filter id="arrow-soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0.5" dy="1.8" stdDeviation="1.8" flood-color="#551100" flood-opacity="0.32" />
     </filter>
   </defs>
 
-  <!-- Left Leg of A -->
+  <!-- Left Leg with Rounded Cap and Foot -->
   <path 
-    d="M 50 10 C 47.5 10 45.8 11.5 44.5 14.5 L 16 78 C 14.8 80.5 16.5 83.5 19.5 83.5 L 29.5 83.5 C 31.5 83.5 33.2 82.2 34.2 80.2 L 42.5 63.5 L 50 42 L 50 10 Z" 
+    d="M 50 10 C 47.2 10 45.4 11.6 44 14.5 L 16.5 77.5 C 15.2 80.5 17.2 84 20.5 84 L 30 84 C 32.2 84 34 82.6 35 80.5 L 42.8 63 L 50 42 L 50 10 Z" 
     fill="url(#a-leg-left)" 
   />
 
-  <!-- Right Leg of A -->
+  <!-- Right Leg with Rounded Cap and Foot -->
   <path 
-    d="M 50 10 C 52.5 10 54.2 11.5 55.5 14.5 L 84 78 C 85.2 80.5 83.5 83.5 80.5 83.5 L 70.5 83.5 C 68.5 83.5 66.8 82.2 65.8 80.2 L 57.5 63.5 L 50 42 L 50 10 Z" 
+    d="M 50 10 C 52.8 10 54.6 11.6 56 14.5 L 83.5 77.5 C 84.8 80.5 82.8 84 79.5 84 L 70 84 C 67.8 84 66 82.6 65 80.5 L 57.2 63 L 50 42 L 50 10 Z" 
     fill="url(#a-leg-right)" 
   />
 
-  <!-- Upward Arched Growth Arrow -->
+  <!-- Upward Arched Growth Arrow with Arrowhead -->
   <path 
-    filter="url(#a-arrow-shadow)"
-    d="M 15 76 C 26 62, 50 46, 81 40 L 79.5 33.5 C 79.5 32.5 80.7 32 81.4 32.6 L 98.5 39.5 C 99.5 39.9 99.5 41.3 98.5 41.7 L 82.8 49.5 C 82 49.9 81 49.3 81 48.4 L 81.5 44 C 52.5 50, 30.5 64.5, 17 81.5 C 15.8 80.5 15 78.5 15 76 Z" 
+    filter="url(#arrow-soft-shadow)"
+    d="M 18 73 C 28 61, 51 47, 78 41.5 L 76.5 34 C 76.5 32.8 77.8 32.2 78.6 32.9 L 98.2 39.2 C 99.2 39.5 99.2 41 98.2 41.3 L 79.8 49.6 C 79 50 78 49.4 78 48.5 L 78.5 44 C 53.5 49, 31.5 63, 19.5 80 C 18.5 79 18 75.5 18 73 Z" 
     fill="url(#a-arrow-grad)" 
   />
 </svg>
