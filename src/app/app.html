@@ -23,16 +23,8 @@
           </div>
         </a>
 
-        <!-- Vertical Divider & Tagline -->
-        <div class="hidden xl:block h-6 w-px bg-slate-200"></div>
-
-        <div class="hidden xl:flex items-center gap-1.5 text-xs font-medium text-slate-500 select-none whitespace-nowrap">
-          <span>Innovate</span>
-          <span class="text-slate-300">•</span>
-          <span>Build</span>
-          <span class="text-slate-300">•</span>
-          <span>Grow</span>
-        </div>
+        <!-- Vertical Divider -->
+        <div class="hidden xl:block h-6 w-px bg-slate-200 mx-1"></div>
       </div>
 
       <!-- Desktop Navigation (Center) -->
@@ -47,7 +39,7 @@
             Home
           </button>
           @if (currentPage() === 'home') {
-            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
+            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6A00] rounded-full"></span>
           }
         </div>
 
@@ -195,7 +187,7 @@
             Tech Stack
           </button>
           @if (currentPage() === 'tech-stack') {
-            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
+            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6A00] rounded-full"></span>
           }
         </div>
 
@@ -261,9 +253,9 @@
         <!-- Start Project Pill Button in Orange Theme -->
         <button 
           (click)="openContactModal()" 
-          class="btn-shimmer active:scale-95 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-[13px] shadow-md shadow-orange-500/25 hover:shadow-lg hover:shadow-orange-500/40 transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer">
+          class="btn-shimmer active:scale-95 px-5 sm:px-6 py-2.5 rounded-full bg-[#FF6A00] hover:bg-[#EA580C] text-white font-bold text-xs sm:text-[13px] shadow-md shadow-orange-500/30 hover:shadow-lg hover:shadow-orange-500/45 transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer">
           <span>Start Project</span>
-          <span class="text-orange-200 group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+          <span class="text-orange-100 group-hover:translate-x-0.5 transition-transform">&rarr;</span>
         </button>
       </div>
 
