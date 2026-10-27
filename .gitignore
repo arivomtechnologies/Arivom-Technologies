@@ -41,3 +41,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Marketing & Social Graphics
+/instagram-posts/
+/scripts/generate-instagram-images.js
