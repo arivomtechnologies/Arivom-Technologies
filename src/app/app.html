@@ -235,7 +235,21 @@
           }
         </div>
 
-        <!-- 6. Company & FAQ ▾ -->
+        <!-- 6. Careers & Freelance (2026 Batch) -->
+        <div class="relative py-1">
+          <button 
+            (click)="navigateTo('freelance')" 
+            [class]="(currentPage() === 'freelance' || currentPage() === 'careers') ? 'text-orange-600 font-bold' : 'text-slate-700 hover:text-orange-600 font-medium'"
+            class="px-3 py-1.5 flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap">
+            <span>Careers</span>
+            <span class="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-orange-100 text-orange-700 border border-orange-200">2026 Batch</span>
+          </button>
+          @if (currentPage() === 'freelance' || currentPage() === 'careers') {
+            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6A00] rounded-full"></span>
+          }
+        </div>
+
+        <!-- 7. Company & FAQ ▾ -->
         <div class="relative group py-1">
           <button 
             [class]="(currentPage() === 'about' || currentPage() === 'faq') ? 'text-orange-600 font-bold' : 'text-slate-700 hover:text-orange-600 font-medium'"
@@ -247,8 +261,22 @@
           </button>
 
           <!-- Company Dropdown Menu -->
-          <div class="absolute top-full right-0 pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="absolute top-full right-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 space-y-1">
+              <button (click)="navigateTo('freelance')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/80 transition-colors flex items-center gap-3 cursor-pointer">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span>Freelance &amp; Careers</span>
+                    <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-orange-100 text-orange-700 font-bold">2026 Batch</span>
+                  </div>
+                  <div class="text-[10px] text-slate-500 font-normal">17 Specialized Tracks &amp; Stipends</div>
+                </div>
+              </button>
               <button (click)="navigateTo('about')" class="w-full text-left p-2.5 rounded-xl hover:bg-orange-50/80 transition-colors flex items-center gap-3 cursor-pointer">
                 <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -612,7 +640,26 @@
             </button>
           </div>
 
-          <!-- Tree Node 6: Company & Support (Expandable Tree Node) -->
+          <!-- Tree Node 6: Freelance & Careers (2026 Batch) -->
+          <div class="rounded-2xl border overflow-hidden shadow-2xs transition-all"
+            [class]="(currentPage() === 'freelance' || currentPage() === 'careers') ? 'border-orange-300 bg-orange-50/70' : 'border-orange-100/80 bg-white/90'">
+            <button 
+              (click)="navigateTo('freelance')"
+              [class]="(currentPage() === 'freelance' || currentPage() === 'careers') ? 'text-orange-600 font-bold' : 'text-slate-800 font-bold hover:bg-orange-50/80'"
+              class="w-full flex items-center justify-between px-3.5 py-3 text-left transition-colors cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <span>Careers &amp; Freelance</span>
+              </div>
+              <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-2xs">2026 Batch</span>
+            </button>
+          </div>
+
+          <!-- Tree Node 7: Company & Support (Expandable Tree Node) -->
           <div class="rounded-2xl border border-orange-100/80 overflow-hidden bg-white/90 shadow-2xs">
             <button 
               type="button"
@@ -636,6 +683,15 @@
 
             @if (mobileTreeCompanyOpen()) {
               <div class="p-2 pl-4 space-y-1 bg-white border-t border-orange-100/70 border-l-2 border-l-slate-400 ml-4 my-1 text-xs">
+                <button 
+                  (click)="navigateTo('freelance')" 
+                  class="w-full flex items-center justify-between p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                    <span>Freelance &amp; Internships 2026</span>
+                  </div>
+                  <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-orange-100 text-orange-700 font-bold">Open</span>
+                </button>
                 <button 
                   (click)="navigateTo('about')" 
                   class="w-full flex items-center gap-2.5 p-2 rounded-lg hover:bg-orange-50 text-slate-700 hover:text-orange-600 font-medium text-left transition-colors cursor-pointer">
@@ -4682,6 +4738,860 @@
 
 
 
+  <!-- ========================================================================= -->
+  <!-- PAGE 11: FREELANCE, INTERNSHIP & UPSKILLING PROGRAM 2026 -->
+  <!-- ========================================================================= -->
+  @if (currentPage() === 'freelance' || currentPage() === 'careers') {
+    <div class="page-enter-active">
+    
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-orange-50/20 to-white">
+      <!-- Ambient Glow Behind Hero -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-gradient-to-tr from-orange-400/20 via-amber-300/15 to-orange-500/10 blur-[140px] pointer-events-none rounded-full"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-4xl mx-auto space-y-5">
+          
+          <!-- Limited Seats Badge with Stars -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100/80 border border-orange-200 text-orange-800 text-xs sm:text-[13px] font-extrabold tracking-wide shadow-2xs">
+            <span class="text-amber-500 animate-pulse">★ ★ ★</span>
+            <span>LIMITED SEATS AVAILABLE • BATCH 2026 ENROLLMENT OPEN</span>
+            <span class="text-amber-500 animate-pulse">★ ★ ★</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0B1930] tracking-tight leading-[1.12]">
+            Freelance, Internship &amp; <br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600">
+              Upskilling Program 2026
+            </span>
+          </h1>
+
+          <!-- Tagline & Subtitle -->
+          <p class="text-lg sm:text-2xl font-bold text-slate-800 tracking-tight">
+            Build Real Software • Earn Milestone Stipends • Launch Your Career
+          </p>
+
+          <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            A structured, hands-on opportunity by <strong class="text-slate-900">Arivom Technologies</strong> for college students, fresh graduates, and aspiring coders. Work alongside senior engineers on live client projects, earn milestone-based stipends, and graduate with verified production Git commits.
+          </p>
+
+          <!-- 4 Key Stat Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2 max-w-3xl mx-auto text-left">
+            <div class="p-3.5 rounded-2xl bg-white border border-orange-200/80 shadow-2xs flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-sm shrink-0">17</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900 leading-tight">Specialized Tracks</div>
+                <div class="text-[10px] text-slate-500">AI, Web, Cloud &amp; Mobile</div>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white border border-emerald-200/80 shadow-2xs flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm shrink-0">100%</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900 leading-tight">Remote / Hybrid</div>
+                <div class="text-[10px] text-emerald-700 font-medium">Flexible Sprint Hours</div>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white border border-amber-200/80 shadow-2xs flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm shrink-0">₹</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900 leading-tight">Milestone Pay</div>
+                <div class="text-[10px] text-slate-500">Stipend + Project Bonus</div>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white border border-blue-200/80 shadow-2xs flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm shrink-0">✓</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900 leading-tight">Verified Credential</div>
+                <div class="text-[10px] text-slate-500">Letter &amp; Experience Cert</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+            <button 
+              (click)="scrollToFreelanceForm()" 
+              class="btn-shimmer hover-lift-sm active:scale-95 w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white font-bold text-sm sm:text-base shadow-lg shadow-orange-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span>Apply for 2026 Batch Now</span>
+              <span>&darr;</span>
+            </button>
+
+            <a 
+              href="images/arivom-freelance-program-2026.png" 
+              download="Arivom-Technologies-Freelance-Program-2026.png"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-sm shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <svg class="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download Program Flyer (PNG)</span>
+            </a>
+
+            <a 
+              [href]="whatsAppUrl + '?text=Hi%20Arivom%20Technologies,%20I%20am%20interested%20in%20the%202026%20Freelance%20and%20Internship%20Program.'" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-5 py-3.5 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.7c.974.553 1.968.847 2.791.847h.002c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.77-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.744 0-3.383-.453-4.819-1.246l-5.181 1.359 1.382-5.051c-.888-1.488-1.382-3.228-1.382-5.062 0-5.518 4.482-10 10-10s10 4.482 10 10z"/>
+              </svg>
+              <span>WhatsApp Admission Desk</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Official Flyer Showcase & 4-Stage Sprint Pathway -->
+    <section class="py-16 lg:py-20 bg-white border-b border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Left: High-Res Promotional Flyer Showcase Card -->
+          <div class="lg:col-span-5 flex flex-col items-center">
+            <div class="relative group w-full max-w-md rounded-3xl p-3 bg-gradient-to-b from-orange-100 to-amber-50 border border-orange-200 shadow-2xl">
+              
+              <!-- Limited Badge Overlay -->
+              <div class="absolute -top-3 -right-3 z-20 px-3.5 py-1 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white font-black text-xs shadow-md border border-white">
+                ★ 2026 Batch
+              </div>
+
+              <!-- Flyer Image Frame -->
+              <div class="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-inner">
+                <img 
+                  src="images/arivom-freelance-program-2026.png" 
+                  alt="Arivom Technologies Freelance and Internship Program 2026 Poster"
+                  class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-300 select-none" />
+              </div>
+
+              <!-- Quick Download Action Bar Below Poster -->
+              <div class="mt-3 grid grid-cols-2 gap-2 text-center">
+                <a 
+                  href="images/arivom-freelance-program-2026.png" 
+                  download="Arivom-Freelance-Program-2026.png" 
+                  class="py-2.5 px-3 rounded-xl bg-white hover:bg-orange-50 border border-orange-200 text-orange-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-2xs">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  <span>Save Flyer (PNG)</span>
+                </a>
+                <a 
+                  href="images/arivom-freelance-program-2026.jpg" 
+                  download="Arivom-Freelance-Program-2026.jpg" 
+                  class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-2xs">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  <span>Save Flyer (JPG)</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: How The Program Works (The 4-Stage Sprint Path) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <span class="text-xs font-mono font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+                Arivom Engineering Academy
+              </span>
+              <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0B1930] mt-3 tracking-tight">
+                How Our Freelance &amp; Internship Model Operates
+              </h2>
+              <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                Unlike traditional classroom courses that rely on mock exercises, Arivom Technologies integrates you directly into active engineering backlogs. You build production-grade modules that power client platforms.
+              </p>
+            </div>
+
+            <!-- 4 Process Stages -->
+            <div class="space-y-4">
+              
+              <!-- Stage 1 -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs hover:border-orange-300 transition-all flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center font-black text-sm shrink-0">
+                  01
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Track Selection &amp; Modern Standards Alignment</h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                    Select your focus domain from 17 specialized tracks. Complete an architectural baseline sprint covering Git branching workflows, test-driven development, and clean coding conventions.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Stage 2 -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs hover:border-orange-300 transition-all flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-sm shrink-0">
+                  02
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Supervised Production Sprints &amp; Code Reviews</h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                    Join live sprint boards. Receive real user stories, write clean microservice APIs or responsive frontends, and iterate through 1-on-1 pull-request reviews from senior architects.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Stage 3 -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs hover:border-orange-300 transition-all flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-sm shrink-0">
+                  03
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Milestone Compensation &amp; Freelance Deliverables</h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                    Earn milestone-based stipends when your deliverables are tested, QA-approved, and merged into production releases. Top performers unlock ongoing freelance project contracts.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Stage 4 -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs hover:border-orange-300 transition-all flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-black text-sm shrink-0">
+                  04
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Verified Credentials, GitHub Overhaul &amp; Referrals</h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                    Receive an official Experience Certificate and Letter of Recommendation from Arivom Technologies. We assist you in presenting your verified Git commits on LinkedIn and resumes.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Quote Banner -->
+            <div class="p-4 rounded-2xl bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-200 text-xs sm:text-sm text-slate-700 font-medium flex items-center gap-3">
+              <span class="text-orange-600 font-bold text-lg">“</span>
+              <span>No synthetic toy projects or copy-paste exercises. You build reliable code that commercial clients run in production.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: 17 Program Highlights / Domain Tracks Grid -->
+    <section class="py-16 lg:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100/90 border border-orange-200 text-orange-800 text-xs font-black tracking-wide uppercase">
+            ★ PROGRAM HIGHLIGHTS ★
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0B1930] mt-3 tracking-tight">
+            17 Specialized Engineering &amp; Technology Tracks
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2">
+            Filter by domain and explore what you will build. Click any track to pre-fill your application.
+          </p>
+
+          <!-- Domain Filter Tabs -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+            <button 
+              (click)="setFreelanceTrackFilter('all')"
+              [class]="freelanceTrackFilter() === 'all' ? 'bg-[#FF6A00] text-white shadow-md shadow-orange-500/25 font-bold' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-medium'"
+              class="px-4 py-2 rounded-full text-xs sm:text-sm transition-all cursor-pointer">
+              All Tracks (17)
+            </button>
+            <button 
+              (click)="setFreelanceTrackFilter('engineering')"
+              [class]="freelanceTrackFilter() === 'engineering' ? 'bg-[#FF6A00] text-white shadow-md shadow-orange-500/25 font-bold' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-medium'"
+              class="px-4 py-2 rounded-full text-xs sm:text-sm transition-all cursor-pointer">
+              Engineering &amp; Systems (6)
+            </button>
+            <button 
+              (click)="setFreelanceTrackFilter('ai-data')"
+              [class]="freelanceTrackFilter() === 'ai-data' ? 'bg-[#FF6A00] text-white shadow-md shadow-orange-500/25 font-bold' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-medium'"
+              class="px-4 py-2 rounded-full text-xs sm:text-sm transition-all cursor-pointer">
+              AI, ML &amp; Data Science (6)
+            </button>
+            <button 
+              (click)="setFreelanceTrackFilter('cloud')"
+              [class]="freelanceTrackFilter() === 'cloud' ? 'bg-[#FF6A00] text-white shadow-md shadow-orange-500/25 font-bold' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-medium'"
+              class="px-4 py-2 rounded-full text-xs sm:text-sm transition-all cursor-pointer">
+              Cloud &amp; DevOps (3)
+            </button>
+            <button 
+              (click)="setFreelanceTrackFilter('business')"
+              [class]="freelanceTrackFilter() === 'business' ? 'bg-[#FF6A00] text-white shadow-md shadow-orange-500/25 font-bold' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-medium'"
+              class="px-4 py-2 rounded-full text-xs sm:text-sm transition-all cursor-pointer">
+              UI/UX &amp; Growth (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- Tracks Responsive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          @for (track of filteredFreelanceTracks(); track track.id) {
+            <div class="freelance-track-card theme-card rounded-3xl p-6 sm:p-7 border border-slate-200/90 hover:border-orange-400 hover:shadow-xl transition-all flex flex-col justify-between group bg-white">
+              
+              <div class="space-y-4">
+                
+                <!-- Track Card Top Bar: Badges -->
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <span [class]="'text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border ' + track.badgeBg + ' ' + track.textColor + ' ' + track.borderColor">
+                    {{ track.categoryLabel }}
+                  </span>
+                  <div class="flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
+                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ track.duration }}</span>
+                  </div>
+                </div>
+
+                <!-- Title & Icon -->
+                <div class="flex items-start gap-3 pt-1">
+                  <div class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-200 text-orange-600 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-orange-100 transition-all">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="track.icon" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors leading-tight">
+                      {{ track.title }}
+                    </h3>
+                    <div class="text-[11px] text-emerald-700 font-semibold font-mono mt-0.5">
+                      {{ track.mode }}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {{ track.description }}
+                </p>
+
+                <!-- Key Real-World Deliverable Box -->
+                <div class="p-3 rounded-xl bg-orange-50/70 border border-orange-100 space-y-1">
+                  <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-orange-800 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                    <span>Production Deliverable</span>
+                  </div>
+                  <div class="text-xs text-slate-800 font-semibold leading-snug">
+                    {{ track.keyDeliverable }}
+                  </div>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div>
+                  <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5 font-bold">Tech Stack:</div>
+                  <div class="flex flex-wrap gap-1.5">
+                    @for (tech of track.techStack; track tech) {
+                      <span class="text-[10.5px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200/80">
+                        {{ tech }}
+                      </span>
+                    }
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Track Card Footer Action -->
+              <div class="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+                <span class="text-[11px] font-mono text-emerald-700 font-bold">
+                  ★ Stipend Eligible
+                </span>
+                <button 
+                  (click)="selectFreelanceTrack(track.title)" 
+                  class="btn-shimmer active:scale-95 px-4 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs shadow-xs hover:shadow-md transition-all flex items-center gap-1.5 cursor-pointer">
+                  <span>Apply Track</span>
+                  <span>&rarr;</span>
+                </button>
+              </div>
+
+            </div>
+          }
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Program Benefits (6 Pillars matching the Reference Flyer) -->
+    <section class="py-16 lg:py-24 bg-white border-b border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-black tracking-wide uppercase">
+            ★ PROGRAM BENEFITS ★
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0B1930] mt-3 tracking-tight">
+            Why Choose the Arivom Freelance &amp; Upskilling Program?
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2">
+            Accelerate from textbook theory to production engineering craftsmanship.
+          </p>
+        </div>
+
+        <!-- 6 Benefits Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- Benefit 1 -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs hover:border-orange-400 hover:shadow-lg transition-all space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900">Practical Training</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Hands-on coding with modern industry tooling, TypeScript, Angular 19 signals, Spring Boot 3 microservices, Docker containers, and clean Git workflows.
+            </p>
+            <div class="text-[11px] font-mono text-orange-600 font-bold flex items-center gap-1 pt-1">
+              <span>✓ Industry Best Practices</span>
+            </div>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs hover:border-orange-400 hover:shadow-lg transition-all space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900">Real-World Projects</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              No simulated homework or simple todo apps. You contribute to live commercial portals, mobile applications, AI assistants, and enterprise database schemas.
+            </p>
+            <div class="text-[11px] font-mono text-amber-700 font-bold flex items-center gap-1 pt-1">
+              <span>✓ Live Production Codebase</span>
+            </div>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs hover:border-orange-400 hover:shadow-lg transition-all space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900">Expert Guidance</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Direct mentorship from lead developers. Receive line-by-line pull-request reviews, architectural advice, and debugging strategies on Discord and Google Meet.
+            </p>
+            <div class="text-[11px] font-mono text-blue-700 font-bold flex items-center gap-1 pt-1">
+              <span>✓ 1-on-1 Code Reviews</span>
+            </div>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs hover:border-orange-400 hover:shadow-lg transition-all space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900">Certificate of Completion</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Earn an official, verifiable digital certificate and experience letter signed by Arivom Technologies founders detailing your technical milestones.
+            </p>
+            <div class="text-[11px] font-mono text-emerald-700 font-bold flex items-center gap-1 pt-1">
+              <span>✓ Official Experience Letter</span>
+            </div>
+          </div>
+
+          <!-- Benefit 5 -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs hover:border-orange-400 hover:shadow-lg transition-all space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900">Freelance Earning Opportunities</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Get paid milestone stipends and bonuses when completing live sprint features. High performers transition into paid freelance contractor retainers.
+            </p>
+            <div class="text-[11px] font-mono text-purple-700 font-bold flex items-center gap-1 pt-1">
+              <span>✓ Milestone-Based Payouts</span>
+            </div>
+          </div>
+
+          <!-- Benefit 6 -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs hover:border-orange-400 hover:shadow-lg transition-all space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900">Resume &amp; LinkedIn Enhancement</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Transform your developer profile. Showcase verified GitHub repositories, live demo URLs, and receive direct career referrals to partner tech startups.
+            </p>
+            <div class="text-[11px] font-mono text-rose-700 font-bold flex items-center gap-1 pt-1">
+              <span>✓ Standout Developer Portfolio</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Who Can Apply? (4 Categories matching reference flyer) -->
+    <section class="py-16 lg:py-20 bg-gradient-to-b from-[#F8FAFC] via-white to-orange-50/20 border-b border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-200 text-xs font-black tracking-wide uppercase">
+            ★ WHO CAN APPLY? ★
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0B1930] mt-3 tracking-tight">
+            Designed for Passionate Problem Solvers
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2">
+            Whether you are currently in college or looking to break into enterprise tech, our program meets you where you are.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Category 1: College Students -->
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-2xs hover:border-orange-400 transition-all space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">College Students</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              B.E, B.Tech, BCA, MCA, B.Sc &amp; M.Sc Computer Science students. All academic years eligible with flexible hours that accommodate exams.
+            </p>
+            <div class="text-[11px] font-mono text-orange-600 font-bold">
+              Final Year Projects Supported
+            </div>
+          </div>
+
+          <!-- Category 2: Fresh Graduates -->
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-2xs hover:border-orange-400 transition-all space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">Fresh Graduates</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Batches of 2024, 2025 &amp; 2026 seeking verified, commercial software experience to bridge the gap into high-paying engineering roles.
+            </p>
+            <div class="text-[11px] font-mono text-amber-700 font-bold">
+              Direct Referral Opportunities
+            </div>
+          </div>
+
+          <!-- Category 3: Aspiring Coders & Freelancers -->
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-2xs hover:border-orange-400 transition-all space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">Freelancers &amp; Coders</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Self-taught programmers, bootcamp graduates, and independent developers who want team sprint experience and client-facing deliverables.
+            </p>
+            <div class="text-[11px] font-mono text-emerald-700 font-bold">
+              Milestone Pay Retainers
+            </div>
+          </div>
+
+          <!-- Category 4: Career Switchers -->
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-2xs hover:border-orange-400 transition-all space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">Career Switchers</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Working professionals transitioning from non-coding or legacy roles into modern Full Stack, AI/ML, Cloud Microservices, or UI/UX Design.
+            </p>
+            <div class="text-[11px] font-mono text-purple-700 font-bold">
+              Accelerated Career Pivot
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Golden Motto Banner matching reference flyer -->
+        <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0B1930] via-[#102A4C] to-[#0B1930] border border-orange-500/30 text-center shadow-xl text-white relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-orange-500/20 rounded-full blur-2xl"></div>
+          
+          <div class="text-[11px] sm:text-xs font-mono font-bold tracking-[0.25em] text-[#FF6A00] uppercase mb-2">
+            ARIVOM TECHNOLOGIES CORE PHILOSOPHY
+          </div>
+          <div class="text-2xl sm:text-3xl md:text-4xl font-black tracking-wider uppercase text-white font-sans">
+            LEARN • UPSKILL • INNOVATE • SUCCEED
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mt-2">
+            We provide the infrastructure, real client briefs, and senior code mentorship. You bring the grit and curiosity.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 6: Interactive Live Application Form -->
+    <section id="freelance-apply-form" class="py-16 lg:py-24 bg-white scroll-mt-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="theme-card rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-2xl bg-white relative">
+          
+          <!-- Form Header -->
+          <div class="mb-8 text-center sm:text-left">
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-800 border border-orange-200 text-xs font-black tracking-wide uppercase">
+              ★ OFFICIAL APPLICATION FORM 2026 ★
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0B1930] mt-3 tracking-tight">
+              Apply for the Freelance &amp; Internship Program
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Submit your candidate profile below. Our engineering committee reviews applications within 24 hours.
+            </p>
+          </div>
+
+          <!-- Error Alert Banner -->
+          @if (freelanceErrorMessage()) {
+            <div class="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm flex items-center gap-3">
+              <svg class="w-5 h-5 text-rose-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <span>{{ freelanceErrorMessage() }}</span>
+            </div>
+          }
+
+          <!-- Success State View -->
+          @if (freelanceFormSubmitted()) {
+            <div class="p-6 sm:p-8 rounded-3xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
+              <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-2xl mx-auto shadow-inner">
+                ✓
+              </div>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900">Application Submitted Successfully!</h3>
+              <p class="text-xs sm:text-sm text-slate-700 max-w-lg mx-auto leading-relaxed">
+                Your application for <strong class="text-emerald-900">{{ freelanceSelectedTrack() }}</strong> has been prepared for the Arivom Technologies admissions panel at <strong class="font-mono text-slate-900">{{ contactEmail }}</strong>.
+              </p>
+              
+              <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a 
+                  [href]="whatsAppUrl + '?text=Hi%20Arivom%20Technologies,%20I%20have%20submitted%20my%20application%20for%20the%20' + freelanceSelectedTrack() + '%202026%20program.'"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="btn-shimmer w-full sm:w-auto px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                  <span>Fast-Track on WhatsApp &rarr;</span>
+                </a>
+                <button 
+                  type="button" 
+                  (click)="resetFreelanceForm()" 
+                  class="w-full sm:w-auto px-5 py-3 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 font-bold text-xs sm:text-sm transition-colors cursor-pointer">
+                  Submit Another Application
+                </button>
+              </div>
+            </div>
+          } @else {
+
+            <!-- Form Content -->
+            <form (ngSubmit)="submitFreelanceForm()" class="space-y-5">
+              
+              <!-- Row 1: Full Name & Email -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">Full Name *</label>
+                  <input 
+                    type="text" 
+                    name="candidateName" 
+                    [(ngModel)]="freelanceName" 
+                    placeholder="e.g. Anand Kumar" 
+                    required
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all" />
+                </div>
+                <div>
+                  <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">Email Address *</label>
+                  <input 
+                    type="email" 
+                    name="candidateEmail" 
+                    [(ngModel)]="freelanceEmail" 
+                    placeholder="e.g. anand@gmail.com" 
+                    required
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all" />
+                </div>
+              </div>
+
+              <!-- Row 2: Phone/WhatsApp & Current Status -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">Phone / WhatsApp *</label>
+                  <input 
+                    type="tel" 
+                    name="candidatePhone" 
+                    [(ngModel)]="freelancePhone" 
+                    placeholder="e.g. +91 98765 43210" 
+                    required
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all" />
+                </div>
+                <div>
+                  <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">Current Academic / Professional Status</label>
+                  <select 
+                    name="candidateRole" 
+                    [(ngModel)]="freelanceRole" 
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all">
+                    <option value="College Student (Final Year)">College Student (Final Year)</option>
+                    <option value="College Student (Pre-Final Year)">College Student (Pre-Final Year)</option>
+                    <option value="Fresh Graduate (2024-2025 Batch)">Fresh Graduate (2024–2025 Batch)</option>
+                    <option value="Junior / Mid Developer">Junior / Mid Developer</option>
+                    <option value="Independent Freelance Coder">Independent Freelance Coder</option>
+                    <option value="Career Switcher / Transitioning into Tech">Career Switcher / Transitioning into Tech</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 3: Target Track & Experience Level -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">Selected Program Track *</label>
+                  <select 
+                    name="candidateTrack" 
+                    [(ngModel)]="freelanceSelectedTrack" 
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-orange-950 focus:bg-white focus:border-orange-500 focus:outline-none transition-all">
+                    @for (t of freelanceTracks; track t.id) {
+                      <option [value]="t.title">{{ t.title }} ({{ t.categoryLabel }})</option>
+                    }
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">Experience Level</label>
+                  <select 
+                    name="candidateExp" 
+                    [(ngModel)]="freelanceExperience" 
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all">
+                    <option value="Beginner / Fresher (0-1 yrs)">Beginner / Fresher (0–1 yrs)</option>
+                    <option value="Intermediate (1-2 yrs)">Intermediate (1–2 yrs)</option>
+                    <option value="Experienced Developer (2+ yrs)">Experienced Developer (2+ yrs)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 4: GitHub / Portfolio / LinkedIn Link -->
+              <div>
+                <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">
+                  GitHub / LinkedIn / Portfolio URL (Optional)
+                </label>
+                <input 
+                  type="url" 
+                  name="candidatePortfolio" 
+                  [(ngModel)]="freelancePortfolio" 
+                  placeholder="https://github.com/your-username or linkedin.com/in/..." 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all" />
+              </div>
+
+              <!-- Row 5: Motivation & Prior Work -->
+              <div>
+                <label class="block text-xs font-mono font-bold text-slate-700 uppercase mb-1">
+                  Why do you want to join this program? (Brief Statement)
+                </label>
+                <textarea 
+                  rows="3" 
+                  name="candidateMessage" 
+                  [(ngModel)]="freelanceMessage" 
+                  placeholder="Tell us what you would love to build or any past coding projects..." 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-orange-500 focus:outline-none transition-all"></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  [disabled]="freelanceSubmitting()"
+                  class="btn-shimmer hover-lift-sm active:scale-95 w-full py-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50">
+                  @if (freelanceSubmitting()) {
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Processing Application...</span>
+                  } @else {
+                    <span>Submit Application for 2026 Batch &rarr;</span>
+                  }
+                </button>
+              </div>
+
+              <!-- Security & Privacy note -->
+              <div class="text-center text-[11px] text-slate-500 font-mono">
+                🔒 Direct application to Arivom Technologies engineering panel. No agency spam.
+              </div>
+
+            </form>
+          }
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 7: Candidates FAQ -->
+    <section class="py-16 bg-[#F8FAFC] border-t border-slate-200/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <div class="text-center">
+          <span class="text-xs font-mono font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+            CANDIDATE FAQ
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1930] mt-3">
+            Frequently Asked Questions by Applicants
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+            <h3 class="text-base font-bold text-slate-900">Is this program completely remote?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Yes, 100% remote with flexible sprint hours. You can coordinate async on GitHub, Discord, and join weekly sprint check-ins on Google Meet from anywhere in India.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+            <h3 class="text-base font-bold text-slate-900">How does the freelance compensation &amp; stipend work?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Compensation is tied to verified milestone deliverables. When your code passes test suites, PR review, and gets merged into production client features, you receive the agreed milestone stipend. Outstanding contributors receive retainers for ongoing client projects.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+            <h3 class="text-base font-bold text-slate-900">Do I need extensive coding experience before applying?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Basic knowledge of coding (syntax, logic, loops, functions) in your chosen domain is expected. Our senior developers will train you in modern architecture, reactive signals, REST design, and Git best practices during the initial onboarding sprint.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+            <h3 class="text-base font-bold text-slate-900">What credentials will I receive upon completion?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              You receive an official Certificate of Completion and an Experience Letter from Arivom Technologies citing the specific technologies and commercial modules you contributed to, ready for your LinkedIn and job interviews.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+            <h3 class="text-base font-bold text-slate-900">How quickly are applicants contacted?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Our review committee screens applications daily. You will receive an initial email within 24–48 hours. For urgent inquiries, you can also reach our admission desk directly via WhatsApp at +91 866 768 4683.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    </div>
+  }
+
+
+
   <!-- ================= CONTACT INQUIRY MODAL ================= -->
   @if (contactModalOpen()) {
     <div class="contact-modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
@@ -4955,6 +5865,12 @@
             SOLUTIONS
           </h4>
           <ul class="space-y-2 text-xs text-slate-400">
+            <li>
+              <button (click)="navigateTo('freelance')" class="footer-nav-link hover:text-white transition-all text-left flex items-center gap-1.5 cursor-pointer">
+                <span>Careers &amp; Freelance</span>
+                <span class="text-[9px] text-orange-400 font-mono font-bold">(2026 Batch)</span>
+              </button>
+            </li>
             <li>
               <button (click)="navigateTo('pricing')" class="footer-nav-link hover:text-white transition-all text-left block cursor-pointer">INR Pricing Matrix</button>
             </li>

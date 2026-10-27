@@ -21,11 +21,30 @@ export type PageName =
   | 'reviews' 
   | 'estimator' 
   | 'faq'
+  | 'freelance'
+  | 'careers'
   | 'service-starter-websites'
   | 'service-web-apps'
   | 'service-mobile-apps'
   | 'service-cloud-microservices'
   | 'service-ai-saas';
+
+export interface FreelanceTrack {
+  id: string;
+  title: string;
+  category: 'engineering' | 'ai-data' | 'cloud' | 'business';
+  categoryLabel: string;
+  badgeBg: string;
+  textColor: string;
+  borderColor: string;
+  icon: string;
+  duration: string;
+  mode: string;
+  stipendNote: string;
+  description: string;
+  techStack: string[];
+  keyDeliverable: string;
+}
 
 export interface TechItem {
   id: string;
@@ -442,6 +461,18 @@ export class App implements OnInit, OnDestroy {
           trust2: 'Guaranteed Timelines',
           trust3: 'Enterprise Quality'
         };
+      case 'freelance':
+      case 'careers':
+        return {
+          badge: 'BATCH 2026 ENROLLMENT OPEN',
+          title: 'Join Our Freelance &\nEngineering Network',
+          subtitle: 'Work on live client microservices, earn milestone compensation, and build a verified production portfolio with Arivom Technologies.',
+          primaryBtn: 'Apply Online Now &rarr;',
+          action: () => this.scrollToFreelanceForm(),
+          trust1: '17+ Technical Tracks',
+          trust2: 'Milestone Compensation',
+          trust3: 'Senior Dev Mentorship'
+        };
       case 'home':
       default:
         return {
@@ -476,6 +507,409 @@ export class App implements OnInit, OnDestroy {
   };
 
   protected readonly formSubmitted = signal<boolean>(false);
+
+  // Freelance & Internship Program State (2026 Batch)
+  protected readonly freelanceTrackFilter = signal<string>('all');
+  protected readonly freelanceSelectedTrack = signal<string>('Full Stack Development (Web)');
+  protected readonly freelanceName = signal<string>('');
+  protected readonly freelanceEmail = signal<string>('');
+  protected readonly freelancePhone = signal<string>('');
+  protected readonly freelanceRole = signal<string>('College Student / Final Year');
+  protected readonly freelanceExperience = signal<string>('Beginner / Fresher (0-1 yrs)');
+  protected readonly freelancePortfolio = signal<string>('');
+  protected readonly freelanceMessage = signal<string>('');
+  protected readonly freelanceSubmitting = signal<boolean>(false);
+  protected readonly freelanceFormSubmitted = signal<boolean>(false);
+  protected readonly freelanceErrorMessage = signal<string>('');
+
+  protected readonly freelanceTracks: FreelanceTrack[] = [
+    {
+      id: 'fullstack',
+      title: 'Full Stack Development (Web)',
+      category: 'engineering',
+      categoryLabel: 'Core Web',
+      badgeBg: 'bg-orange-100',
+      textColor: 'text-orange-700',
+      borderColor: 'border-orange-200',
+      icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Design and implement end-to-end web platforms using Angular standalone signals, Spring Boot 3 microservices, and PostgreSQL database architectures.',
+      techStack: ['Angular 19', 'Spring Boot 3', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'REST APIs'],
+      keyDeliverable: 'Multi-tenant enterprise SaaS management portal with JWT RBAC authentication'
+    },
+    {
+      id: 'ai',
+      title: 'Artificial Intelligence (AI)',
+      category: 'ai-data',
+      categoryLabel: 'AI & ML',
+      badgeBg: 'bg-purple-100',
+      textColor: 'text-purple-700',
+      borderColor: 'border-purple-200',
+      icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Build predictive AI engines, intelligent classification systems, and autonomous decision pipelines integrated into production web backends.',
+      techStack: ['Python', 'PyTorch', 'Scikit-Learn', 'FastAPI', 'NumPy', 'Docker'],
+      keyDeliverable: 'Production automated intelligence scoring service with sub-100ms inference API'
+    },
+    {
+      id: 'ml',
+      title: 'Machine Learning (ML)',
+      category: 'ai-data',
+      categoryLabel: 'Predictive AI',
+      badgeBg: 'bg-indigo-100',
+      textColor: 'text-indigo-700',
+      borderColor: 'border-indigo-200',
+      icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Train, evaluate, and tune supervised and unsupervised ML models for churn prediction, sales forecasting, and anomaly detection.',
+      techStack: ['Python', 'Pandas', 'XGBoost', 'Scikit-Learn', 'MLflow', 'Matplotlib'],
+      keyDeliverable: 'Real-time customer churn & lead scoring model with automated drift retraining'
+    },
+    {
+      id: 'dl',
+      title: 'Deep Learning (DL)',
+      category: 'ai-data',
+      categoryLabel: 'Neural Networks',
+      badgeBg: 'bg-blue-100',
+      textColor: 'text-blue-700',
+      borderColor: 'border-blue-200',
+      icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Engineer convolutional and transformer neural networks for computer vision, audio classification, and sequence modeling tasks.',
+      techStack: ['PyTorch', 'TensorFlow', 'TorchVision', 'Hugging Face', 'CUDA', 'OpenCV'],
+      keyDeliverable: 'Vision-based defect detection & classification pipeline for industrial QA'
+    },
+    {
+      id: 'genai',
+      title: 'Generative AI (LLMs & Agents)',
+      category: 'ai-data',
+      categoryLabel: 'Agentic AI',
+      badgeBg: 'bg-amber-100',
+      textColor: 'text-amber-800',
+      borderColor: 'border-amber-200',
+      icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Develop autonomous LLM agents, retrieval-augmented generation (RAG) vector search systems, and multimodal enterprise assistants.',
+      techStack: ['Gemini API', 'LangChain', 'LlamaIndex', 'ChromaDB / Pinecone', 'Python', 'FastAPI'],
+      keyDeliverable: 'Enterprise RAG knowledge assistant with conversational memory & source citations'
+    },
+    {
+      id: 'datascience',
+      title: 'Data Science & Big Data',
+      category: 'ai-data',
+      categoryLabel: 'Big Data',
+      badgeBg: 'bg-teal-100',
+      textColor: 'text-teal-700',
+      borderColor: 'border-teal-200',
+      icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Extract statistical insights from massive datasets, build ETL pipelines, and architect data lakes for enterprise decision support.',
+      techStack: ['Python', 'Apache Spark', 'SQL', 'PostgreSQL', 'Airflow', 'Parquet'],
+      keyDeliverable: 'Automated multi-source ETL pipeline processing 500K+ records into analytical marts'
+    },
+    {
+      id: 'analytics',
+      title: 'Data Analytics & Power BI',
+      category: 'ai-data',
+      categoryLabel: 'BI Analytics',
+      badgeBg: 'bg-yellow-100',
+      textColor: 'text-yellow-800',
+      borderColor: 'border-yellow-200',
+      icon: 'M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z',
+      duration: '6 – 10 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Transform complex business data into high-impact interactive executive dashboards, DAX measures, and actionable KPI reports.',
+      techStack: ['Power BI', 'DAX', 'SQL', 'Excel Advanced', 'Tableau', 'Data Modeling'],
+      keyDeliverable: 'Executive C-Suite KPI dashboard with drill-through performance analytics'
+    },
+    {
+      id: 'cloud',
+      title: 'Cloud Computing (AWS/GCP/Azure)',
+      category: 'cloud',
+      categoryLabel: 'Cloud Infra',
+      badgeBg: 'bg-sky-100',
+      textColor: 'text-sky-700',
+      borderColor: 'border-sky-200',
+      icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Architect secure, elastic cloud infrastructure, VPC networking, serverless Lambda/Cloud Run functions, and automated storage tiers.',
+      techStack: ['AWS', 'Google Cloud', 'Terraform', 'Docker', 'Kubernetes', 'CloudFront'],
+      keyDeliverable: 'Multi-region fault-tolerant cloud architecture deployed with Terraform IaC'
+    },
+    {
+      id: 'devops',
+      title: 'DevOps & CI/CD Pipelines',
+      category: 'cloud',
+      categoryLabel: 'Automation',
+      badgeBg: 'bg-slate-100',
+      textColor: 'text-slate-700',
+      borderColor: 'border-slate-300',
+      icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Automate containerized build, lint, test, security scan, and zero-downtime deployment workflows across GitHub Actions and K8s.',
+      techStack: ['GitHub Actions', 'Docker', 'Kubernetes', 'Helm', 'Prometheus', 'Grafana'],
+      keyDeliverable: 'Complete automated GitOps CI/CD pipeline with staging and production canary rollouts'
+    },
+    {
+      id: 'security',
+      title: 'Cyber Security',
+      category: 'engineering',
+      categoryLabel: 'SecOps',
+      badgeBg: 'bg-rose-100',
+      textColor: 'text-rose-700',
+      borderColor: 'border-rose-200',
+      icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Conduct vulnerability assessments, OWASP Top 10 penetration testing, API security audits, and implement Zero-Trust access policies.',
+      techStack: ['OWASP ZAP', 'Burp Suite', 'Linux Hardening', 'JWT Security', 'Nmap', 'Cryptography'],
+      keyDeliverable: 'Comprehensive penetration test report & security remediation patch set for Web APIs'
+    },
+    {
+      id: 'mobile',
+      title: 'Mobile App Dev (Flutter/React Native)',
+      category: 'engineering',
+      categoryLabel: 'Mobile Native',
+      badgeBg: 'bg-emerald-100',
+      textColor: 'text-emerald-700',
+      borderColor: 'border-emerald-200',
+      icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Build fast 60fps cross-platform mobile apps with native capabilities, biometric login, offline SQLite storage, and push notifications.',
+      techStack: ['React Native', 'Flutter', 'TypeScript', 'Dart', 'Firebase', 'REST APIs'],
+      keyDeliverable: 'Production iOS/Android mobile app with offline synchronization & payment gateway'
+    },
+    {
+      id: 'uiux',
+      title: 'UI/UX Design & Figma',
+      category: 'business',
+      categoryLabel: 'Design System',
+      badgeBg: 'bg-pink-100',
+      textColor: 'text-pink-700',
+      borderColor: 'border-pink-200',
+      icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
+      duration: '6 – 10 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Craft modern design systems, atomic component libraries, responsive UX flows, and interactive prototypes tested for accessibility.',
+      techStack: ['Figma', 'Auto-Layout', 'Design Tokens', 'Prototyping', 'User Research', 'WCAG A11y'],
+      keyDeliverable: 'Comprehensive enterprise design system with 80+ component variants & Figma prototype'
+    },
+    {
+      id: 'blockchain',
+      title: 'Blockchain & Web3',
+      category: 'engineering',
+      categoryLabel: 'Smart Contracts',
+      badgeBg: 'bg-violet-100',
+      textColor: 'text-violet-700',
+      borderColor: 'border-violet-200',
+      icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Develop and audit smart contracts, decentralized applications (dApps), and verifiable tokenized ledger workflows.',
+      techStack: ['Solidity', 'Ethers.js', 'Hardhat', 'Web3.js', 'MetaMask', 'IPFS'],
+      keyDeliverable: 'Audited Solidity smart contract suite with automated gas optimization tests'
+    },
+    {
+      id: 'iot',
+      title: 'Internet of Things (IoT)',
+      category: 'engineering',
+      categoryLabel: 'Hardware & Edge',
+      badgeBg: 'bg-cyan-100',
+      textColor: 'text-cyan-700',
+      borderColor: 'border-cyan-200',
+      icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Program edge sensors, microcontrollers (ESP32 / Raspberry Pi), MQTT telemetry streams, and cloud dashboard collectors.',
+      techStack: ['Embedded C/C++', 'Python', 'MQTT', 'ESP32', 'Node-RED', 'InfluxDB'],
+      keyDeliverable: 'End-to-end telemetry pipeline sending live sensor data to an Angular dashboard'
+    },
+    {
+      id: 'marketing',
+      title: 'Digital Marketing & Growth',
+      category: 'business',
+      categoryLabel: 'Growth Tech',
+      badgeBg: 'bg-red-100',
+      textColor: 'text-red-700',
+      borderColor: 'border-red-200',
+      icon: 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z',
+      duration: '6 – 10 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Drive organic search visibility (SEO), content funnels, conversion rate optimization (CRO), and data-driven ad campaign telemetry.',
+      techStack: ['Technical SEO', 'Google Analytics 4', 'Search Console', 'Content Strategy', 'HubSpot'],
+      keyDeliverable: 'Complete technical SEO audit, keyword roadmap & conversion funnel architecture'
+    },
+    {
+      id: 'health',
+      title: 'Healthcare / HealthTech Systems',
+      category: 'cloud',
+      categoryLabel: 'HealthTech',
+      badgeBg: 'bg-emerald-100',
+      textColor: 'text-emerald-700',
+      borderColor: 'border-emerald-200',
+      icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Engineer HIPAA-compliant patient management, doctor appointment portals, encrypted EHR records, and telehealth workflows.',
+      techStack: ['HL7 / FHIR Standards', 'Spring Boot 3', 'Angular', 'PostgreSQL', 'Data Encryption'],
+      keyDeliverable: 'Secure patient portal module with encrypted medical history & scheduling API'
+    },
+    {
+      id: 'erp',
+      title: 'Enterprise ERP Systems',
+      category: 'engineering',
+      categoryLabel: 'Enterprise Software',
+      badgeBg: 'bg-blue-100',
+      textColor: 'text-blue-700',
+      borderColor: 'border-blue-200',
+      icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+      duration: '8 – 12 Weeks',
+      mode: 'Remote / Flexible Hours',
+      stipendNote: 'Milestone Stipend + Completion Bonus',
+      description: 'Architect multi-tier enterprise modules for inventory tracking, invoicing, GST calculations, purchase orders, and audit ledgers.',
+      techStack: ['Spring Boot 3', 'Angular', 'PostgreSQL', 'JasperReports', 'Hibernate / JPA', 'Docker'],
+      keyDeliverable: 'Inventory & automated GST invoicing engine with PDF report generators'
+    }
+  ];
+
+  protected readonly filteredFreelanceTracks = computed(() => {
+    const filter = this.freelanceTrackFilter();
+    if (filter === 'all') {
+      return this.freelanceTracks;
+    }
+    return this.freelanceTracks.filter(t => t.category === filter);
+  });
+
+  setFreelanceTrackFilter(category: string): void {
+    this.freelanceTrackFilter.set(category);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const cards = document.querySelectorAll('.freelance-track-card');
+        if (cards.length > 0) {
+          gsap.fromTo(
+            Array.from(cards),
+            { opacity: 0, scale: 0.96, y: 15 },
+            { opacity: 1, scale: 1, y: 0, stagger: 0.04, duration: 0.35, ease: 'power2.out', clearProps: 'transform' }
+          );
+        }
+      }, 15);
+    }
+  }
+
+  selectFreelanceTrack(trackTitle: string): void {
+    this.freelanceSelectedTrack.set(trackTitle);
+    this.scrollToFreelanceForm();
+  }
+
+  scrollToFreelanceForm(): void {
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        const formEl = document.getElementById('freelance-apply-form');
+        if (formEl) {
+          formEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          formEl.classList.add('ring-4', 'ring-orange-400/50');
+          setTimeout(() => {
+            formEl.classList.remove('ring-4', 'ring-orange-400/50');
+          }, 1500);
+        }
+      }, 50);
+    }
+  }
+
+  submitFreelanceForm(): void {
+    this.freelanceErrorMessage.set('');
+
+    const name = this.freelanceName().trim();
+    const email = this.freelanceEmail().trim();
+    const phone = this.freelancePhone().trim();
+
+    if (!name) {
+      this.freelanceErrorMessage.set('Please enter your full name.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      this.freelanceErrorMessage.set('Please enter a valid email address.');
+      return;
+    }
+
+    if (!phone || phone.length < 8) {
+      this.freelanceErrorMessage.set('Please enter a valid phone or WhatsApp number.');
+      return;
+    }
+
+    this.freelanceSubmitting.set(true);
+
+    const subject = encodeURIComponent(`Freelance & Internship Application 2026: [${this.freelanceSelectedTrack()}] - ${name}`);
+    const body = encodeURIComponent(
+`Hello Arivom Technologies Admissions & Engineering Panel,
+
+I would like to apply for the Freelance, Internship & Upskilling Program 2026.
+
+Candidate Details:
+----------------------------------------
+Full Name: ${name}
+Email Address: ${email}
+Phone / WhatsApp: ${phone}
+Current Role / Education: ${this.freelanceRole()}
+Experience Level: ${this.freelanceExperience()}
+Selected Track: ${this.freelanceSelectedTrack()}
+GitHub / Portfolio / LinkedIn: ${this.freelancePortfolio().trim() || 'Not provided'}
+
+Statement of Purpose / Questions:
+${this.freelanceMessage().trim() || 'Ready to contribute to live client projects and build high-performance software.'}
+
+----------------------------------------
+Sent via Arivom Technologies Careers Portal (https://arivomtechnologies.com/#freelance)
+`
+    );
+
+    const mailtoUrl = `mailto:${this.contactEmail}?subject=${subject}&body=${body}`;
+    if (typeof window !== 'undefined') {
+      window.location.href = mailtoUrl;
+    }
+
+    setTimeout(() => {
+      this.freelanceSubmitting.set(false);
+      this.freelanceFormSubmitted.set(true);
+    }, 800);
+  }
+
+  resetFreelanceForm(): void {
+    this.freelanceFormSubmitted.set(false);
+    this.freelanceErrorMessage.set('');
+    this.freelanceName.set('');
+    this.freelanceEmail.set('');
+    this.freelancePhone.set('');
+    this.freelancePortfolio.set('');
+    this.freelanceMessage.set('');
+  }
 
   // Pricing Plans in INR
   protected readonly pricingPlans: PricingPlan[] = [
@@ -1695,6 +2129,7 @@ Website: https://arivomtechnologies.com/
     const hash = window.location.hash.replace('#', '').toLowerCase();
     const validPages: PageName[] = [
       'home', 'about', 'services', 'clients', 'pricing', 'tech-stack', 'case-studies', 'reviews', 'estimator', 'faq',
+      'freelance', 'careers',
       'service-starter-websites', 'service-web-apps', 'service-mobile-apps', 'service-cloud-microservices', 'service-ai-saas'
     ];
     if (validPages.includes(hash as PageName)) {
