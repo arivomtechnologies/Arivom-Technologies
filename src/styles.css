@@ -5,22 +5,24 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     
-    /* Arivom Brand Palette */
-    --arivom-navy: #0B1930;
-    --arivom-navy-dark: #070F1E;
-    --arivom-orange: #FF6A00;
-    --arivom-orange-light: #FF9432;
+    /* Arivom Recommended Brand Palette */
+    --arivom-orange: #FF6B00;       /* Buttons, active menu, highlights */
+    --arivom-navy: #0B1437;         /* Sidebar, headings, navigation */
+    --arivom-white: #FFFFFF;        /* Main background, cards, forms */
+    --arivom-orange-light: #FFF4E8; /* Selected menu backgrounds, badges */
+    --arivom-slate: #64748B;        /* Secondary text, labels, descriptions */
+    --arivom-navy-dark: #070D24;
     --arivom-amber: #F59E0B;
   }
 
   html {
     font-family: var(--font-sans);
-    background-color: #fbfdff;
+    background-color: #FFFFFF;
   }
 
   body {
-    background: linear-gradient(180deg, #fdfefe 0%, #fbfdff 40%, #f5f8fc 100%);
-    color: #0B1930;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FBFDFF 40%, #F5F8FC 100%);
+    color: #0B1437;
     min-height: 100vh;
   }
 
@@ -32,16 +34,16 @@
     background: #f8fafc;
   }
   ::-webkit-scrollbar-thumb {
-    background: #fed7aa;
+    background: #FED7AA;
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #f97316;
+    background: #FF6B00;
   }
 }
 
 .glow-orange {
-  box-shadow: 0 16px 50px -10px rgba(249, 115, 22, 0.35);
+  box-shadow: 0 16px 50px -10px rgba(255, 107, 0, 0.35);
 }
 
 .glow-amber {
@@ -49,7 +51,7 @@
 }
 
 .glow-navy {
-  box-shadow: 0 16px 50px -10px rgba(11, 25, 48, 0.35);
+  box-shadow: 0 16px 50px -10px rgba(11, 20, 55, 0.35);
 }
 
 .glow-blue {

@@ -24,7 +24,7 @@
     <!-- 3D 'T' Vertical Pillar Stem -->
     <linearGradient id="at-facet-t-stem" x1="50" y1="32" x2="50" y2="80" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFB03A" />
-      <stop offset="50%" stop-color="#FF6A00" />
+      <stop offset="50%" stop-color="#FF6B00" />
       <stop offset="100%" stop-color="#E03E00" />
     </linearGradient>
 

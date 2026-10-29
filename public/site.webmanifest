@@ -4,8 +4,8 @@
   "description": "Enterprise Software & Web Development Company",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B1930",
-  "theme_color": "#FF6A00",
+  "background_color": "#0B1437",
+  "theme_color": "#FF6B00",
   "icons": [
     {
       "src": "/favicon-48x48.png",

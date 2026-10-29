@@ -11,7 +11,7 @@
       @if (showTooltip()) {
         <div 
           (click)="toggleChat()"
-          class="hidden sm:flex items-center gap-2.5 mr-3 px-3.5 py-2.5 rounded-2xl bg-[#0B1930] text-white shadow-2xl border border-orange-500/40 text-xs cursor-pointer hover:border-orange-500 transition-all hover:scale-[1.02] animate-bounce-subtle">
+          class="hidden sm:flex items-center gap-2.5 mr-3 px-3.5 py-2.5 rounded-2xl bg-[#0B1437] text-white shadow-2xl border border-orange-500/40 text-xs cursor-pointer hover:border-orange-500 transition-all hover:scale-[1.02] animate-bounce-subtle">
           <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
           <div>
             <span class="font-bold text-orange-400">Ask Arivom AI:</span>
@@ -30,7 +30,7 @@
       <button 
         (click)="toggleChat()"
         aria-label="Open Arivom AI Assistant"
-        class="relative w-14 h-14 rounded-full overflow-hidden shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer border-2 border-orange-400/80 bg-[#0B1930]">
+        class="relative w-14 h-14 rounded-full overflow-hidden shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer border-2 border-orange-400/80 bg-[#0B1437]">
         
         <!-- Subtle pulsing background ring -->
         <span class="absolute -inset-1 rounded-full bg-orange-500/30 blur-sm group-hover:bg-orange-500/50 transition-all animate-pulse"></span>
@@ -42,7 +42,7 @@
           class="w-11 h-11 relative z-10 transition-transform duration-300 group-hover:scale-110 drop-shadow-md" />
 
         <!-- Online Status Dot -->
-        <span class="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#0B1930] shadow-xs z-20"></span>
+        <span class="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#0B1437] shadow-xs z-20"></span>
       </button>
     </div>
   }
@@ -55,13 +55,13 @@
       class="w-[calc(100vw-2rem)] sm:w-[410px] h-[580px] max-h-[85vh] bg-white rounded-3xl shadow-2xl border border-orange-200/90 flex flex-col overflow-hidden animate-in-up">
       
       <!-- A. Header Bar -->
-      <div class="bg-gradient-to-r from-[#0B1930] via-[#0E203E] to-[#162C52] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-800">
+      <div class="bg-gradient-to-r from-[#0B1437] via-[#0F1D45] to-[#162758] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-800">
         <div class="flex items-center gap-3">
           <!-- Bot Avatar -->
-          <div class="relative w-9 h-9 rounded-full overflow-hidden shadow-md flex items-center justify-center shrink-0 border border-orange-400/60 bg-[#0B1930]">
+          <div class="relative w-9 h-9 rounded-full overflow-hidden shadow-md flex items-center justify-center shrink-0 border border-orange-400/60 bg-[#0B1437]">
             <img src="images/arivom-ai-emblem.svg" alt="Arivom AI Assistant" class="w-full h-full object-contain" />
             <!-- Online Indicator -->
-            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-[#0B1930]"></span>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-[#0B1437]"></span>
           </div>
 
           <div>
@@ -109,16 +109,16 @@
         
         @for (msg of aiService.messages(); track msg.id) {
           @if (msg.role === 'user') {
-            <!-- User Message Bubble -->
+            <!-- User Message Bubble in Primary Orange #FF6B00 -->
             <div class="flex justify-end items-end gap-1.5">
-              <div class="max-w-[85%] rounded-2xl rounded-br-xs px-3.5 py-2.5 bg-gradient-to-tr from-[#FF6A00] to-[#FF8008] text-white shadow-sm font-medium leading-relaxed">
+              <div class="max-w-[85%] rounded-2xl rounded-br-xs px-3.5 py-2.5 bg-gradient-to-tr from-[#FF6B00] to-[#FF8526] text-white shadow-sm font-medium leading-relaxed">
                 {{ msg.text }}
               </div>
             </div>
           } @else {
             <!-- Model Assistant Bubble -->
             <div class="flex items-start gap-2">
-              <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-0.5 shadow-xs border border-orange-400/40 bg-[#0B1930]">
+              <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-0.5 shadow-xs border border-orange-400/40 bg-[#0B1437]">
                 <img src="images/arivom-ai-emblem.svg" alt="Arivom AI" class="w-full h-full object-contain" />
               </div>
               <div class="max-w-[86%] rounded-2xl rounded-tl-xs px-3.5 py-2.5 bg-white border border-slate-200 text-slate-800 shadow-xs leading-relaxed">
@@ -134,7 +134,7 @@
         <!-- Typing Indicator -->
         @if (aiService.isTyping()) {
           <div class="flex items-start gap-2">
-            <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 shadow-xs border border-orange-400/40 bg-[#0B1930] animate-pulse">
+            <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 shadow-xs border border-orange-400/40 bg-[#0B1437] animate-pulse">
               <img src="images/arivom-ai-emblem.svg" alt="Arivom AI" class="w-full h-full object-contain" />
             </div>
             <div class="rounded-2xl rounded-tl-xs px-3.5 py-2.5 bg-white border border-slate-200 shadow-xs flex items-center gap-1.5 text-slate-500">
@@ -147,13 +147,13 @@
         }
       </div>
 
-      <!-- D. Quick Prompt Suggestion Chips -->
+      <!-- D. Quick Prompt Suggestion Chips in Light Orange #FFF4E8 -->
       <div class="px-3 py-2 border-t border-slate-100 bg-white flex items-center gap-1.5 overflow-x-auto no-scrollbar">
         @for (chip of quickChips; track chip.label) {
           <button 
             (click)="sendQuery(chip.query)" 
             [disabled]="aiService.isTyping()"
-            class="shrink-0 px-2.5 py-1 rounded-full bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-200 text-[11px] font-medium transition-all hover:scale-102 cursor-pointer disabled:opacity-50">
+            class="shrink-0 px-2.5 py-1 rounded-full bg-[#FFF4E8] hover:bg-orange-100 text-orange-950 border border-orange-200/90 text-[11px] font-semibold transition-all hover:scale-102 cursor-pointer disabled:opacity-50">
             {{ chip.label }}
           </button>
         }
@@ -176,7 +176,7 @@
             type="submit" 
             [disabled]="!userInput().trim() || aiService.isTyping()"
             aria-label="Send message"
-            class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF6A00] to-[#FF8008] hover:from-[#FF8008] hover:to-[#FF9432] text-white flex items-center justify-center shrink-0 shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:scale-105 active:scale-95">
+            class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#FF8526] hover:from-[#FF8526] hover:to-[#FFA04A] text-white flex items-center justify-center shrink-0 shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:scale-105 active:scale-95">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
             </svg>

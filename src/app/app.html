@@ -14,10 +14,10 @@
               class="w-full h-full object-contain" />
           </div>
           <div class="flex flex-col justify-center leading-none">
-            <span class="text-[19px] sm:text-[21px] font-black tracking-tight text-[#0B1930] font-sans">
+            <span class="text-[19px] sm:text-[21px] font-black tracking-tight text-[#0B1437] font-sans">
               ARIVOM
             </span>
-            <span class="text-[9px] sm:text-[9.5px] font-bold tracking-[0.33em] text-[#62748E] font-sans mt-1 uppercase">
+            <span class="text-[9px] sm:text-[9.5px] font-bold tracking-[0.33em] text-[#64748B] font-sans mt-1 uppercase">
               TECHNOLOGIES
             </span>
           </div>
@@ -39,7 +39,7 @@
             Home
           </button>
           @if (currentPage() === 'home') {
-            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6A00] rounded-full"></span>
+            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6B00] rounded-full"></span>
           }
         </div>
 
@@ -231,7 +231,7 @@
             Tech Stack
           </button>
           @if (currentPage() === 'tech-stack') {
-            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6A00] rounded-full"></span>
+            <span class="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#FF6B00] rounded-full"></span>
           }
         </div>
 
@@ -305,7 +305,7 @@
         <!-- Start Project Pill Button in Orange Theme -->
         <button 
           (click)="openContactModal()" 
-          class="btn-shimmer active:scale-95 px-5 sm:px-6 py-2.5 rounded-full bg-[#FF6A00] hover:bg-[#EA580C] text-white font-bold text-xs sm:text-[13px] shadow-md shadow-orange-500/30 hover:shadow-lg hover:shadow-orange-500/45 transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer">
+          class="btn-shimmer active:scale-95 px-5 sm:px-6 py-2.5 rounded-full bg-[#FF6B00] hover:bg-[#EA580C] text-white font-bold text-xs sm:text-[13px] shadow-md shadow-orange-500/30 hover:shadow-lg hover:shadow-orange-500/45 transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer">
           <span>Start Project</span>
           <span class="text-orange-100 group-hover:translate-x-0.5 transition-transform">&rarr;</span>
         </button>
@@ -358,10 +358,10 @@
                 class="w-full h-full object-contain" />
             </div>
             <div class="flex flex-col justify-center leading-none">
-              <span class="text-[19px] sm:text-[21px] font-black tracking-tight text-[#0B1930] font-sans">
+              <span class="text-[19px] sm:text-[21px] font-black tracking-tight text-[#0B1437] font-sans">
                 ARIVOM
               </span>
-              <span class="text-[9px] sm:text-[9.5px] font-bold tracking-[0.33em] text-[#62748E] font-sans mt-1 uppercase">
+              <span class="text-[9px] sm:text-[9.5px] font-bold tracking-[0.33em] text-[#64748B] font-sans mt-1 uppercase">
                 TECHNOLOGIES
               </span>
             </div>
@@ -384,7 +384,7 @@
           
           <!-- Tree Node 1: Home (Direct Link) -->
           <div class="rounded-2xl border overflow-hidden shadow-2xs transition-all"
-            [class]="currentPage() === 'home' ? 'border-orange-200/90 bg-[#FFF9F3]' : 'border-orange-100/80 bg-white/90'">
+            [class]="currentPage() === 'home' ? 'border-orange-200/90 bg-[#FFF4E8]' : 'border-orange-100/80 bg-white/90'">
             <button 
               (click)="navigateTo('home')"
               [class]="currentPage() === 'home' ? 'text-orange-600 font-bold' : 'text-slate-800 font-bold hover:bg-orange-50/80'"
@@ -593,7 +593,7 @@
 
           <!-- Tree Node 5: Tech Stack (Direct Link) -->
           <div class="rounded-2xl border overflow-hidden shadow-2xs transition-all"
-            [class]="currentPage() === 'tech-stack' ? 'border-orange-200/90 bg-[#FFF9F3]' : 'border-orange-100/80 bg-white/90'">
+            [class]="currentPage() === 'tech-stack' ? 'border-orange-200/90 bg-[#FFF4E8]' : 'border-orange-100/80 bg-white/90'">
             <button 
               (click)="navigateTo('tech-stack')"
               [class]="currentPage() === 'tech-stack' ? 'text-orange-600 font-bold' : 'text-slate-800 font-bold hover:bg-orange-50/80'"
@@ -950,7 +950,7 @@
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             </div>
             <div>
-              <div class="text-xs sm:text-sm font-extrabold text-[#0B1930] leading-tight">Rapid Delivery</div>
+              <div class="text-xs sm:text-sm font-extrabold text-[#0B1437] leading-tight">Rapid Delivery</div>
               <div class="text-[11px] text-orange-600 font-semibold font-mono mt-0.5">7–14 Days For Sites</div>
             </div>
           </div>
@@ -960,7 +960,7 @@
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
             </div>
             <div>
-              <div class="text-xs sm:text-sm font-extrabold text-[#0B1930] leading-tight">Production Ready</div>
+              <div class="text-xs sm:text-sm font-extrabold text-[#0B1437] leading-tight">Production Ready</div>
               <div class="text-[11px] text-emerald-600 font-semibold font-mono mt-0.5">Enterprise Quality</div>
             </div>
           </div>
@@ -970,7 +970,7 @@
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
             </div>
             <div>
-              <div class="text-xs sm:text-sm font-extrabold text-[#0B1930] leading-tight">Dedicated Dev Team</div>
+              <div class="text-xs sm:text-sm font-extrabold text-[#0B1437] leading-tight">Dedicated Dev Team</div>
               <div class="text-[11px] text-slate-600 font-semibold font-mono mt-0.5">Senior Engineers Only</div>
             </div>
           </div>
@@ -980,7 +980,7 @@
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
             </div>
             <div>
-              <div class="text-xs sm:text-sm font-extrabold text-[#0B1930] leading-tight">Transparent Pricing</div>
+              <div class="text-xs sm:text-sm font-extrabold text-[#0B1437] leading-tight">Transparent Pricing</div>
               <div class="text-[11px] text-orange-600 font-semibold font-mono mt-0.5">Fixed INR Quotes</div>
             </div>
           </div>
@@ -990,7 +990,7 @@
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
             </div>
             <div>
-              <div class="text-xs sm:text-sm font-extrabold text-[#0B1930] leading-tight">24/7 Priority Support</div>
+              <div class="text-xs sm:text-sm font-extrabold text-[#0B1437] leading-tight">24/7 Priority Support</div>
               <div class="text-[11px] text-amber-600 font-semibold font-mono mt-0.5">Warranty &amp; Care</div>
             </div>
           </div>
@@ -1000,7 +1000,7 @@
     </section>
 
     <!-- 1B. Modern Production Tech Stack Ribbon -->
-    <section class="py-5 bg-[#0B1930] border-y border-slate-800 relative z-10 overflow-hidden">
+    <section class="py-5 bg-[#0B1437] border-y border-slate-800 relative z-10 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
           <!-- Stack Label -->
@@ -1047,7 +1047,7 @@
               End-to-End Engineering &amp; Deployment
             </span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1930] mt-4 mb-3 tracking-tight">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1437] mt-4 mb-3 tracking-tight">
             How We Build, Deploy &amp; Scale Your Digital Platforms
           </h2>
           <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -1088,7 +1088,7 @@
               <span>High-Converting Business Websites</span>
             </div>
 
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1930] leading-tight tracking-tight">
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1437] leading-tight tracking-tight">
               Affordable Websites That Turn Visitors Into Loyal Clients
             </h3>
 
@@ -1141,7 +1141,7 @@
               <span>Angular + Spring Boot Web Apps</span>
             </div>
 
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1930] leading-tight tracking-tight">
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1437] leading-tight tracking-tight">
               Enterprise Web Applications &amp; Manufacturing Portals
             </h3>
 
@@ -1238,7 +1238,7 @@
               <span>iOS &amp; Android Mobile Apps</span>
             </div>
 
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1930] leading-tight tracking-tight">
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1437] leading-tight tracking-tight">
               Fluid Cross-Platform Apps from a Unified Codebase
             </h3>
 
@@ -1290,7 +1290,7 @@
               <span>Cloud Server &amp; End-to-End DevOps</span>
             </div>
 
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1930] leading-tight tracking-tight">
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1437] leading-tight tracking-tight">
               Zero-Downtime Server Deployment &amp; Continuous Maintenance
             </h3>
 
@@ -1373,7 +1373,7 @@
               Transparent Engineering Packages
             </span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1930] tracking-tight">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1437] tracking-tight">
             INR Pricing Highlights
           </h2>
           <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
@@ -1387,7 +1387,7 @@
             <div 
               class="relative rounded-3xl transition-all duration-300 flex flex-col justify-between overflow-hidden"
               [class]="plan.popular 
-                ? 'bg-gradient-to-b from-[#0B1930] to-[#0f213e] text-white border-2 border-orange-500 shadow-2xl shadow-orange-500/20 lg:-translate-y-3 z-20' 
+                ? 'bg-gradient-to-b from-[#0B1437] to-[#0F1D45] text-white border-2 border-orange-500 shadow-2xl shadow-orange-500/20 lg:-translate-y-3 z-20' 
                 : 'bg-white text-slate-800 border border-orange-200/80 hover:border-orange-400 shadow-lg hover:shadow-xl hover:shadow-orange-500/10 z-10'">
               
               <!-- Popular Badge Pill -->
@@ -1422,7 +1422,7 @@
                   <!-- Plan Title -->
                   <h3 
                     class="text-lg sm:text-xl font-black mb-2 leading-snug min-h-[3.5rem] flex items-center"
-                    [class]="plan.popular ? 'text-white' : 'text-[#0B1930]'">
+                    [class]="plan.popular ? 'text-white' : 'text-[#0B1437]'">
                     {{ plan.title }}
                   </h3>
 
@@ -1430,7 +1430,7 @@
                   <div class="my-4 pb-4 border-b" [class]="plan.popular ? 'border-slate-800' : 'border-orange-100'">
                     <div 
                       class="text-base sm:text-lg lg:text-base xl:text-lg font-bold font-mono tracking-tight whitespace-nowrap overflow-hidden text-ellipsis"
-                      [class]="plan.popular ? 'text-orange-400' : 'text-[#0B1930]'">
+                      [class]="plan.popular ? 'text-orange-400' : 'text-[#0B1437]'">
                       {{ plan.priceInr }}
                     </div>
                     <div 
@@ -1513,7 +1513,7 @@
               Verified Social Proof
             </span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1930] tracking-tight">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1437] tracking-tight">
             Trusted by Growing Businesses &amp; Enterprises
           </h2>
           <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
@@ -1550,7 +1550,7 @@
                     {{ review.avatarText }}
                   </div>
                   <div>
-                    <div class="text-xs sm:text-sm font-extrabold text-[#0B1930] leading-tight">
+                    <div class="text-xs sm:text-sm font-extrabold text-[#0B1437] leading-tight">
                       {{ review.clientName }}
                     </div>
                     <div class="text-[11px] text-slate-500 mt-0.5">
@@ -1595,7 +1595,7 @@
             <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200 shadow-2xs">
               Engineering Lifecycle
             </span>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1930] tracking-tight">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1437] tracking-tight">
               How We Turn Complex Ideas Into Reliable Software
             </h2>
             <p class="text-slate-600 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -1617,7 +1617,7 @@
             <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 font-mono font-black text-lg flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 shadow-2xs">
               01
             </div>
-            <h3 class="text-lg font-black text-[#0B1930] mb-2 group-hover:text-orange-600 transition-colors">Discovery &amp; Tech Scoping</h3>
+            <h3 class="text-lg font-black text-[#0B1437] mb-2 group-hover:text-orange-600 transition-colors">Discovery &amp; Tech Scoping</h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               We analyze your business model, expected user concurrency, database read/write ratios, and integration endpoints to build an uncompromised software specification.
             </p>
@@ -1630,7 +1630,7 @@
             <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 font-mono font-black text-lg flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 shadow-2xs">
               02
             </div>
-            <h3 class="text-lg font-black text-[#0B1930] mb-2 group-hover:text-orange-600 transition-colors">UI/UX &amp; Interactive Prototypes</h3>
+            <h3 class="text-lg font-black text-[#0B1437] mb-2 group-hover:text-orange-600 transition-colors">UI/UX &amp; Interactive Prototypes</h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               User experience crafted around conversion and ease of use. Responsive mobile-first mockups created in Figma so you test every interaction before a line of code is written.
             </p>
@@ -1643,7 +1643,7 @@
             <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 font-mono font-black text-lg flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 shadow-2xs">
               03
             </div>
-            <h3 class="text-lg font-black text-[#0B1930] mb-2 group-hover:text-orange-600 transition-colors">Robust Backend &amp; API Design</h3>
+            <h3 class="text-lg font-black text-[#0B1437] mb-2 group-hover:text-orange-600 transition-colors">Robust Backend &amp; API Design</h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               Spring Boot 3, secure JWT authentication, ACID-compliant PostgreSQL schemas, Redis caching, and resilient REST/GraphQL APIs engineered for extreme horizontal scalability.
             </p>
@@ -1656,7 +1656,7 @@
             <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 font-mono font-black text-lg flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 shadow-2xs">
               04
             </div>
-            <h3 class="text-lg font-black text-[#0B1930] mb-2 group-hover:text-orange-600 transition-colors">Modern Web &amp; Mobile Interfaces</h3>
+            <h3 class="text-lg font-black text-[#0B1437] mb-2 group-hover:text-orange-600 transition-colors">Modern Web &amp; Mobile Interfaces</h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               High-speed Angular SPAs with SSR and cross-platform React Native apps for iOS &amp; Android. 60 FPS smooth animations, offline state sync, and sub-second load times.
             </p>
@@ -1669,7 +1669,7 @@
             <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 font-mono font-black text-lg flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 shadow-2xs">
               05
             </div>
-            <h3 class="text-lg font-black text-[#0B1930] mb-2 group-hover:text-orange-600 transition-colors">Automated CI/CD &amp; Cloud Setup</h3>
+            <h3 class="text-lg font-black text-[#0B1437] mb-2 group-hover:text-orange-600 transition-colors">Automated CI/CD &amp; Cloud Setup</h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               Docker containerization, GitHub Actions automated test suites, Kubernetes manifests, and automated cloud deployments on AWS, DigitalOcean, or private servers.
             </p>
@@ -1682,7 +1682,7 @@
             <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 font-mono font-black text-lg flex items-center justify-center mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 shadow-2xs">
               06
             </div>
-            <h3 class="text-lg font-black text-[#0B1930] mb-2 group-hover:text-orange-600 transition-colors">Quality Guarantee &amp; Warranty</h3>
+            <h3 class="text-lg font-black text-[#0B1437] mb-2 group-hover:text-orange-600 transition-colors">Quality Guarantee &amp; Warranty</h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
               Every release is covered by a 30-to-90 day full warranty including bug fixes, performance monitoring, database backup automations, and live production handoff.
             </p>
@@ -1697,22 +1697,22 @@
         <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-orange-50/60 via-amber-50/30 to-orange-50/60 border border-orange-200/90 shadow-sm">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div class="p-3">
-              <div class="text-3xl font-black text-[#0B1930] font-mono">100%</div>
+              <div class="text-3xl font-black text-[#0B1437] font-mono">100%</div>
               <div class="text-xs sm:text-sm font-bold text-orange-600 mt-1">Code Ownership</div>
               <div class="text-[11px] text-slate-500 mt-0.5 font-medium">Full Git repository transfer</div>
             </div>
             <div class="p-3">
-              <div class="text-3xl font-black text-[#0B1930] font-mono">&lt; 12h</div>
+              <div class="text-3xl font-black text-[#0B1437] font-mono">&lt; 12h</div>
               <div class="text-xs sm:text-sm font-bold text-orange-600 mt-1">Support SLA</div>
               <div class="text-[11px] text-slate-500 mt-0.5 font-medium">Direct senior dev access</div>
             </div>
             <div class="p-3">
-              <div class="text-3xl font-black text-[#0B1930] font-mono">₹0</div>
+              <div class="text-3xl font-black text-[#0B1437] font-mono">₹0</div>
               <div class="text-xs sm:text-sm font-bold text-orange-600 mt-1">Hidden Fees</div>
               <div class="text-[11px] text-slate-500 mt-0.5 font-medium">Transparent fixed milestones</div>
             </div>
             <div class="p-3">
-              <div class="text-3xl font-black text-[#0B1930] font-mono">Enterprise</div>
+              <div class="text-3xl font-black text-[#0B1437] font-mono">Enterprise</div>
               <div class="text-xs sm:text-sm font-bold text-orange-600 mt-1">Security Standards</div>
               <div class="text-[11px] text-slate-500 mt-0.5 font-medium">OWASP compliant &amp; TLS 1.3</div>
             </div>
@@ -1733,7 +1733,7 @@
               Clear &amp; Transparent Answers
             </span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1930] tracking-tight">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1437] tracking-tight">
             Frequently Asked Questions
           </h2>
           <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
@@ -1748,7 +1748,7 @@
               <button 
                 (click)="toggleFaq(idx)"
                 class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
-                <span class="text-sm sm:text-base font-bold text-[#0B1930] leading-snug">
+                <span class="text-sm sm:text-base font-bold text-[#0B1437] leading-snug">
                   {{ faq.question }}
                 </span>
                 <span 
@@ -1783,7 +1783,7 @@
     </section>
 
     <!-- 7. Direct WhatsApp & Instant Consultation Action Bar -->
-    <section class="py-14 bg-gradient-to-r from-[#0B1930] via-[#102446] to-[#0B1930] text-white border-b border-slate-800 relative overflow-hidden">
+    <section class="py-14 bg-gradient-to-r from-[#0B1437] via-[#122050] to-[#0B1437] text-white border-b border-slate-800 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8 bg-white/5 border border-white/10 rounded-3xl p-7 sm:p-10 backdrop-blur-sm">
           
@@ -2039,7 +2039,7 @@
               <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200">
                 Engineering DNA
               </span>
-              <h2 class="text-3xl font-black text-[#0B1930] leading-tight">
+              <h2 class="text-3xl font-black text-[#0B1437] leading-tight">
                 Built by Engineers, <br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-600">Led by Passion</span>
               </h2>
@@ -2065,7 +2065,7 @@
             <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="theme-card p-5 rounded-2xl">
                 <div class="text-2xl mb-2">🏛️</div>
-                <h4 class="text-sm font-bold text-[#0B1930] mb-1">Domain Experience</h4>
+                <h4 class="text-sm font-bold text-[#0B1437] mb-1">Domain Experience</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Deep functional knowledge across FinTech payment gateways, Real Estate platforms, IoT telemetry pipelines, and E-commerce marketplaces.
                 </p>
@@ -2073,7 +2073,7 @@
 
               <div class="theme-card p-5 rounded-2xl">
                 <div class="text-2xl mb-2">⚡</div>
-                <h4 class="text-sm font-bold text-[#0B1930] mb-1">Modern Tooling</h4>
+                <h4 class="text-sm font-bold text-[#0B1437] mb-1">Modern Tooling</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Spring Boot 3, Angular 19, React Native, Docker, Kubernetes, GitHub Actions, and PostgreSQL for unmatched developer speed and system reliability.
                 </p>
@@ -2081,7 +2081,7 @@
 
               <div class="theme-card p-5 rounded-2xl">
                 <div class="text-2xl mb-2">🛡️</div>
-                <h4 class="text-sm font-bold text-[#0B1930] mb-1">Proactive Security</h4>
+                <h4 class="text-sm font-bold text-[#0B1437] mb-1">Proactive Security</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Automated dependency scans, SSL/TLS enforcement, OWASP Top 10 hardening, and role-based access control (RBAC) baked into every project.
                 </p>
@@ -2089,7 +2089,7 @@
 
               <div class="theme-card p-5 rounded-2xl">
                 <div class="text-2xl mb-2">🤝</div>
-                <h4 class="text-sm font-bold text-[#0B1930] mb-1">Lifetime Code Warranty</h4>
+                <h4 class="text-sm font-bold text-[#0B1437] mb-1">Lifetime Code Warranty</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Free bug resolution period on every project plus optional comprehensive managed cloud hosting and database backup retainers.
                 </p>
@@ -2337,7 +2337,7 @@
             <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200">
               Engineering Capabilities
             </span>
-            <h2 class="text-3xl font-black text-[#0B1930] mt-3 mb-1">What We Deliver In Every Service</h2>
+            <h2 class="text-3xl font-black text-[#0B1437] mt-3 mb-1">What We Deliver In Every Service</h2>
             <p class="text-slate-600 text-sm">Transparent engineering deliverables with no compromises on security, speed or scalability.</p>
           </div>
 
@@ -2348,7 +2348,7 @@
                 <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
                   🚀
                 </div>
-                <h3 class="text-base font-bold text-[#0B1930]">Business Websites</h3>
+                <h3 class="text-base font-bold text-[#0B1437]">Business Websites</h3>
                 <ul class="space-y-2 text-xs text-slate-600">
                   <li class="flex items-start gap-1.5"><span class="text-orange-500 font-bold">✓</span> 5-8 Custom Responsive Pages</li>
                   <li class="flex items-start gap-1.5"><span class="text-orange-500 font-bold">✓</span> Google SEO &amp; Core Web Vitals 95+</li>
@@ -2370,7 +2370,7 @@
                 <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg">
                   ⚡
                 </div>
-                <h3 class="text-base font-bold text-[#0B1930]">Web Applications</h3>
+                <h3 class="text-base font-bold text-[#0B1437]">Web Applications</h3>
                 <ul class="space-y-2 text-xs text-slate-600">
                   <li class="flex items-start gap-1.5"><span class="text-orange-500 font-bold">✓</span> Angular 19 SPAs with Signals</li>
                   <li class="flex items-start gap-1.5"><span class="text-orange-500 font-bold">✓</span> Spring Boot 3 Secure REST Endpoints</li>
@@ -2392,7 +2392,7 @@
                 <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold text-lg">
                   📱
                 </div>
-                <h3 class="text-base font-bold text-[#0B1930]">Mobile Apps</h3>
+                <h3 class="text-base font-bold text-[#0B1437]">Mobile Apps</h3>
                 <ul class="space-y-2 text-xs text-slate-600">
                   <li class="flex items-start gap-1.5"><span class="text-cyan-600 font-bold">✓</span> Cross-Platform iOS &amp; Android</li>
                   <li class="flex items-start gap-1.5"><span class="text-cyan-600 font-bold">✓</span> React Native 60 FPS Native Bridge</li>
@@ -2414,7 +2414,7 @@
                 <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-lg">
                   ☁️
                 </div>
-                <h3 class="text-base font-bold text-[#0B1930]">Cloud Microservices</h3>
+                <h3 class="text-base font-bold text-[#0B1437]">Cloud Microservices</h3>
                 <ul class="space-y-2 text-xs text-slate-600">
                   <li class="flex items-start gap-1.5"><span class="text-indigo-600 font-bold">✓</span> Docker &amp; Kubernetes Orchestration</li>
                   <li class="flex items-start gap-1.5"><span class="text-indigo-600 font-bold">✓</span> Kafka / RabbitMQ Event Streams</li>
@@ -2436,7 +2436,7 @@
                 <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg">
                   ✨
                 </div>
-                <h3 class="text-base font-bold text-[#0B1930]">AI &amp; SaaS Products</h3>
+                <h3 class="text-base font-bold text-[#0B1437]">AI &amp; SaaS Products</h3>
                 <ul class="space-y-2 text-xs text-slate-600">
                   <li class="flex items-start gap-1.5"><span class="text-purple-600 font-bold">✓</span> OpenAI / Anthropic LLM API RAG</li>
                   <li class="flex items-start gap-1.5"><span class="text-purple-600 font-bold">✓</span> Multi-Tenant Workspaces &amp; RBAC</li>
@@ -2510,7 +2510,7 @@
             <!-- Key Quick Metrics -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80">
               <div class="space-y-0.5">
-                <div class="text-2xl font-black text-[#0B1930] font-mono">₹10K–15K</div>
+                <div class="text-2xl font-black text-[#0B1437] font-mono">₹10K–15K</div>
                 <div class="text-xs text-slate-500">Fixed INR Price</div>
               </div>
               <div class="space-y-0.5">
@@ -2819,7 +2819,7 @@
             <!-- Key Quick Metrics -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80">
               <div class="space-y-0.5">
-                <div class="text-2xl font-black text-[#0B1930] font-mono">₹60K–1.5L</div>
+                <div class="text-2xl font-black text-[#0B1437] font-mono">₹60K–1.5L</div>
                 <div class="text-xs text-slate-500">Sprint Packages</div>
               </div>
               <div class="space-y-0.5">
@@ -2963,7 +2963,7 @@
 
         <!-- Case Study Highlight -->
         <div class="mt-20 pt-16 border-t border-slate-200/80">
-          <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#070F1E] via-[#0B1930] to-[#0F2244] border-2 border-orange-500/40 text-white space-y-6 shadow-2xl relative overflow-hidden">
+          <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#070D24] via-[#0B1437] to-[#162758] border-2 border-orange-500/40 text-white space-y-6 shadow-2xl relative overflow-hidden">
             <!-- Ambient glow -->
             <div class="absolute -top-10 -right-10 w-72 h-72 bg-orange-500/15 blur-[90px] pointer-events-none rounded-full"></div>
 
@@ -3008,7 +3008,7 @@
 
         <!-- Pre-Footer Action Card -->
         <div class="mt-20 theme-card rounded-3xl p-8 sm:p-12 text-center bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-200/90 shadow-lg">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1930]">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1437]">
             Ready To Engineer Your Custom Web Platform?
           </h2>
           <p class="text-slate-600 text-sm max-w-xl mx-auto mt-3 mb-8">
@@ -3080,7 +3080,7 @@
             <!-- Key Quick Metrics -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80">
               <div class="space-y-0.5">
-                <div class="text-2xl font-black text-[#0B1930] font-mono">₹1.2L–2.5L</div>
+                <div class="text-2xl font-black text-[#0B1437] font-mono">₹1.2L–2.5L</div>
                 <div class="text-xs text-slate-500">Fixed Package</div>
               </div>
               <div class="space-y-0.5">
@@ -3224,7 +3224,7 @@
 
         <!-- Case Study Highlight -->
         <div class="mt-20 pt-16 border-t border-slate-200/80">
-          <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#070F1E] via-[#0B1930] to-[#0F2244] border-2 border-orange-500/40 text-white space-y-6 shadow-2xl relative overflow-hidden">
+          <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#070D24] via-[#0B1437] to-[#162758] border-2 border-orange-500/40 text-white space-y-6 shadow-2xl relative overflow-hidden">
             <!-- Ambient glow -->
             <div class="absolute -top-10 -right-10 w-72 h-72 bg-orange-500/15 blur-[90px] pointer-events-none rounded-full"></div>
 
@@ -3269,7 +3269,7 @@
 
         <!-- Pre-Footer Action Card -->
         <div class="mt-20 theme-card rounded-3xl p-8 sm:p-12 text-center bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-200/90 shadow-lg">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1930]">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1437]">
             Ready To Launch Your Mobile App On iOS &amp; Android?
           </h2>
           <p class="text-slate-600 text-sm max-w-xl mx-auto mt-3 mb-8">
@@ -3318,7 +3318,7 @@
               Distributed Architecture • ₹3,00,000 – ₹6,00,000+ • 8–14 Weeks
             </div>
 
-            <h1 class="hero-glide text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B1930] tracking-tight leading-[1.12]">
+            <h1 class="hero-glide text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B1437] tracking-tight leading-[1.12]">
               Distributed <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500">Cloud Microservices</span> &amp; DevOps
             </h1>
 
@@ -3341,7 +3341,7 @@
             <!-- Key Quick Metrics -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80">
               <div class="space-y-0.5">
-                <div class="text-2xl font-black text-[#0B1930] font-mono">99.99%</div>
+                <div class="text-2xl font-black text-[#0B1437] font-mono">99.99%</div>
                 <div class="text-xs text-slate-500">Target Uptime</div>
               </div>
               <div class="space-y-0.5">
@@ -3349,7 +3349,7 @@
                 <div class="text-xs text-slate-500">Event-Driven Bus</div>
               </div>
               <div class="space-y-0.5">
-                <div class="text-2xl font-black text-[#0B1930] font-mono">K8s</div>
+                <div class="text-2xl font-black text-[#0B1437] font-mono">K8s</div>
                 <div class="text-xs text-slate-500">Auto-Scaling Pods</div>
               </div>
               <div class="space-y-0.5">
@@ -3388,7 +3388,7 @@
             <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200">
               Architecture Pillars
             </span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0B1930] mt-4 mb-2">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0B1437] mt-4 mb-2">
               Bulletproof Scalability For Mission-Critical Platforms
             </h2>
             <p class="text-slate-600 text-base">
@@ -3402,7 +3402,7 @@
               <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 flex items-center justify-center text-2xl font-bold">
                 🛡️
               </div>
-              <h3 class="text-lg font-bold text-[#0B1930]">API Gateway &amp; Circuit Breakers</h3>
+              <h3 class="text-lg font-bold text-[#0B1437]">API Gateway &amp; Circuit Breakers</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Spring Cloud Gateway with Resilience4j circuit breakers, automated rate-limiting policies, token verification at the perimeter, and zero cascade failures.
               </p>
@@ -3417,7 +3417,7 @@
               <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center text-2xl font-bold">
                 ⚡
               </div>
-              <h3 class="text-lg font-bold text-[#0B1930]">Kafka &amp; Event-Driven Architecture</h3>
+              <h3 class="text-lg font-bold text-[#0B1437]">Kafka &amp; Event-Driven Architecture</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Asynchronous event streaming using Apache Kafka or RabbitMQ. CQRS patterns, distributed event sourcing, and high-throughput order processing pipelines.
               </p>
@@ -3432,7 +3432,7 @@
               <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center text-2xl font-bold">
                 🗄️
               </div>
-              <h3 class="text-lg font-bold text-[#0B1930]">Polyglot Persistence &amp; Redis Cache</h3>
+              <h3 class="text-lg font-bold text-[#0B1437]">Polyglot Persistence &amp; Redis Cache</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 PostgreSQL for strict financial ACID consistency, MongoDB for flexible document collections and telemetry, paired with Redis clusters for sub-5ms caching.
               </p>
@@ -3447,7 +3447,7 @@
               <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center text-2xl font-bold">
                 ☸️
               </div>
-              <h3 class="text-lg font-bold text-[#0B1930]">Kubernetes (K8s) &amp; Auto-Scaling</h3>
+              <h3 class="text-lg font-bold text-[#0B1437]">Kubernetes (K8s) &amp; Auto-Scaling</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Production-grade Kubernetes manifests, Horizontal Pod Autoscaling (HPA) policies, liveness/readiness probes, and self-healing container topologies.
               </p>
@@ -3462,7 +3462,7 @@
               <div class="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-200 text-purple-700 flex items-center justify-center text-2xl font-bold">
                 📈
               </div>
-              <h3 class="text-lg font-bold text-[#0B1930]">Distributed Tracing &amp; Observability</h3>
+              <h3 class="text-lg font-bold text-[#0B1437]">Distributed Tracing &amp; Observability</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Prometheus metrics collection, Grafana visualization dashboards, and Zipkin / OpenTelemetry distributed transaction tracing for instant root-cause analysis.
               </p>
@@ -3477,7 +3477,7 @@
               <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 text-orange-600 flex items-center justify-center text-2xl font-bold">
                 🔄
               </div>
-              <h3 class="text-lg font-bold text-[#0B1930]">Zero-Downtime Monolith Migration</h3>
+              <h3 class="text-lg font-bold text-[#0B1437]">Zero-Downtime Monolith Migration</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Strangler Fig pattern to safely extract legacy monolith domains into microservices step-by-step. Automated rollback safety, dual-write sync, and zero customer downtime.
               </p>
@@ -3491,7 +3491,7 @@
 
         <!-- Case Study Highlight (High Contrast Dark Luxury Card) -->
         <div class="mt-20 pt-16 border-t border-slate-200/80">
-          <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#070F1E] via-[#0B1930] to-[#0F2244] border-2 border-orange-500/40 text-white space-y-6 shadow-2xl relative overflow-hidden">
+          <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#070D24] via-[#0B1437] to-[#162758] border-2 border-orange-500/40 text-white space-y-6 shadow-2xl relative overflow-hidden">
             <!-- Ambient glow -->
             <div class="absolute -top-10 -right-10 w-72 h-72 bg-orange-500/15 blur-[90px] pointer-events-none rounded-full"></div>
             <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-blue-500/10 blur-[90px] pointer-events-none rounded-full"></div>
@@ -3537,7 +3537,7 @@
 
         <!-- Pre-Footer Action Card -->
         <div class="mt-20 theme-card rounded-3xl p-8 sm:p-12 text-center bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-200/90 shadow-lg">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1930]">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1437]">
             Scale Your Infrastructure To Millions Of Users
           </h2>
           <p class="text-slate-600 text-sm max-w-xl mx-auto mt-3 mb-8">
@@ -3609,7 +3609,7 @@
             <!-- Key Quick Metrics -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80">
               <div class="space-y-0.5">
-                <div class="text-2xl font-black text-[#0B1930] font-mono">₹80K–2.8L</div>
+                <div class="text-2xl font-black text-[#0B1437] font-mono">₹80K–2.8L</div>
                 <div class="text-xs text-slate-500">Agile MVP Packages</div>
               </div>
               <div class="space-y-0.5">
@@ -3753,7 +3753,7 @@
 
         <!-- Pre-Footer Action Card -->
         <div class="mt-20 theme-card rounded-3xl p-8 sm:p-12 text-center bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-orange-200/90 shadow-lg">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1930]">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0B1437]">
             Have a SaaS Idea? Let's Build Your MVP
           </h2>
           <p class="text-slate-600 text-sm max-w-xl mx-auto mt-3 mb-8">
@@ -4180,7 +4180,7 @@
                   </a>
                 </div>
               </div>
-              <div class="sm:col-span-6 rounded-2xl p-6 bg-gradient-to-br from-slate-900 to-[#0B1930] text-white border border-slate-800 shadow-xl space-y-4">
+              <div class="sm:col-span-6 rounded-2xl p-6 bg-gradient-to-br from-slate-900 to-[#0B1437] text-white border border-slate-800 shadow-xl space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-slate-800">
                   <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
@@ -4817,7 +4817,7 @@
   }
 
     <!-- ================= PREMIUM GLOBAL FOOTER (CLEAN ENTERPRISE REDESIGN) ================= -->
-  <footer class="footer-global bg-[#070F1E] text-slate-400 pt-16 pb-12 relative overflow-hidden border-t border-slate-800/80">
+  <footer class="footer-global bg-[#070D24] text-slate-400 pt-16 pb-12 relative overflow-hidden border-t border-slate-800/80">
     <!-- Ambient subtle background lighting -->
     <div class="footer-ambient-glow absolute top-0 right-1/4 w-96 h-96 bg-orange-500/10 blur-[140px] pointer-events-none rounded-full"></div>
     <div class="footer-ambient-glow absolute bottom-0 left-10 w-96 h-96 bg-amber-500/5 blur-[140px] pointer-events-none rounded-full"></div>
@@ -4881,7 +4881,7 @@
               <span class="text-[19px] font-black tracking-tight text-white font-sans">
                 ARIVOM
               </span>
-              <span class="text-[9px] font-bold tracking-[0.33em] text-[#FF6A00] font-sans mt-1 uppercase">
+              <span class="text-[9px] font-bold tracking-[0.33em] text-[#FF6B00] font-sans mt-1 uppercase">
                 TECHNOLOGIES
               </span>
             </div>
@@ -5060,7 +5060,7 @@
 
   <!-- Floating Share Toast Notification -->
   @if (websiteShared()) {
-    <div class="fixed bottom-6 right-6 z-50 bg-[#0B1930] text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-orange-500/50 flex items-center gap-3">
+    <div class="fixed bottom-6 right-6 z-50 bg-[#0B1437] text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-orange-500/50 flex items-center gap-3">
       <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center shrink-0">
         ✓
       </div>

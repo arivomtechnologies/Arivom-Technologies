@@ -122,7 +122,7 @@ export class App implements OnInit, OnDestroy {
         setTimeout(() => {
           const priceEl = document.querySelector('.estimator-result-price');
           if (priceEl) {
-            gsap.fromTo(priceEl, { scale: 1.12, color: '#FF6A00' }, { scale: 1, color: '#334155', duration: 0.35, ease: 'back.out(2)' });
+            gsap.fromTo(priceEl, { scale: 1.12, color: '#FF6B00' }, { scale: 1, color: '#334155', duration: 0.35, ease: 'back.out(2)' });
           }
         }, 15);
       }
